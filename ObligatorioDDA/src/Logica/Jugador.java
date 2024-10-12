@@ -55,6 +55,6 @@ public class Jugador extends Usuario{
              
     }
     public void RetirarseDelJuego(){
-        
-    }
+    }  
+    
 }

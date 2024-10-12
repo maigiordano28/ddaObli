@@ -22,23 +22,25 @@ public class Fachada {
         return instancia;
     }
     
-    public Usuario LoginJugador(String nombreCompleto,String password) throws UsuarioException{
+    public Jugador LoginJugador(String nombreCompleto,String password) throws UsuarioException{
         return sUsuario.LoginJugador(nombreCompleto,password);
     }
-    public Usuario LoginAdmin(String nombreCompleto,String password) throws UsuarioException{
+    public Admin LoginAdmin(String nombreCompleto,String password) throws UsuarioException{
         return sUsuario.LoginAdmin(nombreCompleto,password);
     }
 
     public void agregarJugador(String cedula, String password, String nombre, int saldo) {
-        sUsuario.agregarJugador(cedula,password,nombre,saldo);
+        sUsuario.agregarJugador(nombre,cedula,password,saldo);
        
     }
         public void agregarAdmin(String cedula, String password, String nombre) {
-        sUsuario.agregarAdmin(cedula,password,nombre);
+        sUsuario.agregarAdmin(nombre,cedula,password);
        
     }
         
-        public void AgregarMesa(int cantJugadores, double apuestaBase, double porcentajeComision) throws MesaException{
-          sMesa.AgregarMesa(cantJugadores, apuestaBase, porcentajeComision);
+        public Mesa AgregarMesa(int cantJugadores, double apuestaBase, double porcentajeComision) throws MesaException{
+            
+          return sMesa.AgregarMesa(cantJugadores, apuestaBase, porcentajeComision);
+          
         }
 }

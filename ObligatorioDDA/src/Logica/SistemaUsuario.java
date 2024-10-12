@@ -63,16 +63,21 @@ public class SistemaUsuario {
             if(getSesion(jugadorAValidar)!= null){
                 throw new UsuarioException("Acceso denegado. El usuario ya esta logueado");
             }
-            for(Jugador j:jugadores){
+          
+            
+           /* for(Jugador j:jugadores){
                 if(j.equals(jugadorAValidar)){
                    sesiones.add(new Sesion(j, new Date()));
                    return j;
                 }
-            }
+            }*/
+            if(jugadores.contains(jugadorAValidar)){
+                sesiones.add(new Sesion(jugadorAValidar, new Date()));
+                   return jugadorAValidar;
+            }else{
             throw new UsuarioException("Credenciales incorrectas"); 
-          
-   
-    }
+  
+    }}
     
      public Admin LoginAdmin(String nombreCompleto,String password) throws UsuarioException{
        
@@ -85,16 +90,16 @@ public class SistemaUsuario {
             if(getSesion(adminAValidar)!= null){
                 throw new UsuarioException("Acceso denegado. El usuario ya esta logueado");
             }
-            for(Admin a:administradores){
-                if(a.equals(adminAValidar)){
-                   sesiones.add(new Sesion(a, new Date()));
-                   return a;
-                }
-            }
+            
+           if(administradores.contains(adminAValidar)){
+                sesiones.add(new Sesion(adminAValidar, new Date()));
+                   return adminAValidar;
+            }else{
             throw new UsuarioException("Credenciales incorrectas"); 
-          
-   
+  
     }
+     }
+    
     
     public void Logout(Usuario usuario) throws UsuarioException{
         
@@ -115,11 +120,11 @@ public class SistemaUsuario {
         return null;
     }
 
-    void agregarJugador(String cedula, String password, String nombre, int saldo) {
-        jugadores.add(new Jugador(cedula,password,nombre,saldo));
+    void agregarJugador(String nombre, String cedula, String password, int saldo) {
+        jugadores.add(new Jugador(nombre,cedula,password,saldo));
     }
-     void agregarAdmin(String cedula, String password, String nombre) {
-        administradores.add(new Admin(cedula,password,nombre));
+     void agregarAdmin(String nombre, String cedula, String password) {
+        administradores.add(new Admin(nombre,cedula,password));
     }
 }
    

@@ -27,16 +27,16 @@
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="labelNombreJLogin" min="-2" pref="110" max="-2" attributes="0"/>
+                      <Component id="labelNombreLogin" min="-2" pref="110" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="txtNombreJLogin" min="-2" pref="192" max="-2" attributes="0"/>
+                      <Component id="txtNombreLogin" min="-2" pref="192" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="labelPasswordJLogin" min="-2" pref="104" max="-2" attributes="0"/>
+                      <Component id="labelPasswordLogin" min="-2" pref="104" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnHacerLoginJugador" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtPasswordJLogin" max="32767" attributes="0"/>
+                          <Component id="btnHacerLogin" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtPasswordLogin" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -49,49 +49,43 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="labelNombreJLogin" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtNombreJLogin" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelNombreLogin" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtNombreLogin" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtPasswordJLogin" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelPasswordJLogin" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPasswordLogin" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelPasswordLogin" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="32" max="32767" attributes="0"/>
-              <Component id="btnHacerLoginJugador" min="-2" max="-2" attributes="0"/>
+              <Component id="btnHacerLogin" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="btnHacerLoginJugador">
+    <Component class="javax.swing.JButton" name="btnHacerLogin">
       <Properties>
         <Property name="text" type="java.lang.String" value="Login"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHacerLoginActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="labelNombreJLogin">
+    <Component class="javax.swing.JLabel" name="labelNombreLogin">
       <Properties>
         <Property name="text" type="java.lang.String" value="Nombre Completo:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="labelPasswordJLogin">
+    <Component class="javax.swing.JLabel" name="labelPasswordLogin">
       <Properties>
         <Property name="text" type="java.lang.String" value="Password:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtNombreJLogin">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Ingrese el nombre"/>
-      </Properties>
+    <Component class="javax.swing.JTextField" name="txtNombreLogin">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtPasswordJLogin">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Ingrese password"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPasswordJLoginActionPerformed"/>
-      </Events>
+    <Component class="javax.swing.JTextField" name="txtPasswordLogin">
     </Component>
   </SubComponents>
 </Form>

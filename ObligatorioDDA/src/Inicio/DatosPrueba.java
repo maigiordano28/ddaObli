@@ -5,13 +5,9 @@ import Logica.Fachada;
 public class DatosPrueba {
 
     static void Cargar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-     
-   
-    public void precargarUsuarios(){
+       
         Fachada fachada = Fachada.getInstancia();
-   fachada.agregarJugador("48392010" ,"abc123","Carlos Gómez" ,5000);
+   fachada.agregarJugador("48392010" ,"abc123","Carlos Gomez" ,5000);
 fachada.agregarJugador("29384729" ,"pass123","Lucía Martínez" ,10000);
 fachada.agregarJugador("18492048" ,"qwerty","Jorge Pérez" ,7500);
 fachada.agregarJugador("39482030" ,"hunter2","María López" ,2500);
@@ -40,3 +36,4 @@ fachada.agregarAdmin("39481020" ,"letmein456","Paola Castillo" );
 fachada.agregarAdmin("58491040" ,"mypassword8","Santiago Durán" );
     }
 }
+   

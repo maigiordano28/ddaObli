@@ -15,12 +15,13 @@ public class AgregarMesa extends javax.swing.JDialog {
 
     private Mesa mesa;
    
-    public AgregarMesa(java.awt.Frame parent, boolean modal,Mesa mesa) {
+    public AgregarMesa(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.mesa = mesa;
+    
     }
 
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

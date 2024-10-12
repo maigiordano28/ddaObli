@@ -49,5 +49,9 @@ public class Usuario {
         this.password = password;
     }
      
-     
-}
+       public boolean equals(Object o){
+        Usuario u = (Usuario)o;
+        return nombreCompleto.equalsIgnoreCase(u.getNombreCompleto()) &&
+               password.equals(u.getPassword());
+    }}
+
