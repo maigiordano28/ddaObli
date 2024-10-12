@@ -31,6 +31,7 @@ fachada.agregarJugador("38494030" ,"moonlight","Esteban Ruiz" ,12000);
 fachada.agregarJugador("57393029" ,"pass789","Laura Rivas" ,10400);
 fachada.agregarJugador("49203829" ,"maverick","Julián Méndez" ,9200);
 fachada.agregarJugador("29304839" ,"bluebird","Valentina Ortega" ,8600);
+int i=0;
 
 fachada.agregarAdmin("58492011" ,"alpha123","Manuel Vargas" );
 fachada.agregarAdmin("29385030" ,"secure789","Clara Salinas" );
