@@ -4,6 +4,7 @@
  */
 package Logica;
 
+import Logica.Exceptions.MesaException;
 import Logica.Exceptions.UsuarioException;
 
 /**
@@ -36,4 +37,8 @@ public class Fachada {
         sUsuario.agregarAdmin(cedula,password,nombre);
        
     }
+        
+        public void AgregarMesa(int cantJugadores, double apuestaBase, double porcentajeComision) throws MesaException{
+          sMesa.AgregarMesa(cantJugadores, apuestaBase, porcentajeComision);
+        }
 }
