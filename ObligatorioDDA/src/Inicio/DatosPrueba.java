@@ -8,7 +8,7 @@ public class DatosPrueba {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
      
-    
+    fvcvcxvxcvcxvcx
     public void precargarUsuarios(){
         Fachada fachada = Fachada.getInstancia();
    fachada.agregarJugador("48392010" ,"abc123","Carlos Gómez" ,5000);
