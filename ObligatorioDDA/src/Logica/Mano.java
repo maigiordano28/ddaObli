@@ -13,6 +13,16 @@ public class Mano {
     private int numero;
     private int totalApostado;
     private String estadoActual;
+    private String jugadorGanador;
+    private Figura figuraGanadora;
+
+    public String getJugadorGanador() {
+        return jugadorGanador;
+    }
+
+    public void setJugadorGanador(String jugadorGanador) {
+        this.jugadorGanador = jugadorGanador;
+    }
 
     public int getNumero() {
         return numero;
@@ -44,5 +54,11 @@ public class Mano {
     public void ActualizarEstado(){
         
     }
+    
+     @Override
+    public String toString() {
+        return "Mano: " +numero + " Jugadores Actuales: "+ /*jugadores.size()+*/" - Total Apostado: "+totalApostado+ " - Estado: "+ estadoActual+" - Jugador Ganador: "+jugadorGanador +" - Figura Ganadaora: "+ figuraGanadora ;
+    }
+    
     
 }
