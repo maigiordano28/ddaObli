@@ -39,7 +39,7 @@ public class Fachada {
        
     }
         
-        public Mesa AgregarMesa(int cantJugadores, double apuestaBase, double porcentajeComision) throws MesaException{
+        public Mesa AgregarMesa(int cantJugadores, double apuestaBase, double porcentajeComision) throws Exception{
             
           return sMesa.AgregarMesa(cantJugadores, apuestaBase, porcentajeComision);
           

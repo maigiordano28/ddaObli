@@ -150,8 +150,8 @@ public class AgregarMesa extends javax.swing.JDialog {
         double porcentajeComision = Double.parseDouble(txtPorcentajeComision.getText());
         
         try{
-            Fachada.getInstancia().AgregarMesa(cantJugadores,apuestaBase,porcentajeComision);
-             JOptionPane.showMessageDialog(this, "Se creó la mesa: "+ mesa.getNumero() );
+           Mesa m= Fachada.getInstancia().AgregarMesa(cantJugadores,apuestaBase,porcentajeComision);
+             JOptionPane.showMessageDialog(this, "Se creó la mesa: "+ m.getNumero() );
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(
                     this,

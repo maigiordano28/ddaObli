@@ -30,7 +30,7 @@ public class SistemaMesa {
     
     
     
-    public Mesa AgregarMesa(int cantJugadores, double apuestaBase, double porcentajeComision) throws MesaException {
+    public Mesa AgregarMesa(int cantJugadores, double apuestaBase, double porcentajeComision) throws Exception {
          Mesa mesa = new Mesa(cantJugadores,apuestaBase,porcentajeComision);
          mesa.Validar();
          return mesa;
