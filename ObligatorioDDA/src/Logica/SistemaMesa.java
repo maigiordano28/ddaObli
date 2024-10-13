@@ -12,12 +12,19 @@ import java.util.ArrayList;
  * @author bsout
  */
 public class SistemaMesa {
-    public ArrayList<Mesa> mesas;
+    public ArrayList<Mesa> mesas=new ArrayList();
     
     
     
     
-    
+    public double TotalApostado(){
+         int i=0;
+     for(Mesa m:mesas){
+          i += m.TotalApostado();
+     
+     }
+     return i;
+    }
     
     
     

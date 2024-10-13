@@ -4,22 +4,30 @@
  */
 package ejemplo;
 
+import Logica.Exceptions.MesaException;
+import Logica.Fachada;
+import Logica.Mesa;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 /**
  *
  * @author HOLA
  */
 public class InicioAdmin extends javax.swing.JDialog {
-
+    Fachada fachada= Fachada.getInstancia();
+    
     /**
      * Creates new form InicioAdmin
      */
     public InicioAdmin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
-      
+        CargarTotalApostado();
+        CargarMesas();
+     
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,16 +38,14 @@ public class InicioAdmin extends javax.swing.JDialog {
     private void initComponents() {
 
         labelMontoTotal = new javax.swing.JLabel();
-        txtMontoTotal = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listMesas = new javax.swing.JList<>();
         btnCrarMesa = new javax.swing.JButton();
+        labelMontoTotalH = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        ListMesas = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         labelMontoTotal.setText("Monto Total Recaudado:");
-
-        jScrollPane1.setViewportView(listMesas);
 
         btnCrarMesa.setText("Crear Mesa");
         btnCrarMesa.addActionListener(new java.awt.event.ActionListener() {
@@ -47,6 +53,8 @@ public class InicioAdmin extends javax.swing.JDialog {
                 btnCrarMesaActionPerformed(evt);
             }
         });
+
+        jScrollPane1.setViewportView(ListMesas);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -56,42 +64,51 @@ public class InicioAdmin extends javax.swing.JDialog {
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCrarMesa)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane1)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(labelMontoTotal)
-                            .addGap(32, 32, 32)
-                            .addComponent(txtMontoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(48, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelMontoTotal)
+                        .addGap(32, 32, 32)
+                        .addComponent(labelMontoTotalH, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelMontoTotal)
-                    .addComponent(txtMontoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(labelMontoTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelMontoTotalH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(btnCrarMesa)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGap(14, 14, 14))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrarMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrarMesaActionPerformed
-       AgregarMesa a= new AgregarMesa(null,false);
-       a.setVisible(true);
+     
+        AgregarMesa a= new AgregarMesa(null,false);
+        a.setVisible(true);
+       
     }//GEN-LAST:event_btnCrarMesaActionPerformed
 
+private void CargarMesas(){
+   List<Mesa> mesas=fachada.GetMesas();
+   ListMesas.setListData( mesas.toArray());
 
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JList ListMesas;
     private javax.swing.JButton btnCrarMesa;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelMontoTotal;
-    private javax.swing.JList<String> listMesas;
-    private javax.swing.JTextField txtMontoTotal;
+    private javax.swing.JLabel labelMontoTotalH;
     // End of variables declaration//GEN-END:variables
+
+    private void CargarTotalApostado() {
+         labelMontoTotalH.setText(Double.toString(fachada.TotalApostado()));
+    }
 }

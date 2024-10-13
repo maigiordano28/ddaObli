@@ -152,7 +152,7 @@ public class AgregarMesa extends javax.swing.JDialog {
         try{
             Fachada.getInstancia().AgregarMesa(cantJugadores,apuestaBase,porcentajeComision);
              JOptionPane.showMessageDialog(this, "Se creó la mesa: "+ mesa.getNumero() );
-        } catch (MesaException ex) {
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(
                     this,
                     ex.getMessage(),

@@ -6,6 +6,8 @@ package Logica;
 
 import java.util.ArrayList;
 import Logica.Exceptions.MesaException;
+import java.util.List;
+
 /**
  *
  * @author bsout
@@ -18,7 +20,7 @@ public class Mesa {
     private double apuestaBase;
     private EstadoMesa EstadoMesa;
     private double porcentajeComision ;
-    private Mano mano;
+    private List<Mano> manos;
     private ArrayList<Carta> cartas;
 
     public Mesa(int cantidadJugadores, double apuestaBase, double porcentajeComision) {
@@ -75,14 +77,7 @@ public class Mesa {
         this.porcentajeComision = porcentajeComision;
     }
 
-    public Mano getMano() {
-        return mano;
-    }
-
-    public void setMano(Mano mano) {
-        this.mano = mano;
-    }
-
+  
     public ArrayList<Carta> getCartas() {
         return cartas;
     }
@@ -108,9 +103,21 @@ public class Mesa {
     public void CalcularGanador(){
         
     }
+    public double TotalApostado(){
+        int total=0;
+        for(Mano m:manos){
+        total+=m.getTotalApostado();
+        }
+        return total;
+    }
+
 
     
     
+    @Override
+    public String toString() {
+        return "Mesa: " +numero + " - Jugadores Necesarios: " + cantidadJugadores + " - Apuesta Base: " + apuestaBase + " - Jugadores Actuales: "+ jugadores.size()+ " - Mano "+ manos.size()+" - MontoTotal: "+TotalApostado() +" - Comision: "+porcentajeComision +" - Estado: "+ EstadoMesa ;
+    }
     
     public void Validar()throws MesaException{
         if(cantidadJugadores<2||cantidadJugadores>5)throw new MesaException("Cantidad de jugadores no valida");

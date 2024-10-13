@@ -6,6 +6,7 @@ package Logica;
 
 import Logica.Exceptions.MesaException;
 import Logica.Exceptions.UsuarioException;
+import java.util.ArrayList;
 
 /**
  *
@@ -42,5 +43,14 @@ public class Fachada {
             
           return sMesa.AgregarMesa(cantJugadores, apuestaBase, porcentajeComision);
           
+        }
+          public ArrayList<Mesa> GetMesas(){
+            
+          return sMesa.mesas;
+          
+        }
+        
+        public double TotalApostado(){
+        return sMesa.TotalApostado();
         }
 }

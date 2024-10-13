@@ -34,6 +34,8 @@ fachada.agregarAdmin("29385030" ,"secure789","Clara Salinas" );
 fachada.agregarAdmin("18493050" ,"password3","Ignacio Flores" );
 fachada.agregarAdmin("39481020" ,"letmein456","Paola Castillo" );
 fachada.agregarAdmin("58491040" ,"mypassword8","Santiago Durán" );
+
+
     }
 }
    
