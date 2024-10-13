@@ -119,9 +119,9 @@ public class Mesa {
         return "Mesa: " +numero + " - Jugadores Necesarios: " + cantidadJugadores + " - Apuesta Base: " + apuestaBase + " - Jugadores Actuales: "+ jugadores.size()+ " - Mano "+ manos.size()+" - MontoTotal: "+TotalApostado() +" - Comision: "+porcentajeComision +" - Estado: "+ EstadoMesa ;
     }
     
-    public void Validar()throws Exception{
-        if(cantidadJugadores<2||cantidadJugadores>5)throw new Exception("Cantidad de jugadores no valida");
-        if(apuestaBase<1)throw new Exception("Apuesta base inválida");
-        if(porcentajeComision<1||porcentajeComision>50)throw new Exception("Comision invalida");
+    public void Validar()throws MesaException{
+        if(cantidadJugadores<2||cantidadJugadores>5)throw new MesaException("Cantidad de jugadores no valida");
+        if(apuestaBase<1)throw new MesaException("Apuesta base inválida");
+        if(porcentajeComision<1||porcentajeComision>50)throw new MesaException("Comision invalida");
     }
    }

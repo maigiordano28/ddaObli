@@ -95,7 +95,7 @@ public class InicioAdmin extends javax.swing.JDialog {
        
     }//GEN-LAST:event_btnCrarMesaActionPerformed
 
-private void CargarMesas(){
+public void CargarMesas(){
    List<Mesa> mesas=fachada.GetMesas();
    ListMesas.setListData( mesas.toArray());
 

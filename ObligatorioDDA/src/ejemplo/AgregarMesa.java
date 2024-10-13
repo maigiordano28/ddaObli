@@ -10,15 +10,17 @@ import Logica.Fachada;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import ejemplo.InicioAdmin;
 
 public class AgregarMesa extends javax.swing.JDialog {
 
-    private Mesa mesa;
+    private InicioAdmin parent;
    
-    public AgregarMesa(java.awt.Frame parent, boolean modal) {
+    public AgregarMesa(InicioAdmin parent, boolean modal) {
         super(parent, modal);
+        this.parent = parent;
         initComponents();
-    
+        
     }
 
   
@@ -152,7 +154,10 @@ public class AgregarMesa extends javax.swing.JDialog {
         try{
            Mesa m= Fachada.getInstancia().AgregarMesa(cantJugadores,apuestaBase,porcentajeComision);
              JOptionPane.showMessageDialog(this, "Se creó la mesa: "+ m.getNumero() );
-        } catch (Exception ex) {
+             this.parent.CargarMesas();
+             dispose();
+             
+        } catch (MesaException ex) {
             JOptionPane.showMessageDialog(
                     this,
                     ex.getMessage(),
