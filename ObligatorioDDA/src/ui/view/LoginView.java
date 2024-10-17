@@ -4,7 +4,7 @@
  */
 package ui.view;
 
-import Logica.Usuario;
+import Dominio.Usuario.Usuario;
 /**
  *
  * @author HOLA

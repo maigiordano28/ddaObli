@@ -4,15 +4,15 @@
  */
 package ui.controller;
 
-import ejemplo.Login;
+import iuswing.Login;
 
 
-import Logica.Jugador;
+import Dominio.Jugador;
 
-import Logica.Admin;
-import Logica.Fachada;
+import Dominio.Usuario.Admin;
+import Dominio.Fachada;
 import ui.view.LoginView;
-import Logica.Exceptions.UsuarioException;
+import Dominio.Exceptions.UsuarioException;
 /**
  *
  * @author HOLA

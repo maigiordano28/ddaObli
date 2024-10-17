@@ -1,6 +1,6 @@
 
 package Inicio;
-import Logica.Fachada;
+import Dominio.Fachada;
 
 public class DatosPrueba {
 
