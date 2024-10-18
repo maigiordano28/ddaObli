@@ -8,6 +8,11 @@ package Dominio;
  *
  * @author HOLA
  */
-public class Par {
+public class Par extends tipoFigura{
+
+    public Par(Figura figura) {
+        super("Par");
+    }
+    
     
 }

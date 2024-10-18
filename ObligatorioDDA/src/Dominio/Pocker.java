@@ -8,6 +8,11 @@ package Dominio;
  *
  * @author HOLA
  */
-public class Pocker {
+public class Pocker extends tipoFigura{
+
+    public Pocker(Figura figura) {
+        super("Pocker");
+    }
+    
     
 }

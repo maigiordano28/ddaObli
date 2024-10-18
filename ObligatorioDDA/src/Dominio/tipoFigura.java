@@ -8,6 +8,13 @@ package Dominio;
  *
  * @author HOLA
  */
-public class tipoFigura {
+public abstract class tipoFigura {
+    private String nombre;
+    private Figura figura;
+
+    public tipoFigura(String Nombre) {
+        this.nombre = Nombre;
+    }
+    
     
 }

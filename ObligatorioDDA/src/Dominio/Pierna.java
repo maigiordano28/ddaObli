@@ -8,6 +8,10 @@ package Dominio;
  *
  * @author HOLA
  */
-public class Pierna {
+public class Pierna extends tipoFigura{
+
+    public Pierna(Figura figura) {
+        super("Pierna");
+    }
     
 }
