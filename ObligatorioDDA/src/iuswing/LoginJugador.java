@@ -28,10 +28,10 @@ public class LoginJugador extends Login {
     public void mostrarMensaje(String msg) {
         JOptionPane.showMessageDialog(this, msg);  
     }
-
-    @Override
-    public void cargarSiguientePantalla(Usuario u) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+  @Override
+    public void cargarSiguientePantalla(Usuario u) { 
+        inicioJugador a= new inicioJugador(padre,false);
+        a.setVisible(true);
     }
 
     @Override
