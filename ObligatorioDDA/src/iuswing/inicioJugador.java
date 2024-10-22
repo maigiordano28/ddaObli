@@ -4,6 +4,8 @@
  */
 package iuswing;
 
+import Dominio.Usuario.Jugador;
+
 /**
  *
  * @author HOLA
@@ -13,9 +15,11 @@ public class inicioJugador extends javax.swing.JDialog {
     /**
      * Creates new form inicioJugador
      */
+    private Jugador jugador;
     public inicioJugador(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        cargarSaldo();
         
     }
 
@@ -90,4 +94,8 @@ public class inicioJugador extends javax.swing.JDialog {
     private javax.swing.JLabel txtNombreCompleto;
     private javax.swing.JLabel txtSaldo;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarSaldo() {
+      txtSaldo.setText(Double.toString(jugador.getSaldoInicial()));
+    }
 }

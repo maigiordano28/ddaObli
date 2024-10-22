@@ -4,6 +4,7 @@
  */
 package Dominio;
 
+import Dominio.Usuario.Jugador;
 import java.util.ArrayList;
 import Dominio.Exceptions.MesaException;
 import java.util.List;

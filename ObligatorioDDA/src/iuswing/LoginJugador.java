@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package iuswing;
-import Dominio.Jugador;
+import Dominio.Usuario.Jugador;
 import Dominio.Usuario.Usuario;
 import Dominio.Exceptions.UsuarioException;
 import java.awt.Frame;

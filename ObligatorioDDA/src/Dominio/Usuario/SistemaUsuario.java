@@ -6,7 +6,6 @@ package Dominio.Usuario;
 
 import java.util.ArrayList;
 import Dominio.Exceptions.UsuarioException;
-import Dominio.Jugador;
 import java.util.Date;
 /**
  *
@@ -127,5 +126,7 @@ public class SistemaUsuario {
     public void agregarAdmin(String nombre, String cedula, String password) {
         administradores.add(new Admin(nombre,cedula,password));
     }
+    
+ 
 }
    

@@ -7,7 +7,7 @@ package ui.controller;
 import iuswing.Login;
 
 
-import Dominio.Jugador;
+import Dominio.Usuario.Jugador;
 
 import Dominio.Usuario.Admin;
 import Dominio.Fachada;
