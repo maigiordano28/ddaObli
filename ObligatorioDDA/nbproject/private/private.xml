@@ -3,19 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/ejemplo/LoginAdmin.java</file>
             <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Inicio/DatosPrueba.java</file>
-            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/ejemplo/MesaAdmin.java</file>
-            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Logica/Mano.java</file>
-            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Logica/SistemaUsuario.java</file>
-            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/ejemplo/ManosAdmin.java</file>
-            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/ejemplo/AgregarMesa.java</file>
-            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Logica/Mesa.java</file>
-            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Logica/SistemaMesa.java</file>
-            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Logica/Fachada.java</file>
-            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Logica/Exceptions/MesaException.java</file>
-            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Logica/Admin.java</file>
-            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/ejemplo/InicioAdmin.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Dominio/tipoFigura.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Dominio/Escalera.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Dominio/Pocker.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Dominio/Par.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Dominio/Tipo.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Dominio/Figura.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Dominio/Pierna.java</file>
         </group>
     </open-files>
 </project-private>
