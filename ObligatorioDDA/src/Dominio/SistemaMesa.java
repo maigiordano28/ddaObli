@@ -20,7 +20,7 @@ public class SistemaMesa {
     public double TotalApostado(){
          int i=0;
      for(Mesa m:mesas){
-          i += m.TotalApostado();
+          i += (m.TotalApostado()*m.getPorcentajeComision())/100;
      
      }
      return i;

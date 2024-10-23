@@ -18,14 +18,17 @@ public class inicioJugador extends javax.swing.JDialog {
     Fachada fachada= Fachada.getInstancia();
     private Jugador jugador;
     private double saldo;
+    private String nombre;
     
     public inicioJugador(java.awt.Frame parent, boolean modal,Jugador jugador ) {
         
         super(parent, modal);
         initComponents();
         cargarSaldo();
+        cargarNombre();
         this.jugador=jugador;
         this.saldo = jugador.getSaldoInicial();
+        this.nombre=jugador.getNombreCompleto();
        
         
     }
@@ -131,5 +134,10 @@ public class inicioJugador extends javax.swing.JDialog {
     private void cargarSaldo() {
         
       txtSaldo.setText(Double.toString(saldo));
+    }
+
+    private void cargarNombre() {
+        txtNombreCompleto.setText(nombre);
+       
     }
 }
