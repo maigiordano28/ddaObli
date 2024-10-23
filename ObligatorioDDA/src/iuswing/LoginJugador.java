@@ -30,7 +30,7 @@ public class LoginJugador extends Login {
     }
   @Override
     public void cargarSiguientePantalla(Usuario u) { 
-        inicioJugador a= new inicioJugador(padre,false);
+        inicioJugador a= new inicioJugador(padre,false,(Jugador)u);
         a.setVisible(true);
     }
 

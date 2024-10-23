@@ -16,10 +16,11 @@ public class inicioJugador extends javax.swing.JDialog {
      * Creates new form inicioJugador
      */
     private Jugador jugador;
-    public inicioJugador(java.awt.Frame parent, boolean modal) {
+    public inicioJugador(java.awt.Frame parent, boolean modal,Jugador jugador) {
         super(parent, modal);
         initComponents();
         cargarSaldo();
+        this.jugador=jugador;
         
     }
 
@@ -96,6 +97,7 @@ public class inicioJugador extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void cargarSaldo() {
+        
       txtSaldo.setText(Double.toString(jugador.getSaldoInicial()));
     }
 }
