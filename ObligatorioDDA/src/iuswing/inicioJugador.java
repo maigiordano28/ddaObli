@@ -4,23 +4,29 @@
  */
 package iuswing;
 
+import Dominio.Exceptions.UsuarioException;
+import Dominio.Fachada;
 import Dominio.Usuario.Jugador;
-
+import Dominio.Usuario.Usuario;
+import javax.swing.JOptionPane;
 /**
  *
  * @author HOLA
  */
 public class inicioJugador extends javax.swing.JDialog {
 
-    /**
-     * Creates new form inicioJugador
-     */
+    Fachada fachada= Fachada.getInstancia();
     private Jugador jugador;
-    public inicioJugador(java.awt.Frame parent, boolean modal,Jugador jugador) {
+    private double saldo;
+    
+    public inicioJugador(java.awt.Frame parent, boolean modal,Jugador jugador ) {
+        
         super(parent, modal);
         initComponents();
         cargarSaldo();
         this.jugador=jugador;
+        this.saldo = jugador.getSaldoInicial();
+       
         
     }
 
@@ -47,6 +53,11 @@ public class inicioJugador extends javax.swing.JDialog {
         jScrollPane1.setViewportView(listMesasAbiertas);
 
         btnCerrarSesion.setText("Cerrar sesion");
+        btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarSesionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -86,7 +97,28 @@ public class inicioJugador extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
+       try{
+        fachada.CerrarSesion((Usuario)jugador);
+        salir();
+       }
+       catch (UsuarioException ux) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    ux.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
+    private void salir() {
+        int opcion = JOptionPane.showConfirmDialog(this, "Desea Salir?");
+        if (opcion == JOptionPane.YES_OPTION) {
+            this.setVisible(false);
+            Principal p= new Principal();
+            p.setVisible(true);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JScrollPane jScrollPane1;
@@ -98,6 +130,6 @@ public class inicioJugador extends javax.swing.JDialog {
 
     private void cargarSaldo() {
         
-      txtSaldo.setText(Double.toString(jugador.getSaldoInicial()));
+      txtSaldo.setText(Double.toString(saldo));
     }
 }

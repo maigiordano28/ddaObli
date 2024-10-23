@@ -5,6 +5,7 @@
 package Dominio;
 
 import Dominio.Usuario.Jugador;
+import Dominio.Usuario.Usuario;
 import Dominio.Usuario.SistemaUsuario;
 import Dominio.Usuario.Admin;
 import Dominio.Exceptions.MesaException;
@@ -20,6 +21,7 @@ public class Fachada {
     private SistemaUsuario sUsuario = new SistemaUsuario();
     private SistemaFigura sFigura = new SistemaFigura();
     private SistemaMesa sMesa = new SistemaMesa();
+ 
     private static Fachada instancia = new Fachada();
     
     public static Fachada getInstancia(){
@@ -55,6 +57,11 @@ public class Fachada {
         
         public double TotalApostado(){
         return sMesa.TotalApostado();
+        }
+        
+        public void CerrarSesion(Usuario usuario)throws UsuarioException{
+            sUsuario.Logout(usuario);
+            
         }
         
      
