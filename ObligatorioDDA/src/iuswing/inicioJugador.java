@@ -138,6 +138,6 @@ public class inicioJugador extends javax.swing.JDialog {
 
     private void cargarNombre() {
         txtNombreCompleto.setText(nombre);
-       
+      
     }
 }
