@@ -118,8 +118,7 @@ public class inicioJugador extends javax.swing.JDialog {
         int opcion = JOptionPane.showConfirmDialog(this, "Desea Salir?");
         if (opcion == JOptionPane.YES_OPTION) {
             this.setVisible(false);
-            Principal p= new Principal();
-            p.setVisible(true);
+          
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

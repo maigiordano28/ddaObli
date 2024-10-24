@@ -21,6 +21,7 @@ public abstract class Login extends javax.swing.JDialog implements LoginView {
         super(parent, modal);
         padre = parent;
         initComponents();
+        limpiarCampos();
     }
 
     /**
@@ -106,4 +107,9 @@ public abstract class Login extends javax.swing.JDialog implements LoginView {
     private javax.swing.JTextField txtNombreLogin;
     private javax.swing.JTextField txtPasswordLogin;
     // End of variables declaration//GEN-END:variables
+
+    private void limpiarCampos() {
+        txtNombreLogin.setText("");
+        txtPasswordLogin.setText("");
+}
 }

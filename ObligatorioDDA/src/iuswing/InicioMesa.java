@@ -4,6 +4,8 @@
  */
 package iuswing;
 
+import java.awt.Frame;
+
 /**
  *
  * @author HOLA
@@ -13,6 +15,7 @@ public class InicioMesa extends javax.swing.JDialog {
     /**
      * Creates new form InicioMesa
      */
+    Frame padre;
     public InicioMesa(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -37,8 +40,18 @@ public class InicioMesa extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnEntrarAMesa.setText("Si");
+        btnEntrarAMesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEntrarAMesaActionPerformed(evt);
+            }
+        });
 
         btnSalirMesa.setText("No");
+        btnSalirMesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirMesaActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Desea Ingresar a esta mesa");
@@ -71,6 +84,15 @@ public class InicioMesa extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEntrarAMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarAMesaActionPerformed
+         Jugar j= new Jugar(padre,false);
+         j.setVisible(true);
+    }//GEN-LAST:event_btnEntrarAMesaActionPerformed
+
+    private void btnSalirMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirMesaActionPerformed
+      this.setVisible(false);
+    }//GEN-LAST:event_btnSalirMesaActionPerformed
 
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
