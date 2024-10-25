@@ -14,7 +14,7 @@ import java.util.List;
  * @author bsout
  */
 public class Mesa {
-    
+    private static int s_ultNumero=0;
     private int numero;
     private int cantidadJugadores;
     private ArrayList<Jugador> jugadores;
@@ -22,17 +22,24 @@ public class Mesa {
     private EstadoMesa EstadoMesa;
     private double porcentajeComision ;
     private List<Mano> manos;
+
+    public List<Mano> getManos() {
+        return manos;
+    }
     private ArrayList<Carta> cartas;
 
     public Mesa(int cantidadJugadores, double apuestaBase, double porcentajeComision) {
         this.cantidadJugadores = cantidadJugadores;
         this.apuestaBase = apuestaBase;
         this.porcentajeComision = porcentajeComision;
+        this.numero = s_ultNumero++;
     }
 
     public int getNumero() {
         return numero;
     }
+    
+ 
 
     public void setNumero(int numero) {
         this.numero = numero;

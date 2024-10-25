@@ -11,6 +11,7 @@ import Dominio.Usuario.Admin;
 import Dominio.Exceptions.MesaException;
 import Dominio.Exceptions.UsuarioException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -27,6 +28,8 @@ public class Fachada {
     public static Fachada getInstancia(){
         return instancia;
     }
+    
+    
     
     public Jugador LoginJugador(String nombreCompleto,String password) throws UsuarioException{
         return sUsuario.LoginJugador(nombreCompleto,password);
@@ -49,7 +52,7 @@ public class Fachada {
           return sMesa.AgregarMesa(cantJugadores, apuestaBase, porcentajeComision);
           
         }
-          public ArrayList<Mesa> GetMesas(){
+          public ArrayList<Mesa> getMesas(){
             
           return sMesa.mesas;
           

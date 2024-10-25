@@ -42,6 +42,7 @@ public class InicioAdmin extends javax.swing.JDialog {
         labelMontoTotalH = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ListMesas = new javax.swing.JList();
+        btnRefrescar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -56,6 +57,13 @@ public class InicioAdmin extends javax.swing.JDialog {
 
         jScrollPane1.setViewportView(ListMesas);
 
+        btnRefrescar.setText("Refrescar");
+        btnRefrescar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefrescarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -63,13 +71,19 @@ public class InicioAdmin extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCrarMesa)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelMontoTotal)
-                        .addGap(32, 32, 32)
-                        .addComponent(labelMontoTotalH, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelMontoTotal)
+                                .addGap(32, 32, 32)
+                                .addComponent(labelMontoTotalH, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(24, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnCrarMesa)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRefrescar)
+                        .addGap(78, 78, 78))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,7 +95,9 @@ public class InicioAdmin extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(btnCrarMesa)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCrarMesa)
+                    .addComponent(btnRefrescar))
                 .addGap(14, 14, 14))
         );
 
@@ -95,14 +111,41 @@ public class InicioAdmin extends javax.swing.JDialog {
        
     }//GEN-LAST:event_btnCrarMesaActionPerformed
 
+    private void btnRefrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefrescarActionPerformed
+       mostrarMesasCreadas();
+    }//GEN-LAST:event_btnRefrescarActionPerformed
+
+    private void mostrarMesasCreadas() {
+        List<Mesa> mesasCreadas = Fachada.getInstancia().getMesas();
+        List<String> mesasFormateadas = formatearMesasCreadas(mesasCreadas);
+        String[] listaMesasCreadasArray = new String[mesasFormateadas.size()];
+        ListMesas.setListData(mesasFormateadas.toArray(listaMesasCreadasArray));
+    }
+
+    private List<String> formatearMesasCreadas(List<Mesa> mesasCreadas) {
+        List<String> mesasFormateadas = new ArrayList<>();
+        for (Mesa mesa: mesasCreadas) {
+            mesasFormateadas.add(formatearMesasCreadas(mesa));
+        }
+        return mesasFormateadas;
+    }
+
+    private String formatearMesasCreadas(Mesa mesa) {
+        return mesa.getNumero()+ "|" ;
+                /*mesa.getCantidadJugadores() + "|" +
+                mesa.getApuestaBase() + "|"+ mesa.getJugadores().size() + "|"+
+                mesa.getManos().size() + "|" + mesa.TotalApostado()+"|"+
+                mesa.getPorcentajeComision()+"|"+ mesa.getEstadoMesa();*/
+    }
 public void CargarMesas(){
-   List<Mesa> mesas=fachada.GetMesas();
+   List<Mesa> mesas=fachada.getMesas();
    ListMesas.setListData( mesas.toArray());
 
 }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList ListMesas;
     private javax.swing.JButton btnCrarMesa;
+    private javax.swing.JButton btnRefrescar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelMontoTotal;
     private javax.swing.JLabel labelMontoTotalH;

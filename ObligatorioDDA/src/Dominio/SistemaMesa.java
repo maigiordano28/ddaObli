@@ -6,6 +6,7 @@ package Dominio;
 
 import Dominio.Exceptions.MesaException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -13,6 +14,10 @@ import java.util.ArrayList;
  */
 public class SistemaMesa {
     public ArrayList<Mesa> mesas=new ArrayList();
+
+    public List<Mesa> getMesas() {
+        return mesas;
+    }
     
     
     
