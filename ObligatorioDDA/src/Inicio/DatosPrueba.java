@@ -28,12 +28,13 @@ fachada.agregarJugador("57393029" ,"pass789","Laura Rivas" ,10400);
 fachada.agregarJugador("49203829" ,"maverick","Julián Méndez" ,9200);
 fachada.agregarJugador("29304839" ,"bluebird","Valentina Ortega" ,8600);
 
-
 fachada.agregarAdmin("58492011" ,"alpha123","Manuel Vargas" );
 fachada.agregarAdmin("29385030" ,"secure789","Clara Salinas" );
 fachada.agregarAdmin("18493050" ,"password3","Ignacio Flores" );
 fachada.agregarAdmin("39481020" ,"letmein456","Paola Castillo" );
 fachada.agregarAdmin("58491040" ,"mypassword8","Santiago Durán" );
+
+
 
 
     }

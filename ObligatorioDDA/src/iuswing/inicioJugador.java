@@ -6,8 +6,11 @@ package iuswing;
 
 import Dominio.Exceptions.UsuarioException;
 import Dominio.Fachada;
+import Dominio.Mesa;
 import Dominio.Usuario.Jugador;
 import Dominio.Usuario.Usuario;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 /**
  *
@@ -48,6 +51,7 @@ public class inicioJugador extends javax.swing.JDialog {
         txtNombreCompleto = new javax.swing.JLabel();
         btnCerrarSesion = new javax.swing.JButton();
         txtSaldo = new javax.swing.JLabel();
+        btnRefrescar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -59,6 +63,13 @@ public class inicioJugador extends javax.swing.JDialog {
         btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCerrarSesionActionPerformed(evt);
+            }
+        });
+
+        btnRefrescar.setText("Refrescar");
+        btnRefrescar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefrescarActionPerformed(evt);
             }
         });
 
@@ -77,9 +88,11 @@ public class inicioJugador extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(txtNombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(543, 543, 543)
+                        .addGap(409, 409, 409)
+                        .addComponent(btnRefrescar)
+                        .addGap(59, 59, 59)
                         .addComponent(btnCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,7 +100,8 @@ public class inicioJugador extends javax.swing.JDialog {
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombreCompleto)
-                    .addComponent(btnCerrarSesion))
+                    .addComponent(btnCerrarSesion)
+                    .addComponent(btnRefrescar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelSaldo)
@@ -114,6 +128,32 @@ public class inicioJugador extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
+    private void btnRefrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefrescarActionPerformed
+       mostrarMesasCreadas();
+    }//GEN-LAST:event_btnRefrescarActionPerformed
+
+        private void mostrarMesasCreadas() {
+        List<Mesa> mesasCreadas = Fachada.getInstancia().getMesas();
+        List<String> mesasFormateadas = formatearMesasCreadas(mesasCreadas);
+        String[] listaMesasCreadasArray = new String[mesasFormateadas.size()];
+        listMesasAbiertas.setListData(mesasFormateadas.toArray(listaMesasCreadasArray));
+    }
+
+    private List<String> formatearMesasCreadas(List<Mesa> mesasCreadas) {
+        List<String> mesasFormateadas = new ArrayList<>();
+        for (Mesa mesa: mesasCreadas) {
+            mesasFormateadas.add(formatearMesasCreadas(mesa));
+        }
+        return mesasFormateadas;
+    }
+
+    private String formatearMesasCreadas(Mesa mesa) {
+        return mesa.getNumero()+ "|" ;
+                /*mesa.getCantidadJugadores() + "|" +
+                mesa.getApuestaBase() + "|"+ mesa.getJugadores().size() + "|"+
+                mesa.getManos().size() + "|" + mesa.TotalApostado()+"|"+
+                mesa.getPorcentajeComision()+"|"+ mesa.getEstadoMesa();*/
+    }
     private void salir() {
         int opcion = JOptionPane.showConfirmDialog(this, "Desea Salir?");
         if (opcion == JOptionPane.YES_OPTION) {
@@ -123,6 +163,7 @@ public class inicioJugador extends javax.swing.JDialog {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrarSesion;
+    private javax.swing.JButton btnRefrescar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelSaldo;
     private javax.swing.JList<String> listMesasAbiertas;
