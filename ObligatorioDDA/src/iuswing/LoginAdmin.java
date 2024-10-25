@@ -32,7 +32,7 @@ public class LoginAdmin extends Login {
     @Override
     public void cargarSiguientePantalla(Usuario u) { 
        
-        InicioAdmin a= new InicioAdmin(padre,true);
+        InicioAdmin a= new InicioAdmin(padre,false);
         a.setVisible(true);
     }
 
