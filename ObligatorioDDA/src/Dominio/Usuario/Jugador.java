@@ -12,10 +12,10 @@ import Dominio.Usuario.Usuario;
  */
 public class Jugador extends Usuario{
     
-    private double SaldoInicial;
+    private Double SaldoInicial;
     private String estadoActual;
 
-    public Jugador(String nombreCompleto, String cedula, String password,double saldoInicial) {
+    public Jugador(String nombreCompleto, String cedula, String password,Double saldoInicial) {
         super(nombreCompleto, cedula, password);
         this.SaldoInicial=saldoInicial;
     }
@@ -28,7 +28,7 @@ public class Jugador extends Usuario{
         return SaldoInicial;
     }
 
-    public void setSaldoInicial(double SaldoInicial) {
+    public void setSaldoInicial(Double SaldoInicial) {
         this.SaldoInicial = SaldoInicial;
     }
 

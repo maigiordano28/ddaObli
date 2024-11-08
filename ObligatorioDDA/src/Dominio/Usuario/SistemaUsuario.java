@@ -53,6 +53,7 @@ public class SistemaUsuario {
     
     
     public Jugador LoginJugador(String nombreCompleto,String password) throws UsuarioException{
+        
        
        Jugador jugadorAValidar = new Jugador(nombreCompleto, password);
             if(password == null||password.equals("") || nombreCompleto == null||nombreCompleto.equals("")){
@@ -65,19 +66,17 @@ public class SistemaUsuario {
             }
           
             
-           /* for(Jugador j:jugadores){
+           /* */
+           for(Jugador j: jugadores ){
+           
                 if(j.equals(jugadorAValidar)){
                    sesiones.add(new Sesion(j, new Date()));
                    return j;
                 }
-            }*/
-            if(jugadores.contains(jugadorAValidar)){
-                sesiones.add(new Sesion(jugadorAValidar, new Date()));
-                   return jugadorAValidar;
-            }else{
-            throw new UsuarioException("Credenciales incorrectas"); 
-  
-    }}
+            }
+           
+            return null;
+    }
     
      public Admin LoginAdmin(String nombreCompleto,String password) throws UsuarioException{
        
@@ -120,7 +119,7 @@ public class SistemaUsuario {
         return null;
     }
 
-    public void agregarJugador(String nombre, String cedula, String password, int saldo) {
+    public void agregarJugador(String nombre, String cedula, String password, Double saldo) {
         jugadores.add(new Jugador(nombre,cedula,password,saldo));
     }
     public void agregarAdmin(String nombre, String cedula, String password) {
