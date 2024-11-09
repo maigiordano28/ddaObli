@@ -61,7 +61,10 @@ public class MesaAdminController implements observador {
 
     @Override
     public void actualizar(observable o, Object evento) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if(evento.equals(EventoFachada.NUEVA_MESA)){
+        vista.mostrarMesas(this.getMesas());
+           vista.mostrarMesasCreadas();
+        }
     }
     
     
