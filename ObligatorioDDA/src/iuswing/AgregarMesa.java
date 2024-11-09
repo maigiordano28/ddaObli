@@ -5,6 +5,7 @@
 package iuswing;
 
 
+import Dominio.Mesa;
 import Dominio.Usuario.Admin;
 import javax.swing.JOptionPane;
 import iuswing.InicioAdmin;
