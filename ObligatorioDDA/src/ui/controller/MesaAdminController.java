@@ -4,6 +4,7 @@
  */
 package ui.controller;
 
+import Dominio.EventoFachada;
 import Dominio.EventoMesa;
 import Dominio.Exceptions.MesaException;
 import Dominio.Fachada;
@@ -58,16 +59,6 @@ public class MesaAdminController  {
     
     }
 
-    @Override
-    public void actualizar(observable o, Object evento) {
-        if(evento.equals(EventoFachada.NUEVA_MESA)){
-        vista.mostrarMesas(this.getMesas());
-           vista.mostrarMesasCreadas();
-        }
-    }
-    
-    
- 
 
  
 }
