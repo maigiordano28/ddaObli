@@ -4,10 +4,14 @@
  */
 package ui.view;
 
+import Dominio.Usuario.Usuario;
+
 /**
  *
  * @author HOLA
  */
 public interface InciarMesaView {
     public void iniciarMesa();
+    
+    public void cargarSiguientePantalla();
 }

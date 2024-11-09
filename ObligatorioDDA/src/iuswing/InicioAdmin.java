@@ -113,9 +113,7 @@ public class InicioAdmin extends javax.swing.JDialog implements InciarMesaView{
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrarMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrarMesaActionPerformed
-     
-        AgregarMesa a= new AgregarMesa(null,false,controller.getAdmin());
-        a.setVisible(true);
+     this.cargarSiguientePantalla();
        
     }//GEN-LAST:event_btnCrarMesaActionPerformed
 
@@ -161,6 +159,18 @@ public void CargarMesas(){
 
     private void CargarTotalApostado() {
          labelMontoTotalH.setText(Double.toString(fachada.TotalApostado()));
+    }
+
+    @Override
+    public void iniciarMesa() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void cargarSiguientePantalla() {
+        
+        AgregarMesa a= new AgregarMesa(null,false,controller.getAdmin());
+        a.setVisible(true);
     }
     
     

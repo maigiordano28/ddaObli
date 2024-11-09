@@ -27,6 +27,12 @@ public class IniciarMesaController {
     public void iniciarMesa(){
         
     }
+
+   
+
+    public Admin getAdmin() {
+          return admin;
+    }
     
     
     

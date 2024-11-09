@@ -11,7 +11,7 @@ import Dominio.Mesa;
  * @author HOLA
  */
 public interface MesaAdminView {
-     public void agregarMesa(int cantJugadores, Double apuestaBase, Double porcentajeComision);
+    public void actualizar();
       public void mostrarMensaje(String msg);
-    public void cargarSiguientePantalla(Mesa m);
+   
 }

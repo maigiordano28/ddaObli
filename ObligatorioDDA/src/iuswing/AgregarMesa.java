@@ -169,4 +169,20 @@ public class AgregarMesa extends javax.swing.JDialog implements MesaAdminView {
     private javax.swing.JTextField txtPorcentajeComision;
     // End of variables declaration//GEN-END:variables
 
+    @Override
+    public void actualizar() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mostrarMensaje(String msg) {
+         JOptionPane.showMessageDialog(this, msg);
+    }
+
+   
+
+    
+  
+
+
 }
