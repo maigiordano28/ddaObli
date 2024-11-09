@@ -4,6 +4,7 @@
  */
 package ui.controller;
 
+import Dominio.EventoFachada;
 import Dominio.Exceptions.MesaException;
 import Dominio.Fachada;
 import Dominio.Mesa;
@@ -11,7 +12,9 @@ import Dominio.Usuario.Admin;
 import Observador.observable;
 import ui.view.MesaAdminView;
 import Observador.observador;
+import java.util.List;
 import javax.swing.JOptionPane;
+
 
 
 /**
@@ -22,15 +25,21 @@ public class MesaAdminController implements observador {
     
     MesaAdminView vista;
     Admin admin;
+    Fachada fachada=Fachada.getInstancia();
+    
 
     public MesaAdminController(MesaAdminView vista, Admin admin) {
      
         this.vista = vista;
         this.admin = admin;
-        Fachada.getInstancia();
+        fachada.agregar(this);
+        
     }
 
 
+    public List<Mesa> getMesas(){
+    return fachada.getMesas();
+    }
     public Admin getAdmin() {
         return admin;
     }
@@ -49,11 +58,14 @@ public class MesaAdminController implements observador {
     
     
     }
-    
+
     @Override
     public void actualizar(observable o, Object evento) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     
+ 
+
+ 
 }

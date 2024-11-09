@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author HOLA
  */
-public abstract class observable {
+public  class observable {
     private final List<observador> observadores = new ArrayList<>();
     
     

@@ -10,15 +10,15 @@ import Dominio.Usuario.SistemaUsuario;
 import Dominio.Usuario.Admin;
 import Dominio.Exceptions.MesaException;
 import Dominio.Exceptions.UsuarioException;
+import Observador.observable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 
 /**
  *
  * @author bsout
  */
-public class Fachada extends Observable {
+public class Fachada extends observable {
     
     private SistemaUsuario sUsuario = new SistemaUsuario();
     private SistemaFigura sFigura = new SistemaFigura();

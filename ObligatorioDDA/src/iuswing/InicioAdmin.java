@@ -4,10 +4,12 @@
  */
 package iuswing;
 
+import Dominio.EventoFachada;
 import Dominio.Exceptions.MesaException;
 import Dominio.Fachada;
 import Dominio.Mesa;
 import Dominio.Usuario.Admin;
+import Observador.observable;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +52,6 @@ public class InicioAdmin extends javax.swing.JDialog implements InciarMesaView{
         labelMontoTotalH = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ListMesas = new javax.swing.JList();
-        btnRefrescar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -64,13 +65,6 @@ public class InicioAdmin extends javax.swing.JDialog implements InciarMesaView{
         });
 
         jScrollPane1.setViewportView(ListMesas);
-
-        btnRefrescar.setText("Refrescar");
-        btnRefrescar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefrescarActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -89,9 +83,7 @@ public class InicioAdmin extends javax.swing.JDialog implements InciarMesaView{
                         .addContainerGap(24, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnCrarMesa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRefrescar)
-                        .addGap(78, 78, 78))))
+                        .addGap(78, 432, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,9 +95,7 @@ public class InicioAdmin extends javax.swing.JDialog implements InciarMesaView{
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCrarMesa)
-                    .addComponent(btnRefrescar))
+                .addComponent(btnCrarMesa)
                 .addGap(14, 14, 14))
         );
 
@@ -117,17 +107,8 @@ public class InicioAdmin extends javax.swing.JDialog implements InciarMesaView{
        
     }//GEN-LAST:event_btnCrarMesaActionPerformed
 
-    private void btnRefrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefrescarActionPerformed
-       mostrarMesasCreadas();
-    }//GEN-LAST:event_btnRefrescarActionPerformed
 
-    private void mostrarMesasCreadas() {
-        List<Mesa> mesasCreadas = Fachada.getInstancia().getMesas();
-        List<String> mesasFormateadas = formatearMesasCreadas(mesasCreadas);
-        String[] listaMesasCreadasArray = new String[mesasFormateadas.size()];
-        ListMesas.setListData(mesasFormateadas.toArray(listaMesasCreadasArray));
-    }
-
+    
     private List<String> formatearMesasCreadas(List<Mesa> mesasCreadas) {
         List<String> mesasFormateadas = new ArrayList<>();
         for (Mesa mesa: mesasCreadas) {
@@ -151,7 +132,6 @@ public void CargarMesas(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList ListMesas;
     private javax.swing.JButton btnCrarMesa;
-    private javax.swing.JButton btnRefrescar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelMontoTotal;
     private javax.swing.JLabel labelMontoTotalH;
@@ -172,7 +152,23 @@ public void CargarMesas(){
         AgregarMesa a= new AgregarMesa(null,false,controller.getAdmin());
         a.setVisible(true);
     }
+
+    @Override
+    public void mostrarMesasCreadas() {
+    
+        List<Mesa> mesasCreadas = Fachada.getInstancia().getMesas();
+        List<String> mesasFormateadas = formatearMesasCreadas(mesasCreadas);
+        String[] listaMesasCreadasArray = new String[mesasFormateadas.size()];
+        ListMesas.setListData(mesasFormateadas.toArray(listaMesasCreadasArray));
+    }
+   
+
+    }
+
+    
+
+
     
     
     
-}
+

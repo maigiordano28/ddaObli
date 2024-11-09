@@ -11,7 +11,7 @@ import Dominio.Mesa;
  * @author HOLA
  */
 public interface MesaAdminView {
-    public void actualizar();
+  
       public void mostrarMensaje(String msg);
-   
+  
 }

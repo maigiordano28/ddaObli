@@ -5,6 +5,7 @@
 package ui.view;
 
 import Dominio.Usuario.Usuario;
+import Observador.observable;
 
 /**
  *
@@ -12,6 +13,7 @@ import Dominio.Usuario.Usuario;
  */
 public interface InciarMesaView {
     public void iniciarMesa();
+   public void mostrarMesasCreadas();
     
     public void cargarSiguientePantalla();
 }
