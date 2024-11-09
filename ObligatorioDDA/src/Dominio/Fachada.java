@@ -49,7 +49,8 @@ public class Fachada extends observable {
     }
         
         public Mesa AgregarMesa(int cantJugadores, double apuestaBase, double porcentajeComision) throws MesaException{
-            
+            this.avisar(EventoMesa.NUEVA_MESA);
+           
           return sMesa.AgregarMesa(cantJugadores, apuestaBase, porcentajeComision);
           
         }

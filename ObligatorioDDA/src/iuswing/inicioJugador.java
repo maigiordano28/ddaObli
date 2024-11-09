@@ -152,11 +152,11 @@ public class inicioJugador extends javax.swing.JDialog {
     }
 
     private String formatearMesasCreadas(Mesa mesa) {
-        return mesa.getNumero()+ "|" ;
-                /*mesa.getCantidadJugadores() + "|" +
+        return mesa.getNumero()+ "|" +
+                mesa.getCantidadJugadores() + "|" +
                 mesa.getApuestaBase() + "|"+ mesa.getJugadores().size() + "|"+
                 mesa.getManos().size() + "|" + mesa.TotalApostado()+"|"+
-                mesa.getPorcentajeComision()+"|"+ mesa.getEstadoMesa();*/
+                mesa.getPorcentajeComision()+"|"+ mesa.getEstadoMesa();
     }
     private void salir() {
         int opcion = JOptionPane.showConfirmDialog(this, "Desea Salir?");
