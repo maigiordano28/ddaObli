@@ -12,25 +12,33 @@ import Dominio.Usuario.Usuario;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import ui.controller.InicioJugadorController;
+import ui.view.InicioJugadorView;
 /**
  *
  * @author HOLA
  */
-public class inicioJugador extends javax.swing.JDialog {
+public class inicioJugador extends javax.swing.JDialog implements InicioJugadorView {
 
     Fachada fachada= Fachada.getInstancia();
     private Jugador jugador;
     private Double saldo;
+
     private String nombre;
-    
+    private InicioJugadorController controller;
+
+    private java.awt.Frame padre;
     public inicioJugador(java.awt.Frame parent, boolean modal,Jugador jugador ) {
         
         super(parent, modal);
         initComponents();
         this.jugador=jugador;
         this.saldo = jugador.getSaldoInicial();
+        
         this.nombre=jugador.getNombreCompleto();
-       
+        controller=new InicioJugadorController(this,jugador);
+       cargarNombre();
+    cargarSaldo();
         
     }
 
@@ -50,25 +58,22 @@ public class inicioJugador extends javax.swing.JDialog {
         txtNombreCompleto = new javax.swing.JLabel();
         btnCerrarSesion = new javax.swing.JButton();
         txtSaldo = new javax.swing.JLabel();
-        btnRefrescar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         labelSaldo.setText("Saldo:");
 
+        listMesasAbiertas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listMesasAbiertasMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(listMesasAbiertas);
 
         btnCerrarSesion.setText("Cerrar sesion");
         btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCerrarSesionActionPerformed(evt);
-            }
-        });
-
-        btnRefrescar.setText("Refrescar");
-        btnRefrescar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefrescarActionPerformed(evt);
             }
         });
 
@@ -84,13 +89,11 @@ public class inicioJugador extends javax.swing.JDialog {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtNombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(409, 409, 409)
-                        .addComponent(btnRefrescar)
-                        .addGap(59, 59, 59)
+                        .addGap(547, 547, 547)
                         .addComponent(btnCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(12, Short.MAX_VALUE))
@@ -101,12 +104,11 @@ public class inicioJugador extends javax.swing.JDialog {
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombreCompleto)
-                    .addComponent(btnCerrarSesion)
-                    .addComponent(btnRefrescar))
-                .addGap(28, 28, 28)
+                    .addComponent(btnCerrarSesion))
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(labelSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(64, 64, 64)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(43, Short.MAX_VALUE))
@@ -129,19 +131,26 @@ public class inicioJugador extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
-    private void btnRefrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefrescarActionPerformed
-       mostrarMesasCreadas();
-       
-    }//GEN-LAST:event_btnRefrescarActionPerformed
+    private void listMesasAbiertasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMesasAbiertasMouseClicked
+        List<Mesa> mesas=Fachada.getInstancia().getMesas();
+        int index=listMesasAbiertas.getSelectedIndex();
+      
+      
+        Mesa mesaSeleccionada = mesas.get(index);
+      
+      if(saldo>mesaSeleccionada.getApuestaBase()*10){
+      
+        InicioMesa a= new InicioMesa(padre,false);
+        a.setVisible(true);
+      
+      }else{
+      
+      this.mostrarMensaje("Saldo Insuficiente");
+      
+      }
+    }//GEN-LAST:event_listMesasAbiertasMouseClicked
 
-        private void mostrarMesasCreadas() {
-        List<Mesa> mesasCreadas = Fachada.getInstancia().getMesas();
-        List<String> mesasFormateadas = formatearMesasCreadas(mesasCreadas);
-        String[] listaMesasCreadasArray = new String[mesasFormateadas.size()];
-        listMesasAbiertas.setListData(mesasFormateadas.toArray(listaMesasCreadasArray));
-        cargarSaldo();
-        cargarNombre();
-    }
+   
 
     private List<String> formatearMesasCreadas(List<Mesa> mesasCreadas) {
         List<String> mesasFormateadas = new ArrayList<>();
@@ -167,7 +176,6 @@ public class inicioJugador extends javax.swing.JDialog {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrarSesion;
-    private javax.swing.JButton btnRefrescar;
     private Inicio.DatosPrueba datosPrueba1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelSaldo;
@@ -184,5 +192,23 @@ public class inicioJugador extends javax.swing.JDialog {
     private void cargarNombre() {
         txtNombreCompleto.setText(nombre);
       
+    }
+
+    @Override
+    public void cargarSiguientePantalla() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mostrarMesasCreadas() {
+        List<Mesa> mesasCreadas = Fachada.getInstancia().getMesas();
+        List<String> mesasFormateadas = formatearMesasCreadas(mesasCreadas);
+        String[] listaMesasCreadasArray = new String[mesasFormateadas.size()];
+        listMesasAbiertas.setListData(mesasFormateadas.toArray(listaMesasCreadasArray));
+        }
+
+    @Override
+    public void mostrarMensaje(String msg) {
+        JOptionPane.showMessageDialog(this, msg);  
     }
 }

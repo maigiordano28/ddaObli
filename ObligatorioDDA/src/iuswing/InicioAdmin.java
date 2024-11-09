@@ -24,7 +24,7 @@ import ui.view.InciarMesaView;
  */
 public class InicioAdmin extends javax.swing.JDialog implements InciarMesaView{
     Fachada fachada= Fachada.getInstancia();
-  
+  private java.awt.Frame padre;
    private IniciarMesaController controller;
     /**
      * Creates new form InicioAdmin
@@ -64,6 +64,11 @@ public class InicioAdmin extends javax.swing.JDialog implements InciarMesaView{
             }
         });
 
+        ListMesas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ListMesasMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(ListMesas);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -74,16 +79,12 @@ public class InicioAdmin extends javax.swing.JDialog implements InciarMesaView{
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelMontoTotal)
-                                .addGap(32, 32, 32)
-                                .addComponent(labelMontoTotalH, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(24, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnCrarMesa)
-                        .addGap(78, 432, Short.MAX_VALUE))))
+                        .addComponent(labelMontoTotal)
+                        .addGap(32, 32, 32)
+                        .addComponent(labelMontoTotalH, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCrarMesa))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,6 +107,10 @@ public class InicioAdmin extends javax.swing.JDialog implements InciarMesaView{
      this.cargarSiguientePantalla();
        
     }//GEN-LAST:event_btnCrarMesaActionPerformed
+
+    private void ListMesasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListMesasMouseClicked
+       this.CargarMesas();
+    }//GEN-LAST:event_ListMesasMouseClicked
 
 
     
@@ -163,11 +168,17 @@ public void CargarMesas(){
         String[] listaMesasCreadasArray = new String[mesasFormateadas.size()];
         ListMesas.setListData(mesasFormateadas.toArray(listaMesasCreadasArray));
     }
+
+    @Override
+    public void cargarManos() {
+   ManosAdmin a= new ManosAdmin(padre, false);
+        a.setVisible(true);
+    }
    
 
     }
 
-    
+      
 
 
     
