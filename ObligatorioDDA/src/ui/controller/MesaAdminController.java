@@ -5,6 +5,7 @@
 package ui.controller;
 
 import Dominio.EventoFachada;
+import Dominio.EventoMesa;
 import Dominio.Exceptions.MesaException;
 import Dominio.Fachada;
 import Dominio.Mesa;
@@ -12,6 +13,7 @@ import Dominio.Usuario.Admin;
 import Observador.observable;
 import ui.view.MesaAdminView;
 import Observador.observador;
+import iuswing.InicioAdmin;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -21,25 +23,23 @@ import javax.swing.JOptionPane;
  *
  * @author HOLA
  */
-public class MesaAdminController implements observador {
+public class MesaAdminController  {
     
     MesaAdminView vista;
     Admin admin;
     Fachada fachada=Fachada.getInstancia();
     
+    
 
-    public MesaAdminController(MesaAdminView vista, Admin admin) {
-     
+    public MesaAdminController(MesaAdminView vista, Admin admin) {    
         this.vista = vista;
         this.admin = admin;
-        fachada.agregar(this);
+        //fachada.agregar(this);
         
     }
 
 
-    public List<Mesa> getMesas(){
-    return fachada.getMesas();
-    }
+    
     public Admin getAdmin() {
         return admin;
     }
@@ -55,20 +55,10 @@ public class MesaAdminController implements observador {
         } catch (MesaException ex) {
           vista.mostrarMensaje(ex.getMessage());
         }
-    
+     
     
     }
 
-    @Override
-    public void actualizar(observable o, Object evento) {
-        if(evento.equals(EventoFachada.NUEVA_MESA)){
-        vista.mostrarMesas(this.getMesas());
-           vista.mostrarMesasCreadas();
-        }
-    }
-    
-    
- 
 
  
 }

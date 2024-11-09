@@ -33,6 +33,9 @@ public class Mesa {
         this.apuestaBase = apuestaBase;
         this.porcentajeComision = porcentajeComision;
         this.numero = s_ultNumero++;
+        this.jugadores=new ArrayList();
+        this.manos = new ArrayList<Mano>();
+        this.EstadoMesa = EstadoMesa.abierta;
     }
 
     public int getNumero() {
@@ -54,6 +57,7 @@ public class Mesa {
     }
 
     public ArrayList<Jugador> getJugadores() {
+        
         return jugadores;
     }
 

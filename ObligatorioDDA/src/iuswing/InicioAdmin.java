@@ -4,7 +4,7 @@
  */
 package iuswing;
 
-import Dominio.EventoFachada;
+import Dominio.EventoMesa;
 import Dominio.Exceptions.MesaException;
 import Dominio.Fachada;
 import Dominio.Mesa;
@@ -118,13 +118,15 @@ public class InicioAdmin extends javax.swing.JDialog implements MesaAdminView{
         }
         return mesasFormateadas;
     }
+    
 
     private String formatearMesasCreadas(Mesa mesa) {
-        return mesa.getNumero()+ "|" ;
-                /*mesa.getCantidadJugadores() + "|" +
-                mesa.getApuestaBase() + "|"+ mesa.getJugadores().size() + "|"+
+        return mesa.getNumero()+ "|" +
+                mesa.getCantidadJugadores() + "|" +
+                mesa.getApuestaBase() + "|"+
+                mesa.getJugadores().size() + "|"+
                 mesa.getManos().size() + "|" + mesa.TotalApostado()+"|"+
-                mesa.getPorcentajeComision()+"|"+ mesa.getEstadoMesa();*/
+                mesa.getPorcentajeComision()+"|"+ mesa.getEstadoMesa();
     }
 public void CargarMesas(){
    List<Mesa> mesas=fachada.getMesas();
