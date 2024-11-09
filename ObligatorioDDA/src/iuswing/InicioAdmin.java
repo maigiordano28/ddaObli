@@ -18,14 +18,15 @@ import javax.swing.JOptionPane;
 import ui.controller.IniciarMesaController;
 import ui.controller.MesaAdminController;
 import ui.view.InciarMesaView;
+import ui.view.MesaAdminView;
 /**
  *
  * @author HOLA
  */
-public class InicioAdmin extends javax.swing.JDialog implements InciarMesaView{
+public class InicioAdmin extends javax.swing.JDialog implements MesaAdminView{
     Fachada fachada= Fachada.getInstancia();
   
-   private IniciarMesaController controller;
+   private MesaAdminController controller;
     /**
      * Creates new form InicioAdmin
      */
@@ -34,7 +35,7 @@ public class InicioAdmin extends javax.swing.JDialog implements InciarMesaView{
         initComponents();
         CargarTotalApostado();
         CargarMesas();
-        controller= new IniciarMesaController(this,u);
+        controller= new MesaAdminController(this,u);
         
      
     }
@@ -103,7 +104,8 @@ public class InicioAdmin extends javax.swing.JDialog implements InciarMesaView{
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrarMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrarMesaActionPerformed
-     this.cargarSiguientePantalla();
+     AgregarMesa a= new AgregarMesa(null,false,controller.getAdmin());
+        a.setVisible(true);
        
     }//GEN-LAST:event_btnCrarMesaActionPerformed
 
@@ -143,18 +145,9 @@ public void CargarMesas(){
          labelMontoTotalH.setText(Double.toString(fachada.TotalApostado()));
     }
 
-    @Override
-    public void iniciarMesa() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+   
 
-    @Override
-    public void cargarSiguientePantalla() {
-        
-        AgregarMesa a= new AgregarMesa(null,false,controller.getAdmin());
-        a.setVisible(true);
-    }
-
+    
     @Override
     public void mostrarMesasCreadas() {
     
@@ -163,7 +156,16 @@ public void CargarMesas(){
         String[] listaMesasCreadasArray = new String[mesasFormateadas.size()];
         ListMesas.setListData(mesasFormateadas.toArray(listaMesasCreadasArray));
     }
-   
+
+    @Override
+    public void mostrarMensaje(String msg) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mostrarMesas(List<Mesa> m) {
+        ListMesas.setListData(m.toArray());
+    }
 
     }
 

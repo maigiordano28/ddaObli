@@ -5,6 +5,7 @@
 package ui.view;
 
 import Dominio.Mesa;
+import java.util.List;
 
 /**
  *
@@ -13,5 +14,6 @@ import Dominio.Mesa;
 public interface MesaAdminView {
   
       public void mostrarMensaje(String msg);
-  
+     public void mostrarMesasCreadas();
+      public void mostrarMesas(List<Mesa> m);
 }

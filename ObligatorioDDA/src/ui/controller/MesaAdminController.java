@@ -58,7 +58,13 @@ public class MesaAdminController  {
     
     }
 
-    
+    @Override
+    public void actualizar(observable o, Object evento) {
+        if(evento.equals(EventoFachada.NUEVA_MESA)){
+        vista.mostrarMesas(this.getMesas());
+           vista.mostrarMesasCreadas();
+        }
+    }
     
     
  

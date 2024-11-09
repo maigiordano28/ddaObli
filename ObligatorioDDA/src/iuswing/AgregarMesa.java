@@ -8,6 +8,7 @@ package iuswing;
 import Dominio.Usuario.Admin;
 import javax.swing.JOptionPane;
 import iuswing.InicioAdmin;
+import java.util.List;
 import ui.controller.MesaAdminController;
 import ui.view.MesaAdminView;
 
@@ -175,6 +176,17 @@ public class AgregarMesa extends javax.swing.JDialog implements MesaAdminView {
          JOptionPane.showMessageDialog(this, msg);
     }
 
+    @Override
+    public void mostrarMesasCreadas() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mostrarMesas(List<Mesa> m) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+  
    
     
     
