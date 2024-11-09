@@ -7,25 +7,33 @@ package iuswing;
 import Dominio.Exceptions.MesaException;
 import Dominio.Fachada;
 import Dominio.Mesa;
+import Dominio.Usuario.Admin;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 import javax.swing.JOptionPane;
+import ui.controller.IniciarMesaController;
+import ui.controller.MesaAdminController;
+import ui.view.InciarMesaView;
 /**
  *
  * @author HOLA
  */
-public class InicioAdmin extends javax.swing.JDialog {
+public class InicioAdmin extends javax.swing.JDialog implements InciarMesaView{
     Fachada fachada= Fachada.getInstancia();
-    
+  
+   private IniciarMesaController controller;
     /**
      * Creates new form InicioAdmin
      */
-    public InicioAdmin(java.awt.Frame parent, boolean modal) {
+    public InicioAdmin(java.awt.Frame parent, boolean modal, Admin u) {
         super(parent, modal);
         initComponents();
         CargarTotalApostado();
         CargarMesas();
+        controller= new IniciarMesaController(this,u);
+        
      
     }
     /**
@@ -106,7 +114,7 @@ public class InicioAdmin extends javax.swing.JDialog {
 
     private void btnCrarMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrarMesaActionPerformed
      
-        AgregarMesa a= new AgregarMesa(null,false);
+        AgregarMesa a= new AgregarMesa(null,false,controller.getAdmin());
         a.setVisible(true);
        
     }//GEN-LAST:event_btnCrarMesaActionPerformed
@@ -154,4 +162,7 @@ public void CargarMesas(){
     private void CargarTotalApostado() {
          labelMontoTotalH.setText(Double.toString(fachada.TotalApostado()));
     }
+    
+    
+    
 }

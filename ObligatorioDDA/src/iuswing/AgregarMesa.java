@@ -7,17 +7,22 @@ package iuswing;
 import Dominio.Exceptions.MesaException;
 import Dominio.Mesa;
 import Dominio.Fachada;
+import Dominio.Usuario.Admin;
 import javax.swing.JOptionPane;
 import iuswing.InicioAdmin;
+import ui.controller.MesaAdminController;
+import ui.view.MesaAdminView;
 
-public class AgregarMesa extends javax.swing.JDialog {
+public class AgregarMesa extends javax.swing.JDialog implements MesaAdminView {
 
     private InicioAdmin parent;
    
-    public AgregarMesa(InicioAdmin parent, boolean modal) {
+    private MesaAdminController controller;
+    public AgregarMesa(InicioAdmin parent, boolean modal,Admin admin) {
         super(parent, modal);
         this.parent = parent;
         initComponents();
+        controller= new MesaAdminController(this, admin);
         
     }
 
@@ -148,19 +153,7 @@ public class AgregarMesa extends javax.swing.JDialog {
         double apuestaBase = Double.parseDouble(txtMontoApuesta.getText());
         double porcentajeComision = Double.parseDouble(txtPorcentajeComision.getText());
         
-        try{
-           Mesa m= Fachada.getInstancia().AgregarMesa(cantJugadores,apuestaBase,porcentajeComision);
-             JOptionPane.showMessageDialog(this, "Se creó la mesa: "+ m.getNumero() );
-          //observer
-             dispose();
-             
-        } catch (MesaException ex) {
-            JOptionPane.showMessageDialog(
-                    this,
-                    ex.getMessage(),
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE);
-        }
+        controller.agregarMesa(cantJugadores, apuestaBase, porcentajeComision);
     }//GEN-LAST:event_btnCrearMesaActionPerformed
 
     
@@ -175,4 +168,5 @@ public class AgregarMesa extends javax.swing.JDialog {
     private javax.swing.JTextField txtMontoApuesta;
     private javax.swing.JTextField txtPorcentajeComision;
     // End of variables declaration//GEN-END:variables
+
 }

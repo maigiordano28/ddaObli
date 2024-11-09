@@ -12,12 +12,13 @@ import Dominio.Exceptions.MesaException;
 import Dominio.Exceptions.UsuarioException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
 /**
  *
  * @author bsout
  */
-public class Fachada {
+public class Fachada extends Observable {
     
     private SistemaUsuario sUsuario = new SistemaUsuario();
     private SistemaFigura sFigura = new SistemaFigura();
@@ -57,6 +58,10 @@ public class Fachada {
           return sMesa.mesas;
           
         }
+            public ArrayList<Jugador> getJugadores(){
+            
+          return sUsuario.getJugadores();
+            }
         
         public double TotalApostado(){
         return sMesa.TotalApostado();
