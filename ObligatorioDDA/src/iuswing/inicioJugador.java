@@ -20,13 +20,15 @@ public class inicioJugador extends javax.swing.JDialog {
 
     Fachada fachada= Fachada.getInstancia();
     private Jugador jugador;
-    private Double saldo;
+    private double saldo;
     private String nombre;
     
     public inicioJugador(java.awt.Frame parent, boolean modal,Jugador jugador ) {
         
         super(parent, modal);
         initComponents();
+        cargarSaldo();
+        cargarNombre();
         this.jugador=jugador;
         this.saldo = jugador.getSaldoInicial();
         this.nombre=jugador.getNombreCompleto();
@@ -43,7 +45,6 @@ public class inicioJugador extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        datosPrueba1 = new Inicio.DatosPrueba();
         labelSaldo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listMesasAbiertas = new javax.swing.JList<>();
@@ -79,20 +80,18 @@ public class inicioJugador extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtNombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtNombreCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(409, 409, 409)
                         .addComponent(btnRefrescar)
                         .addGap(59, 59, 59)
-                        .addComponent(btnCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(btnCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -103,13 +102,13 @@ public class inicioJugador extends javax.swing.JDialog {
                     .addComponent(txtNombreCompleto)
                     .addComponent(btnCerrarSesion)
                     .addComponent(btnRefrescar))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(labelSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelSaldo)
+                    .addComponent(txtSaldo))
+                .addGap(48, 48, 48)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
         pack();
@@ -131,7 +130,6 @@ public class inicioJugador extends javax.swing.JDialog {
 
     private void btnRefrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefrescarActionPerformed
        mostrarMesasCreadas();
-       
     }//GEN-LAST:event_btnRefrescarActionPerformed
 
         private void mostrarMesasCreadas() {
@@ -139,8 +137,6 @@ public class inicioJugador extends javax.swing.JDialog {
         List<String> mesasFormateadas = formatearMesasCreadas(mesasCreadas);
         String[] listaMesasCreadasArray = new String[mesasFormateadas.size()];
         listMesasAbiertas.setListData(mesasFormateadas.toArray(listaMesasCreadasArray));
-        cargarSaldo();
-        cargarNombre();
     }
 
     private List<String> formatearMesasCreadas(List<Mesa> mesasCreadas) {
@@ -168,7 +164,6 @@ public class inicioJugador extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JButton btnRefrescar;
-    private Inicio.DatosPrueba datosPrueba1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelSaldo;
     private javax.swing.JList<String> listMesasAbiertas;

@@ -39,7 +39,7 @@ public class Fachada extends observable {
         return sUsuario.LoginAdmin(nombreCompleto,password);
     }
 
-    public void agregarJugador(String cedula, String password, String nombre, Double saldo) {
+    public void agregarJugador(String cedula, String password, String nombre, int saldo) {
         sUsuario.agregarJugador(nombre,cedula,password,saldo);
        
     }
