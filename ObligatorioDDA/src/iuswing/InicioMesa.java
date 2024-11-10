@@ -88,7 +88,9 @@ public class InicioMesa extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEntrarAMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarAMesaActionPerformed
-         EsperandoMesa j= new EsperandoMesa(padre,false,mesa,jugador);
+       controller.cargarMesa(mesa); 
+        
+        EsperandoMesa j= new EsperandoMesa(padre,false,mesa,jugador);
          j.setVisible(true);
          if(!mesa.getJugadores().contains(jugador)){
             mesa.getJugadores().add(jugador);

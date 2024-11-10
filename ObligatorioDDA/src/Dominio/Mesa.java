@@ -123,6 +123,19 @@ public class Mesa {
         return total;
     }
 
+ public void agregarJugador(Jugador jugador) throws MesaException{
+
+    if(!jugadores.contains(jugador)){
+    
+     
+    jugadores.add(jugador);
+    Fachada.getInstancia().avisar(EventoFachada.NUEVO_JUGADOR_MESA);
+    
+    }else{
+    
+    throw new MesaException("El jugador ya se encuentra en la mesa");
+    }
+    }
 
     
     

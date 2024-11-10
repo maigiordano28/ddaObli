@@ -4,16 +4,10 @@
  */
 package ui.view;
 
-import Dominio.Mesa;
-import Dominio.Usuario.Jugador;
-
 /**
  *
  * @author HOLA
  */
-public interface EsperaMesaView {
-    public void CambiarInterfaz();
-    public void actualizarCantidadJugadores(Mesa m,Jugador j);
-    public void mostrarMensaje(String msg);
-
+public interface ElegirMesaView {
+    
 }

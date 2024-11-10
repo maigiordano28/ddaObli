@@ -63,7 +63,12 @@ public class Fachada extends observable {
              return ret;
         }
              
-             
+            public void actualizarCantidadJugadores(Mesa m, Jugador j){
+                     this.avisar(EventoFachada.NUEVO_JUGADOR_MESA);
+            sMesa.actualizarCantidadJugadores(m,j);
+   
+            
+            }
              
           public ArrayList<Mesa> getMesas(){
             

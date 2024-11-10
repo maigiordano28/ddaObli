@@ -5,6 +5,7 @@
 package Dominio;
 
 import Dominio.Exceptions.MesaException;
+import Dominio.Usuario.Jugador;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,4 +46,9 @@ public class SistemaMesa {
    public Mesa ActualizarMesa(Mesa m) {
         m.setEstadoMesa(EstadoMesa.iniciada);
         return m;
-}}
+}
+
+    void actualizarCantidadJugadores(Mesa m, Jugador j) {
+       m.getJugadores().add(j);
+    }
+}

@@ -5,6 +5,7 @@
 package iuswing;
 
 import Dominio.Usuario.Jugador;
+import java.util.List;
 
 /**
  *
@@ -12,19 +13,21 @@ import Dominio.Usuario.Jugador;
  */
 public class Pocker extends javax.swing.JDialog {
 
-     private Jugador j;
+     
+private List<Jugador> jugadores;
 
-
-    public Pocker(java.awt.Frame parent, boolean modal,Jugador jugador) {
+    public Pocker(java.awt.Frame parent, boolean modal,List<Jugador> jugadores) {
         super(parent, modal);
         initComponents();
-         this.j=jugador;
+         this.jugadores=jugadores;
          CargarNombre();
     }
 
     public void CargarNombre(){
     
-        lblJugador.setText(j.getNombreCompleto());
+        for (Jugador j : jugadores) {
+           lblJugador.setText("Jugador: " + j.getNombreCompleto()); // Ajusta para mostrar en la interfaz
+        }
     
     }
     

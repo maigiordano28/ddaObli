@@ -9,6 +9,7 @@ import Dominio.EventoMesa;
 import Dominio.Exceptions.MesaException;
 import Dominio.Fachada;
 import Dominio.Mesa;
+import Dominio.Usuario.Jugador;
 import Observador.observable;
 import Observador.observador;
 import ui.view.EsperaMesaView;
@@ -37,7 +38,7 @@ public class EsperandoMesaController implements observador{
     public void actualizar(observable o, Object evento) {
         
          if (evento.equals(EventoFachada.NUEVO_JUGADOR_MESA)) {
-            vista.CambiarInterfaz();
+           //vista.actualizarCantidadJugadores(mesa, );
         }
         
     }
@@ -47,5 +48,9 @@ public class EsperandoMesaController implements observador{
         fachada.ActualizarMesa(mesa); 
     }    
     
-    
+
+
+    public void actualizarCantidadJugadores(Mesa m, Jugador j) {
+        fachada.actualizarCantidadJugadores(m,j);
+    }
 }
