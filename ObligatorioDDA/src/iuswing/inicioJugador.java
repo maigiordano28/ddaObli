@@ -134,8 +134,6 @@ public class inicioJugador extends javax.swing.JDialog implements InicioJugadorV
     private void listMesasAbiertasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMesasAbiertasMouseClicked
         List<Mesa> mesas=Fachada.getInstancia().getMesas();
         int index=listMesasAbiertas.getSelectedIndex();
-      
-      
         Mesa mesaSeleccionada = mesas.get(index);
       
       if(saldo>mesaSeleccionada.getApuestaBase()*10){

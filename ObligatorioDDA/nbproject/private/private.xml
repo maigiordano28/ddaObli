@@ -4,15 +4,31 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/iuswing/AgregarMesa.java</file>
-            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Dominio/Usuario/Jugador.java</file>
-            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Dominio/Fachada.java</file>
-            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/iuswing/inicioJugador.java</file>
-            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/ui/controller/LoginController.java</file>
-            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/iuswing/Login.java</file>
-            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/iuswing/InicioAdmin.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Inicio/DatosPrueba.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/ui/controller/MesaAdminController.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Inicio/Test.java</file>
             <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/iuswing/LoginAdmin.java</file>
-            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/ui/view/LoginView.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Dominio/Usuario/SistemaUsuario.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/ui/controller/IniciarMesaController.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/ui/view/MesaAdminView.java</file>
             <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/iuswing/LoginJugador.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/ui/view/InicioJugadorView.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Dominio/Fachada.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/iuswing/ManosAdmin.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/ui/view/InciarMesaView.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Dominio/EventoMesa.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/iuswing/Principal.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/iuswing/InicioAdmin.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Observador/observable.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/iuswing/InicioMesa.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/ui/controller/InicioJugadorController.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/iuswing/Login.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Observador/observador.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/iuswing/Jugar.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Dominio/Mesa.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/iuswing/inicioJugador.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/ui/view/LoginView.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/iuswing/Pocker.java</file>
         </group>
     </open-files>
 </project-private>
