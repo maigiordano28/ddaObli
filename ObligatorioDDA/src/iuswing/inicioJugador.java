@@ -39,6 +39,7 @@ public class inicioJugador extends javax.swing.JDialog implements InicioJugadorV
         controller=new InicioJugadorController(this,jugador);
        cargarNombre();
     cargarSaldo();
+    mostrarMesasCreadas();
         
     }
 
@@ -132,6 +133,7 @@ public class inicioJugador extends javax.swing.JDialog implements InicioJugadorV
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
     private void listMesasAbiertasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMesasAbiertasMouseClicked
+        
         List<Mesa> mesas=Fachada.getInstancia().getMesas();
         int index=listMesasAbiertas.getSelectedIndex();
         Mesa mesaSeleccionada = mesas.get(index);
@@ -141,11 +143,11 @@ public class inicioJugador extends javax.swing.JDialog implements InicioJugadorV
       
       this.mostrarMensaje("Mesa Completa");
       
-      }
+      }else{
       
         InicioMesa a= new InicioMesa(padre,false,mesaSeleccionada,jugador);
         a.setVisible(true);
-      
+             }     
       }else{
       
       this.mostrarMensaje("Saldo Insuficiente");
