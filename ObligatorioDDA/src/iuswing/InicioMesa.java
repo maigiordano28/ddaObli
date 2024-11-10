@@ -86,7 +86,7 @@ public class InicioMesa extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEntrarAMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarAMesaActionPerformed
-         Jugar j= new Jugar(padre,false);
+         EsperandoMesa j= new EsperandoMesa(padre,false);
          j.setVisible(true);
     }//GEN-LAST:event_btnEntrarAMesaActionPerformed
 

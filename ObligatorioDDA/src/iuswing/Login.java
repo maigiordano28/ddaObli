@@ -10,7 +10,7 @@ import ui.view.LoginView;
  */
 import javax.swing.JOptionPane;
 import iuswing.InicioAdmin;
-
+//hola
 
 public abstract class Login extends javax.swing.JDialog implements LoginView {
  private java.awt.Frame padre;

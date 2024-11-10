@@ -8,12 +8,12 @@ package iuswing;
  *
  * @author HOLA
  */
-public class Jugar extends javax.swing.JDialog {
+public class EsperandoMesa extends javax.swing.JDialog {
 
     /**
      * Creates new form Jugar
      */
-    public Jugar(java.awt.Frame parent, boolean modal) {
+    public EsperandoMesa(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
