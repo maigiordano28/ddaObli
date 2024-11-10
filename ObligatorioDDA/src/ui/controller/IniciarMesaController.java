@@ -25,7 +25,7 @@ public class IniciarMesaController implements observador{
         fachada=Fachada.getInstancia();
         this.vista = vista;
         this.admin = admin;
-        Fachada.getInstancia().agregar(this);
+        fachada.agregar(this);
     }
    
     

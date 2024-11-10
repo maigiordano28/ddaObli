@@ -9,5 +9,6 @@ package Dominio;
  * @author bsout
  */
 public enum EventoFachada {
-    NUEVA_MESA
+    NUEVA_MESA,
+    NUEVO_JUGADOR_MESA
 }

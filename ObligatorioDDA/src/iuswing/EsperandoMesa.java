@@ -4,18 +4,44 @@
  */
 package iuswing;
 
+import Dominio.Mesa;
+import ui.controller.EsperandoMesaController;
+import ui.controller.MesaAdminController;
+import ui.view.EsperaMesaView;
+
 /**
  *
  * @author HOLA
  */
-public class EsperandoMesa extends javax.swing.JDialog {
-
+public class EsperandoMesa extends javax.swing.JDialog implements EsperaMesaView {
+    private Mesa mesa;
+    private java.awt.Frame padre;
+    private EsperandoMesaController controller;
     /**
      * Creates new form Jugar
      */
-    public EsperandoMesa(java.awt.Frame parent, boolean modal) {
+    public EsperandoMesa(java.awt.Frame parent, boolean modal,Mesa mesaSeleccionada) {
         super(parent, modal);
         initComponents();
+        this.mesa=mesaSeleccionada;
+         controller= new EsperandoMesaController(this, mesa);
+        CambiarInterfaz();
+    }
+    
+    
+    public void CambiarInterfaz(){
+     if(mesa.getJugadores().size()+1==mesa.getCantidadJugadores()){
+        Pocker a= new Pocker(padre,false);
+        a.setVisible(true);
+        this.dispose();
+        
+     }else{
+         lblJugadores.setText("Jugadores: "+mesa.getJugadores().size()+1+"/"+mesa.getCantidadJugadores());
+     
+     
+     }
+    
+    
     }
 
     /**
@@ -27,17 +53,34 @@ public class EsperandoMesa extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblEsperando = new javax.swing.JLabel();
+        lblJugadores = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        lblEsperando.setText("Esperando...");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(158, 158, 158)
+                .addComponent(lblEsperando, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(142, Short.MAX_VALUE)
+                .addComponent(lblJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(125, 125, 125)
+                .addComponent(lblEsperando)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(137, Short.MAX_VALUE))
         );
 
         pack();
@@ -46,5 +89,7 @@ public class EsperandoMesa extends javax.swing.JDialog {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel lblEsperando;
+    private javax.swing.JLabel lblJugadores;
     // End of variables declaration//GEN-END:variables
 }

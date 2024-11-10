@@ -34,6 +34,7 @@ public class LoginAdmin extends Login {
        
         InicioAdmin a= new InicioAdmin(padre,false,(Admin) u);
         a.setVisible(true);
+        this.dispose();
     }
 
     @Override

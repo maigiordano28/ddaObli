@@ -32,6 +32,7 @@ public class LoginJugador extends Login {
     public void cargarSiguientePantalla(Usuario u) { 
         inicioJugador a= new inicioJugador(padre,false,(Jugador)u);
         a.setVisible(true);
+        this.dispose();
     }
 
     @Override

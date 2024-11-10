@@ -153,6 +153,7 @@ public class AgregarMesa extends javax.swing.JDialog implements MesaAdminView {
         double porcentajeComision = Double.parseDouble(txtPorcentajeComision.getText());
         
         controller.agregarMesa(cantJugadores, apuestaBase, porcentajeComision);
+        this.dispose();
            
     }//GEN-LAST:event_btnCrearMesaActionPerformed
 

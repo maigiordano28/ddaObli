@@ -72,11 +72,13 @@ public class SistemaUsuario {
                 if(j.equals(jugadorAValidar)){
                    sesiones.add(new Sesion(j, new Date()));
                    return j;
+                }}
+                 throw new UsuarioException("Acceso denegado. Credenciales Incorectas");
                 }
-            }
+            
            
-            return null;
-    }
+            
+    
     
      public Admin LoginAdmin(String nombreCompleto,String password) throws UsuarioException{
        
@@ -89,15 +91,22 @@ public class SistemaUsuario {
             if(getSesion(adminAValidar)!= null){
                 throw new UsuarioException("Acceso denegado. El usuario ya esta logueado");
             }
-            
-           if(administradores.contains(adminAValidar)){
-                sesiones.add(new Sesion(adminAValidar, new Date()));
-                   return adminAValidar;
-            }else{
+            for(Admin a:administradores){
+            if(a.equals(adminAValidar)){
+             sesiones.add(new Sesion(a,new Date()));
+                return a;
+
+}
+
+}
+         
             throw new UsuarioException("Credenciales incorrectas"); 
   
     }
-     }
+     
+     
+   
+      
     
     
     public void Logout(Usuario usuario) throws UsuarioException{

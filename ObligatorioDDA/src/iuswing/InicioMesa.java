@@ -4,6 +4,8 @@
  */
 package iuswing;
 
+import Dominio.Mesa;
+import Dominio.Usuario.Jugador;
 import java.awt.Frame;
 
 /**
@@ -11,14 +13,14 @@ import java.awt.Frame;
  * @author HOLA
  */
 public class InicioMesa extends javax.swing.JDialog {
-
-    /**
-     * Creates new form InicioMesa
-     */
+    private Mesa mesa;
+    private Jugador jugador;
     Frame padre;
-    public InicioMesa(java.awt.Frame parent, boolean modal) {
+    public InicioMesa(java.awt.Frame parent, boolean modal, Mesa mesaSeleccionada,Jugador jugador) {
         super(parent, modal);
         initComponents();
+        this.mesa=mesaSeleccionada;
+        this.jugador=jugador;
     }
 
     /**
@@ -86,8 +88,10 @@ public class InicioMesa extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEntrarAMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarAMesaActionPerformed
-         EsperandoMesa j= new EsperandoMesa(padre,false);
+         EsperandoMesa j= new EsperandoMesa(padre,false,mesa);
          j.setVisible(true);
+         mesa.getJugadores().add(jugador);
+         this.dispose();
     }//GEN-LAST:event_btnEntrarAMesaActionPerformed
 
     private void btnSalirMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirMesaActionPerformed

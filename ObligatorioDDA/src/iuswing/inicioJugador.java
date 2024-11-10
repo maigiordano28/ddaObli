@@ -137,8 +137,13 @@ public class inicioJugador extends javax.swing.JDialog implements InicioJugadorV
         Mesa mesaSeleccionada = mesas.get(index);
       
       if(saldo>mesaSeleccionada.getApuestaBase()*10){
+             if(mesaSeleccionada.getCantidadJugadores()==mesaSeleccionada.getJugadores().size()){
       
-        InicioMesa a= new InicioMesa(padre,false);
+      this.mostrarMensaje("Mesa Completa");
+      
+      }
+      
+        InicioMesa a= new InicioMesa(padre,false,mesaSeleccionada,jugador);
         a.setVisible(true);
       
       }else{
@@ -146,6 +151,8 @@ public class inicioJugador extends javax.swing.JDialog implements InicioJugadorV
       this.mostrarMensaje("Saldo Insuficiente");
       
       }
+      
+   
     }//GEN-LAST:event_listMesasAbiertasMouseClicked
 
    
