@@ -41,4 +41,8 @@ public class SistemaMesa {
          mesas.add(mesa);
          return mesa;
     }
-}
+
+   public Mesa ActualizarMesa(Mesa m) {
+        m.setEstadoMesa(EstadoMesa.iniciada);
+        return m;
+}}
