@@ -38,6 +38,7 @@ public class EsperandoMesa extends javax.swing.JDialog implements EsperaMesaView
      if(mesa.getJugadores().size()+1==mesa.getCantidadJugadores()){
         Pocker a= new Pocker(padre,false,jugador);
         a.setVisible(true);
+        controller.actualizarMesa(mesa);
         this.dispose();
         
      }else{
@@ -62,16 +63,16 @@ public class EsperandoMesa extends javax.swing.JDialog implements EsperaMesaView
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(lblJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addGap(14, 14, 14)
+                .addComponent(lblJugadores, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(131, 131, 131)
                 .addComponent(lblJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addContainerGap(250, Short.MAX_VALUE))
         );
 
         pack();
@@ -82,4 +83,9 @@ public class EsperandoMesa extends javax.swing.JDialog implements EsperaMesaView
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblJugadores;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void mostrarMensaje(String msg) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

@@ -10,4 +10,6 @@ package ui.view;
  */
 public interface EsperaMesaView {
     public void CambiarInterfaz();
+    public void mostrarMensaje(String msg);
+
 }

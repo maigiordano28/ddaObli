@@ -6,6 +6,7 @@ package ui.controller;
 
 import Dominio.EventoFachada;
 import Dominio.EventoMesa;
+import Dominio.Exceptions.MesaException;
 import Dominio.Fachada;
 import Dominio.Mesa;
 import Observador.observable;
@@ -41,6 +42,10 @@ public class EsperandoMesaController implements observador{
         
     }
     
+    public void actualizarMesa(Mesa mesa){
+        
+        fachada.ActualizarMesa(mesa); 
+    }    
     
     
 }
