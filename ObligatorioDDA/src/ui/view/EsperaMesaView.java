@@ -13,7 +13,6 @@ import Dominio.Usuario.Jugador;
  */
 public interface EsperaMesaView {
     public void CambiarInterfaz();
-    public void actualizarCantidadJugadores(Mesa m,Jugador j);
     public void mostrarMensaje(String msg);
 
 }

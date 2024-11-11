@@ -59,7 +59,6 @@ public class Fachada extends observable {
         
         public Mesa ActualizarMesa(Mesa m){
             Mesa ret= sMesa.ActualizarMesa(m);
-            this.avisar(EventoFachada.NUEVO_JUGADOR_MESA);
              return ret;
         }
              

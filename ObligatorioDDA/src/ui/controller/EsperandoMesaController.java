@@ -38,7 +38,7 @@ public class EsperandoMesaController implements observador{
     public void actualizar(observable o, Object evento) {
         
          if (evento.equals(EventoFachada.NUEVO_JUGADOR_MESA)) {
-           //vista.actualizarCantidadJugadores(mesa, );
+           vista.CambiarInterfaz();
         }
         
     }

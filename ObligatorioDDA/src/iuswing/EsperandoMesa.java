@@ -36,7 +36,7 @@ public class EsperandoMesa extends javax.swing.JDialog implements EsperaMesaView
     
     
     public void CambiarInterfaz(){
-        actualizarCantidadJugadores(mesa, jugador);
+
      if(mesa.getJugadores().size()==mesa.getCantidadJugadores()){
         Pocker a= new Pocker(padre,false,mesa.getJugadores());
         a.setVisible(true);
@@ -45,7 +45,6 @@ public class EsperandoMesa extends javax.swing.JDialog implements EsperaMesaView
         
      }else{
          lblJugadores.setText("Esperando inicio del juego, hay "+mesa.getJugadores().size()+"jugadores de "+mesa.getCantidadJugadores()+" en la mesa");
-     
      }
     
     
@@ -91,9 +90,5 @@ public class EsperandoMesa extends javax.swing.JDialog implements EsperaMesaView
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public void actualizarCantidadJugadores(Mesa m,Jugador j) {
-      controller.actualizarCantidadJugadores(m,j);
-        
-       
-    }
+   
 }
