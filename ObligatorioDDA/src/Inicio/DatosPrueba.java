@@ -2,7 +2,7 @@
 package Inicio;
 import Dominio.Carta;
 import Dominio.Fachada;
-import iuswing.DialogoEjemplo;
+import iuswing.Poker;
 import java.util.ArrayList;
 import panelCartasPoker.CartaPoker;
 
@@ -47,7 +47,7 @@ fachada.agregarAdmin("58491040" ,"mypassword8","Santiago Durán" );
         cartas.add(new Carta(1,CartaPoker.PIQUE));
         cartas.add(new Carta(11,CartaPoker.PIQUE));
         
-        DialogoEjemplo dialogo = new DialogoEjemplo(null, false);
+        Poker dialogo = new Poker(null, false);
         dialogo.setVisible(true);  
        
         dialogo.cargarCartas(cartas);

@@ -4,7 +4,9 @@
  */
 package iuswing;
 
+import Dominio.Usuario.Jugador;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -16,17 +18,33 @@ import panelCartasPoker.PanelCartasPokerException;
  *
  * @author PC
  */
-public class DialogoEjemplo extends javax.swing.JDialog implements PanelCartasListener {
-
-    /**
-     * Creates new form DialogoEjemplo
-     */
-    public DialogoEjemplo(java.awt.Frame parent, boolean modal) {
+public class Poker extends javax.swing.JDialog implements PanelCartasListener {
+private List<Jugador> jugadores;
+   
+    public Poker(java.awt.Frame parent, boolean modal,List<Jugador> jugadores) {
         super(parent, modal);
-        
+        initComponents();
+         this.jugadores=jugadores;
+         CargarNombre();
         //OJO: Layaout = null, Generate resize code
         initComponents();
     }
+    
+
+    
+
+    public void CargarNombre(){
+    
+        for (Jugador j : jugadores) {
+           txtNombreJugador.setText("Jugador: " + j.getNombreCompleto()); // Ajusta para mostrar en la interfaz
+        }
+    
+    }
+    
+    
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
