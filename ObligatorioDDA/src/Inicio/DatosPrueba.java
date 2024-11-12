@@ -1,6 +1,10 @@
 
 package Inicio;
+import Dominio.Carta;
 import Dominio.Fachada;
+import iuswing.DialogoEjemplo;
+import java.util.ArrayList;
+import panelCartasPoker.CartaPoker;
 
 public class DatosPrueba {
 
@@ -35,7 +39,24 @@ fachada.agregarAdmin("39481020" ,"letmein456","Paola Castillo" );
 fachada.agregarAdmin("58491040" ,"mypassword8","Santiago Durán" );
 
 
-
+ // TODO code application logic here
+        ArrayList<CartaPoker> cartas = new ArrayList();
+        cartas.add(new Carta(1,CartaPoker.CORAZON));
+        cartas.add(new Carta(1,CartaPoker.DIAMANTE));
+        cartas.add(new Carta(1,CartaPoker.TREBOL));
+        cartas.add(new Carta(1,CartaPoker.PIQUE));
+        cartas.add(new Carta(11,CartaPoker.PIQUE));
+        
+        DialogoEjemplo dialogo = new DialogoEjemplo(null, false);
+        dialogo.setVisible(true);  
+       
+        dialogo.cargarCartas(cartas);
+        
+     
+        cartas.set(0, new Carta(10,CartaPoker.PIQUE));
+        dialogo.cargarCartas(cartas);
+        cartas.set(0, new Carta(9,CartaPoker.PIQUE));
+        dialogo.cargarCartas(cartas);
 
     }
 }
