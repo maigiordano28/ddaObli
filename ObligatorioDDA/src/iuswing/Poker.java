@@ -35,7 +35,7 @@ private PokerController controller;
          this.j=jugador;
          this.m=mesa;
          CargarInfo();
-          
+          mostrarJugadoresEnMesa();
         initComponents();
         controller= new PokerController(this);
     }

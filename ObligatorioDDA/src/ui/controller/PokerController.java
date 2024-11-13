@@ -42,6 +42,7 @@ public class PokerController implements observador{
             vista.mostrarJugadoresEnMesa();
         }
         
+        
      
     }
       

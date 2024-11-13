@@ -26,6 +26,7 @@
             <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Observador/observable.java</file>
             <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Dominio/Usuario/Usuario.java</file>
             <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Dominio/Mano.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Dominio/Carta.java</file>
             <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/iuswing/InicioMesa.java</file>
             <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/ui/controller/InicioJugadorController.java</file>
             <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/ui/controller/EsperandoMesaController.java</file>
@@ -35,8 +36,11 @@
             <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Observador/observador.java</file>
             <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/Dominio/Mesa.java</file>
             <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/iuswing/inicioJugador.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/ui/controller/PokerController.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/iuswing/NewJFrame.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/ui/view/PokerView.java</file>
             <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/ui/view/LoginView.java</file>
-            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/iuswing/Pocker.java</file>
+            <file>file:/C:/Users/HOLA/Documents/GitHub/ddaObli/ObligatorioDDA/src/iuswing/Poker.java</file>
         </group>
     </open-files>
 </project-private>
