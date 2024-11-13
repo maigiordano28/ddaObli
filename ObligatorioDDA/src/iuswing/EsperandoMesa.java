@@ -93,7 +93,12 @@ public class EsperandoMesa extends javax.swing.JDialog implements EsperaMesaView
 
     @Override
     public void cargarSiguientePantalla(List<Jugador> js, Jugador j, Mesa mesa) {
-        controller.cargarSiguientePantalla(js, j, mesa);
+     
+          Poker a= new Poker(padre,false,mesa.getJugadores(),j,mesa);
+        a.setVisible(true);
+        
+         
+    
     }
 
 

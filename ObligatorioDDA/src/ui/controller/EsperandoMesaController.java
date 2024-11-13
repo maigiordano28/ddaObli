@@ -59,9 +59,7 @@ public class EsperandoMesaController implements observador{
     
     public void cargarSiguientePantalla(List<Jugador> js,Jugador j, Mesa mesa){
        
-        Poker a= new Poker(padre,false,mesa.getJugadores(),j,mesa);
-        a.setVisible(true);
-        
-     fachada.ActualizarMesa(mesa);
+      vista.cargarSiguientePantalla(js, j, mesa);
+       fachada.ActualizarMesa(mesa);
     }
 }

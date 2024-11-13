@@ -30,8 +30,7 @@ public class Fachada extends observable {
         return instancia;
     }
     
-    
-    
+   
     public Jugador LoginJugador(String nombreCompleto,String password) throws UsuarioException{
         return sUsuario.LoginJugador(nombreCompleto,password);
     }

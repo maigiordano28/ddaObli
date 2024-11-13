@@ -12,4 +12,5 @@ public interface PokerView {
        public void mostrarJugadoresEnMesa();
       public void mostrarMensaje(String msg);
     public void cargarSiguientePantalla();
+    public void cargarInfo();
 }

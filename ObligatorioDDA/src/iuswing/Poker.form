@@ -111,14 +111,14 @@
     <Component class="javax.swing.JLabel" name="txtNombreJugador">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="880" y="10" width="150" height="20"/>
+          <AbsoluteConstraints x="750" y="10" width="150" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="txtSaldo">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="980" y="60" width="-1" height="-1"/>
+          <AbsoluteConstraints x="920" y="10" width="120" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -156,7 +156,7 @@
     <Component class="javax.swing.JLabel" name="txtPozo">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="260" y="250" width="-1" height="-1"/>
+          <AbsoluteConstraints x="60" y="230" width="90" height="30"/>
         </Constraint>
       </Constraints>
     </Component>

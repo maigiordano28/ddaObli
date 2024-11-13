@@ -23,6 +23,7 @@ public class Mesa {
     private EstadoMesa EstadoMesa;
     private double porcentajeComision ;
     private List<Mano> manos;
+    private Double pozo;
 
     public List<Mano> getManos() {
         return manos;
@@ -37,6 +38,7 @@ public class Mesa {
         this.jugadores=new ArrayList();
         this.manos = new ArrayList<Mano>();
         this.EstadoMesa = EstadoMesa.abierta;
+        this.pozo=pozo;
     }
 
     public int getNumero() {
@@ -122,6 +124,18 @@ public class Mesa {
     public void CalcularGanador(){
         
     }
+    
+    public void PagarLuz(Jugador j){
+        Fachada.getInstancia().avisar(EventoFachada.NUEVA_INFO);
+       
+        
+        j.ActualizarSaldo(false, apuestaBase);
+        
+        
+    
+    }
+    
+    
     public double TotalApostado(){
         int total=0;
         for(Mano m:manos){

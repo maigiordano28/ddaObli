@@ -7,6 +7,7 @@ package ui.controller;
 import Dominio.EventoFachada;
 import Dominio.EventoMesa;
 import Dominio.Fachada;
+import Dominio.Mesa;
 import Dominio.Usuario.Jugador;
 import Observador.observable;
 import Observador.observador;
@@ -29,9 +30,6 @@ public class PokerController implements observador{
         
         Fachada.getInstancia().agregar(this);
     }
- 
-
-   
 
  
     
@@ -42,11 +40,12 @@ public class PokerController implements observador{
             vista.mostrarJugadoresEnMesa();
         }
         
-        
+          if (evento.equals(EventoFachada.NUEVA_INFO)) {
+            vista.cargarInfo();
+        }
      
     }
-      
-      
+     
       
     }
     

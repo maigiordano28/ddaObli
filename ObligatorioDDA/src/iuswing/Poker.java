@@ -34,27 +34,33 @@ private PokerController controller;
         this.jugadores=listJugadores;
          this.j=jugador;
          this.m=mesa;
-         CargarInfo();
+           DescontarLuz();
+          cargarInfo();
+      
+        
           mostrarJugadoresEnMesa();
-        initComponents();
+      
         controller= new PokerController(this);
+        
     }
     
 
+    public void  DescontarLuz(){
+      m.PagarLuz(j);
     
-
-    public void CargarInfo(){
-    
+    }
+@Override
+    public void cargarInfo(){
+     
        
            txtNombreJugador.setText("Jugador: " + j.getNombreCompleto()); // Ajusta para mostrar en la interfaz
-            txtNombreMesa.setText("Mesa: "+String.valueOf(m.getNumero())); // Ajusta para mostrar en la interfaz;
+            txtSaldo.setText("Saldo: "+ Double.toString(j.getSaldoInicial()));
+           txtNombreMesa.setText("Mesa: "+String.valueOf(m.getNumero())); // Ajusta para mostrar en la interfaz;
         
     
     }
     
-    
-    
-    
+  
     
 
     /**
@@ -118,9 +124,9 @@ private PokerController controller;
         getContentPane().add(txtNombreMesa);
         txtNombreMesa.setBounds(60, 10, 120, 20);
         getContentPane().add(txtNombreJugador);
-        txtNombreJugador.setBounds(880, 10, 150, 20);
+        txtNombreJugador.setBounds(750, 10, 150, 20);
         getContentPane().add(txtSaldo);
-        txtSaldo.setBounds(980, 60, 0, 0);
+        txtSaldo.setBounds(920, 10, 120, 20);
         getContentPane().add(txtNumeroDeMano);
         txtNumeroDeMano.setBounds(240, 10, 37, 16);
 
@@ -129,7 +135,7 @@ private PokerController controller;
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(180, 50, 300, 130);
         getContentPane().add(txtPozo);
-        txtPozo.setBounds(260, 250, 0, 0);
+        txtPozo.setBounds(60, 230, 90, 30);
         getContentPane().add(txtEstadoActualMano);
         txtEstadoActualMano.setBounds(440, 250, 0, 0);
 
@@ -219,4 +225,6 @@ private PokerController controller;
     public void clickEnCarta(CartaPoker carta) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+
 }

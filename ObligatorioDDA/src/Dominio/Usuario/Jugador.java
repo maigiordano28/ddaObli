@@ -42,7 +42,14 @@ public class Jugador extends Usuario{
     
     
     
-    public void ActualizarSaldo(){
+    public void ActualizarSaldo(boolean operacion, Double num){
+        if(operacion){
+            SaldoInicial=SaldoInicial+num;
+        }else{
+            SaldoInicial=SaldoInicial-num;
+        }
+        
+        
 }
     
     public void RegistrarApuesta(){
