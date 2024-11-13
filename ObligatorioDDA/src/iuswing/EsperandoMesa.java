@@ -38,7 +38,7 @@ public class EsperandoMesa extends javax.swing.JDialog implements EsperaMesaView
     public void CambiarInterfaz(){
 
      if(mesa.getJugadores().size()==mesa.getCantidadJugadores()){
-        Pocker a= new Pocker(padre,false,mesa.getJugadores());
+        Poker a= new Poker(padre,false,mesa.getJugadores(),jugador,mesa);
         a.setVisible(true);
         controller.actualizarMesa(mesa);
         this.dispose();

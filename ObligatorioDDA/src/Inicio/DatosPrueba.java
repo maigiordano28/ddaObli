@@ -47,16 +47,16 @@ fachada.agregarAdmin("58491040" ,"mypassword8","Santiago Durán" );
         cartas.add(new Carta(1,CartaPoker.PIQUE));
         cartas.add(new Carta(11,CartaPoker.PIQUE));
         
-        Poker dialogo = new Poker(null, false);
-        dialogo.setVisible(true);  
+        //Poker dialogo = new Poker(null, false,fachada.getJugadores());
+       // dialogo.setVisible(true);  
        
-        dialogo.cargarCartas(cartas);
+        //dialogo.cargarCartas(cartas);
         
      
         cartas.set(0, new Carta(10,CartaPoker.PIQUE));
-        dialogo.cargarCartas(cartas);
+      //  dialogo.cargarCartas(cartas);
         cartas.set(0, new Carta(9,CartaPoker.PIQUE));
-        dialogo.cargarCartas(cartas);
+       // dialogo.cargarCartas(cartas);
 
     }
 }

@@ -4,6 +4,7 @@
  */
 package iuswing;
 
+import Dominio.Mesa;
 import Dominio.Usuario.Jugador;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,25 +20,30 @@ import panelCartasPoker.PanelCartasPokerException;
  * @author PC
  */
 public class Poker extends javax.swing.JDialog implements PanelCartasListener {
+private Jugador j;
 private List<Jugador> jugadores;
+private Mesa m;
    
-    public Poker(java.awt.Frame parent, boolean modal,List<Jugador> jugadores) {
+    public Poker(java.awt.Frame parent, boolean modal,List<Jugador> listJugadores,Jugador jugador,Mesa mesa) {
         super(parent, modal);
         initComponents();
-         this.jugadores=jugadores;
-         CargarNombre();
-        //OJO: Layaout = null, Generate resize code
+        this.jugadores=listJugadores;
+         this.j=jugador;
+         this.m=mesa;
+         CargarInfo();
+          
         initComponents();
     }
     
 
     
 
-    public void CargarNombre(){
+    public void CargarInfo(){
     
-        for (Jugador j : jugadores) {
+       
            txtNombreJugador.setText("Jugador: " + j.getNombreCompleto()); // Ajusta para mostrar en la interfaz
-        }
+            txtNombreMesa.setText("Mesa: "+String.valueOf(m.getNumero())); // Ajusta para mostrar en la interfaz;
+        
     
     }
     
