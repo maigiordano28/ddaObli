@@ -12,6 +12,9 @@ import Dominio.Mesa;
 import Dominio.Usuario.Jugador;
 import Observador.observable;
 import Observador.observador;
+import iuswing.Poker;
+import java.awt.Frame;
+import java.util.List;
 import ui.view.EsperaMesaView;
 import ui.view.InciarMesaView;
 
@@ -20,7 +23,7 @@ import ui.view.InciarMesaView;
  * @author HOLA
  */
 public class EsperandoMesaController implements observador{
-    
+     Frame padre;
       Fachada fachada;
     EsperaMesaView vista;
     Mesa mesa;
@@ -52,5 +55,13 @@ public class EsperandoMesaController implements observador{
 
     public void actualizarCantidadJugadores(Mesa m, Jugador j) {
         fachada.actualizarCantidadJugadores(m,j);
+    }
+    
+    public void cargarSiguientePantalla(List<Jugador> js,Jugador j, Mesa mesa){
+       
+        Poker a= new Poker(padre,false,mesa.getJugadores(),j,mesa);
+        a.setVisible(true);
+        
+     fachada.ActualizarMesa(mesa);
     }
 }

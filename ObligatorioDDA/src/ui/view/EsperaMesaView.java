@@ -6,6 +6,8 @@ package ui.view;
 
 import Dominio.Mesa;
 import Dominio.Usuario.Jugador;
+import Dominio.Usuario.Usuario;
+import java.util.List;
 
 /**
  *
@@ -14,5 +16,6 @@ import Dominio.Usuario.Jugador;
 public interface EsperaMesaView {
     public void CambiarInterfaz();
     public void mostrarMensaje(String msg);
+       public void cargarSiguientePantalla(List<Jugador> js,Jugador j, Mesa mesa);
 
 }

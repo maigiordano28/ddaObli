@@ -8,6 +8,7 @@ import Dominio.Usuario.Jugador;
 import java.util.ArrayList;
 import Dominio.Exceptions.MesaException;
 import java.util.List;
+import Dominio.EventoFachada;
 
 /**
  *
@@ -141,5 +142,12 @@ public class Mesa {
         if(cantidadJugadores<2||cantidadJugadores>5)throw new MesaException("Cantidad de jugadores no valida");
         if(apuestaBase<1)throw new MesaException("Apuesta base inválida");
         if(porcentajeComision<1||porcentajeComision>50)throw new MesaException("Comision invalida");
+    }
+
+    public Mesa cambiarEstado() {
+       Fachada.getInstancia().avisar(EventoFachada.NUEVO_MESA_INICIADA);
+         setEstadoMesa(EstadoMesa.iniciada);
+         
+         return this;
     }
    }

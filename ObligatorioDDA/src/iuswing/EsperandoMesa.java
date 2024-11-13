@@ -7,6 +7,7 @@ package iuswing;
 import Dominio.EventoFachada;
 import Dominio.Mesa;
 import Dominio.Usuario.Jugador;
+import java.util.List;
 import ui.controller.EsperandoMesaController;
 import ui.controller.MesaAdminController;
 import ui.view.EsperaMesaView;
@@ -38,8 +39,8 @@ public class EsperandoMesa extends javax.swing.JDialog implements EsperaMesaView
     public void CambiarInterfaz(){
 
      if(mesa.getJugadores().size()==mesa.getCantidadJugadores()){
-        Poker a= new Poker(padre,false,mesa.getJugadores(),jugador,mesa);
-        a.setVisible(true);
+         cargarSiguientePantalla(mesa.getJugadores(),jugador, mesa);
+        
         controller.actualizarMesa(mesa);
         this.dispose();
         
@@ -89,6 +90,12 @@ public class EsperandoMesa extends javax.swing.JDialog implements EsperaMesaView
     public void mostrarMensaje(String msg) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    @Override
+    public void cargarSiguientePantalla(List<Jugador> js, Jugador j, Mesa mesa) {
+        controller.cargarSiguientePantalla(js, j, mesa);
+    }
+
 
    
 }

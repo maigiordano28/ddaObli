@@ -15,15 +15,18 @@ import javax.swing.JOptionPane;
 import panelCartasPoker.CartaPoker;
 import panelCartasPoker.PanelCartasListener;
 import panelCartasPoker.PanelCartasPokerException;
+import ui.controller.PokerController;
+import ui.view.PokerView;
 
 /**
  *
  * @author PC
  */
-public class Poker extends javax.swing.JDialog implements PanelCartasListener {
+public class Poker extends javax.swing.JDialog implements PanelCartasListener,PokerView {
 private Jugador j;
 private List<Jugador> jugadores;
 private Mesa m;
+private PokerController controller;
    
     public Poker(java.awt.Frame parent, boolean modal,List<Jugador> listJugadores,Jugador jugador,Mesa mesa) {
         super(parent, modal);
@@ -34,6 +37,7 @@ private Mesa m;
          CargarInfo();
           
         initComponents();
+        controller= new PokerController(this);
     }
     
 
@@ -158,7 +162,10 @@ private Mesa m;
                 
     }
     
-    public void mostrarMesasCreadas() {
+    
+    
+    @Override
+    public void mostrarJugadoresEnMesa() {
         List<Jugador> nombresJugadores = m.getJugadores();
         List<String> nombreJugadoresFormateados = cargarNombresJugadores(nombresJugadores);
         String[] listaNombreJugadoresArray = new String[nombreJugadoresFormateados.size()];
@@ -194,8 +201,22 @@ private Mesa m;
       
    
 
+    
+
+    @Override
+    public void mostrarMensaje(String msg) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void cargarSiguientePantalla() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    
+
     @Override
     public void clickEnCarta(CartaPoker carta) {
-        JOptionPane.showMessageDialog(this, carta.toString(), "Click en carta",JOptionPane.INFORMATION_MESSAGE);
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

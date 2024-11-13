@@ -45,8 +45,8 @@ public class SistemaMesa {
     }
 
    public Mesa ActualizarMesa(Mesa m) {
-        m.setEstadoMesa(EstadoMesa.iniciada);
-        return m;
+     return   m.cambiarEstado();
+             
 }
 
     void actualizarCantidadJugadores(Mesa m, Jugador j) {
