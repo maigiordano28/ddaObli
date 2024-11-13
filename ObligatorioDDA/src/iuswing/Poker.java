@@ -4,6 +4,7 @@
  */
 package iuswing;
 
+import Dominio.Fachada;
 import Dominio.Mesa;
 import Dominio.Usuario.Jugador;
 import java.util.ArrayList;
@@ -143,6 +144,26 @@ private Mesa m;
         }else panelCartasPoker1.setListener(null);
     }//GEN-LAST:event_checkListenerActionPerformed
 
+    
+    private List<String> cargarNombresJugadores(List<Jugador> nombresJugadores) {
+        List<String> nombresJugadoresString = new ArrayList<>();
+        for (Jugador j: nombresJugadores) {
+            nombresJugadoresString.add(formatearNombreJugadores(j));
+        }
+        return nombresJugadoresString;
+    }
+    
+    private String formatearNombreJugadores(Jugador jugador) {
+        return jugador.getNombreCompleto();
+                
+    }
+    
+    public void mostrarMesasCreadas() {
+        List<Jugador> nombresJugadores = m.getJugadores();
+        List<String> nombreJugadoresFormateados = cargarNombresJugadores(nombresJugadores);
+        String[] listaNombreJugadoresArray = new String[nombreJugadoresFormateados.size()];
+        listJugadores.setListData(nombreJugadoresFormateados.toArray(listaNombreJugadoresArray));
+        }
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
