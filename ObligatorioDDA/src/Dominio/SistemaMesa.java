@@ -48,6 +48,10 @@ public class SistemaMesa {
      return   m.cambiarEstado();
              
 }
+   
+   public void AgregarMano(Mesa m){
+        m.AgregarMano();
+   }
   public void actualizarCantidadJugadores(Mesa m, Jugador j) {
        m.getJugadores().add(j);
     }

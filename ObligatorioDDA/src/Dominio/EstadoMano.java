@@ -9,5 +9,8 @@ package Dominio;
  * @author bsout
  */
 public enum EstadoMano {
-    
+    Esperando_apuesta,
+    Apuesta_iniciada,
+    Pidiendo_cartas,
+    Terminada
 }

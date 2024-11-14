@@ -12,5 +12,7 @@ public enum EventoFachada {
     NUEVA_MESA,
     NUEVO_JUGADOR_MESA,
     NUEVO_MESA_INICIADA,
-    NUEVA_INFO
+    NUEVA_INFO,
+    NUEVA_MANO
+   
 }

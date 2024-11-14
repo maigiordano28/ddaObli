@@ -4,6 +4,7 @@
  */
 package iuswing;
 
+import Dominio.EstadoMano;
 import Dominio.Fachada;
 import Dominio.Mesa;
 import Dominio.Usuario.Jugador;
@@ -34,31 +35,43 @@ private PokerController controller;
         this.jugadores=listJugadores;
          this.j=jugador;
          this.m=mesa;
-         mostrarJugadoresEnMesa();
-           DescontarLuz();
-          cargarInfo();
-      
-        
-          
+           EmpezarJuego(); 
       
         controller= new PokerController(this);
         
     }
     
 
+    
+    private void EmpezarJuego() {
+        AgregarMano();
+        mostrarJugadoresEnMesa();
+
+
+
+    }
     public void  DescontarLuz(){
       m.PagarLuz(j);
       
+      
     
     }
+    
+    public void AgregarMano(){
+        DescontarLuz();
+        cargarInfo(); 
+        controller.agregarMano();
+
+    } 
+            
 @Override
     public void cargarInfo(){
-     
+            
             txtPozo.setText("Pozo: "+Double.toString(m.getPozo()));
            txtNombreJugador.setText("Jugador: " + j.getNombreCompleto()); // Ajusta para mostrar en la interfaz
             txtSaldo.setText("Saldo: "+ Double.toString(j.getSaldoInicial()));
            txtNombreMesa.setText("Mesa: "+String.valueOf(m.getNumero())); // Ajusta para mostrar en la interfaz;
-        
+           
     
     }
     
@@ -227,6 +240,8 @@ private PokerController controller;
     public void clickEnCarta(CartaPoker carta) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    
 
 
 }

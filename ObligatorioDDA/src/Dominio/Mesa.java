@@ -15,7 +15,7 @@ import Dominio.EventoFachada;
  * @author bsout
  */
 public class Mesa {
-    private static int s_ultNumero=0;
+    private static int s_ultNumero=1;
     private int numero;
     private int cantidadJugadores;
     private ArrayList<Jugador> jugadores;
@@ -117,10 +117,16 @@ public class Mesa {
     
     }
     
+    public void AgregarMano(){
+        Mano mano = new Mano();
+        manos.add(mano);
+        Fachada.getInstancia().avisar(EventoFachada.NUEVA_MANO);
+    }
+    
     public void ActualizarPozo(Double monto){
      
 
-        this.pozo+=monto;
+        pozo+=monto;
     }
     
     public void ActualizarEstado(){

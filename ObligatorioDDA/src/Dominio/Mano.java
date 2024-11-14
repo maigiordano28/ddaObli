@@ -9,12 +9,17 @@ package Dominio;
  * @author bsout
  */
 public class Mano {
-    
+    private static int s_ultNumero=1;
     private int numero;
     private int totalApostado;
     private String estadoActual;
     private String jugadorGanador;
     private Figura figuraGanadora;
+
+    public Mano() {
+        
+        this.numero = s_ultNumero++;
+    }
 
     public String getJugadorGanador() {
         return jugadorGanador;

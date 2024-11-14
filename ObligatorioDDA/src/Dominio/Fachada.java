@@ -67,8 +67,12 @@ public class Fachada extends observable {
    
             
             }
+            
+        public Mano agregarMano(Mesa mesa) {
+             return sMesa.AgregarMano(mesa);
+        }
              
-          public ArrayList<Mesa> getMesas(){
+        public ArrayList<Mesa> getMesas(){
             
           return sMesa.mesas;
           
@@ -86,6 +90,8 @@ public class Fachada extends observable {
             sUsuario.Logout(usuario);
             
         }
+
+    
         
      
 }
