@@ -40,6 +40,7 @@ public class Mesa {
         this.manos = new ArrayList<Mano>();
         this.EstadoMesa = EstadoMesa.abierta;
         this.pozo=0.0;
+        this.cartas= new ArrayList<CartaPoker>();
     }
 
     public int getNumero() {
