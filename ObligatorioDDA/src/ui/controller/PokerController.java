@@ -6,6 +6,7 @@ package ui.controller;
 
 import Dominio.EventoFachada;
 import Dominio.EventoMesa;
+import Dominio.Exceptions.ManoException;
 import Dominio.Fachada;
 import Dominio.Mano;
 import Dominio.Mesa;
@@ -47,14 +48,12 @@ public class PokerController implements observador{
      
     }
 
-    public void agregarMano() {
-       try{
-        Mano mano = fachada.agregarMano();
+    public void agregarMano(Mesa mesa) {
+      
+        Mano mano = fachada.agregarMano( mesa);
         vista.mostrarMensaje("Mano numero"+mano.getNumero());
-       } 
-       catch{
+    
        
-       }
         
     }
      

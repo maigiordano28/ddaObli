@@ -49,8 +49,8 @@ public class SistemaMesa {
              
 }
    
-   public void AgregarMano(Mesa m){
-        m.AgregarMano();
+   public Mano AgregarMano(Mesa m){
+      return  m.AgregarMano();
    }
   public void actualizarCantidadJugadores(Mesa m, Jugador j) {
        m.getJugadores().add(j);

@@ -4,16 +4,15 @@
  */
 package ui.view;
 
-import Dominio.Usuario.Usuario;
-import Observador.observable;
-
 /**
  *
  * @author HOLA
  */
-public interface InciarMesaView {
-    public void iniciarMesa();
-   public void mostrarMesasCreadas();
-
+public interface AgregarManoView {
+    
+    
+     public void mostrarManosCreadas();
+      public void mostrarMensaje(String msg);
     public void cargarSiguientePantalla();
+    
 }

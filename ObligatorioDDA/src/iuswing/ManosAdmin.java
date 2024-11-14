@@ -4,22 +4,30 @@
  */
 package iuswing;
 
+import Dominio.Fachada;
+import Dominio.Mano;
 import Dominio.Mesa;
+import java.util.ArrayList;
 import java.util.List;
+import ui.controller.AgregarManoController;
+import ui.view.AgregarManoView;
 
 /**
  *
  * @author HOLA
  */
-public class ManosAdmin extends javax.swing.JDialog {
-
+public class ManosAdmin extends javax.swing.JDialog implements AgregarManoView {
+    private Mesa mesa;
     /**
      * Creates new form ManosAdmin
      */
-    public ManosAdmin(java.awt.Frame parent, boolean modal) {
+    private AgregarManoController controller;
+    public ManosAdmin(java.awt.Frame parent, boolean modal,Mesa m) {
         super(parent, modal);
         initComponents();
-        CargarManos();
+        this.mesa=m;
+        
+        controller= new AgregarManoController(this);
     }
 
     /**
@@ -32,11 +40,11 @@ public class ManosAdmin extends javax.swing.JDialog {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        ListManos = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(ListManos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -60,12 +68,46 @@ public class ManosAdmin extends javax.swing.JDialog {
 
   
 public void CargarManos(){
-  
+   List<Mano> manos=mesa.getManos();
+   ListManos.setListData((String[]) manos.toArray());
 
 }
 
+@Override
+    public void mostrarManosCreadas() {
+        List<Mano> manosCreadas = mesa.getManos();
+        List<String> manosFormateadas = formatearManosCreadas(manosCreadas);
+        String[] listaManosCreadasArray = new String[manosFormateadas.size()];
+        ListManos.setListData(manosFormateadas.toArray(listaManosCreadasArray));
+        }
+    
+      private List<String> formatearManosCreadas(List<Mano> manosCreadas) {
+        List<String> manosFormateadas = new ArrayList<>();
+        for (Mano mano: manosCreadas) {
+            manosFormateadas.add(formatearManosCreadas(mano));
+        }
+        return manosFormateadas;
+    }
+
+    private String formatearManosCreadas(Mano mano) {
+        return mano.getNumero()+"|";//+ "|" +mano.getTotalApostado()+"|"+,mano.getEstadoActual()+"|"+mano.getJugadorGanador();
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JList<String> jList1;
+    private javax.swing.JList<String> ListManos;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+   
+
+    @Override
+    public void mostrarMensaje(String msg) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void cargarSiguientePantalla() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

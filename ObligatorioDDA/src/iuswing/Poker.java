@@ -35,9 +35,10 @@ private PokerController controller;
         this.jugadores=listJugadores;
          this.j=jugador;
          this.m=mesa;
-           EmpezarJuego(); 
-      
+          
+    
         controller= new PokerController(this);
+         EmpezarJuego(); 
         
     }
     
@@ -60,7 +61,7 @@ private PokerController controller;
     public void AgregarMano(){
         DescontarLuz();
         cargarInfo(); 
-        controller.agregarMano();
+        controller.agregarMano(m);
 
     } 
             
@@ -226,8 +227,7 @@ private PokerController controller;
 
     @Override
     public void mostrarMensaje(String msg) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+         JOptionPane.showMessageDialog(this, msg);  }
 
     @Override
     public void cargarSiguientePantalla() {

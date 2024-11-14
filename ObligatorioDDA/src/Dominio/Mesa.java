@@ -117,10 +117,11 @@ public class Mesa {
     
     }
     
-    public void AgregarMano(){
+    public Mano AgregarMano(){
         Mano mano = new Mano();
         manos.add(mano);
         Fachada.getInstancia().avisar(EventoFachada.NUEVA_MANO);
+        return mano;
     }
     
     public void ActualizarPozo(Double monto){

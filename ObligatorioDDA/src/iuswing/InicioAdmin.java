@@ -7,6 +7,7 @@ package iuswing;
 import Dominio.EventoMesa;
 import Dominio.Exceptions.MesaException;
 import Dominio.Fachada;
+import Dominio.Mano;
 import Dominio.Mesa;
 import Dominio.Usuario.Admin;
 import Observador.observable;
@@ -33,7 +34,7 @@ public class InicioAdmin extends javax.swing.JDialog implements InciarMesaView{
         super(parent, modal);
         initComponents();
         CargarTotalApostado();
-        CargarMesas();
+        this.CargarMesas();
         controller= new IniciarMesaController(this,u);
         
      
@@ -109,7 +110,14 @@ public class InicioAdmin extends javax.swing.JDialog implements InciarMesaView{
     }//GEN-LAST:event_btnCrarMesaActionPerformed
 
     private void ListMesasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListMesasMouseClicked
-       this.CargarMesas();
+        List<Mesa> mesas=Fachada.getInstancia().getMesas();
+        int index=ListMesas.getSelectedIndex();
+        Mesa mesaSeleccionada = mesas.get(index);
+      
+        ManosAdmin a= new ManosAdmin(padre,false,mesaSeleccionada);
+        a.setVisible(true);
+             
+      
     }//GEN-LAST:event_ListMesasMouseClicked
 
 
@@ -169,11 +177,7 @@ public void CargarMesas(){
         ListMesas.setListData(mesasFormateadas.toArray(listaMesasCreadasArray));
     }
 
-    @Override
-    public void cargarManos() {
-   ManosAdmin a= new ManosAdmin(padre, false);
-        a.setVisible(true);
-    }
+ 
    
 
     }

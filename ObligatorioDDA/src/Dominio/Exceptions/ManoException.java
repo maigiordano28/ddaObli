@@ -8,6 +8,10 @@ package Dominio.Exceptions;
  *
  * @author bsout
  */
-public class ManoException {
+public class ManoException extends Exception{
+    
+       public ManoException(String message) {
+        super(message);
+    }
     
 }
