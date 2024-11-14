@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import Dominio.Exceptions.MesaException;
 import java.util.List;
 import Dominio.EventoFachada;
+import panelCartasPoker.CartaPoker;
 
 /**
  *
@@ -28,7 +29,7 @@ public class Mesa {
     public List<Mano> getManos() {
         return manos;
     }
-    private ArrayList<Carta> cartas;
+    private ArrayList<CartaPoker> cartas;
 
     public Mesa(int cantidadJugadores, double apuestaBase, double porcentajeComision) {
         this.cantidadJugadores = cantidadJugadores;
@@ -93,11 +94,11 @@ public class Mesa {
     }
 
   
-    public ArrayList<Carta> getCartas() {
+    public ArrayList<CartaPoker> getCartas() {
         return cartas;
     }
 
-    public void setCartas(ArrayList<Carta> cartas) {
+    public void setCartas(ArrayList<CartaPoker> cartas) {
         this.cartas = cartas;
     }
 

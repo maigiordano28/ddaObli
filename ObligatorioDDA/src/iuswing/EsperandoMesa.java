@@ -97,7 +97,7 @@ public class EsperandoMesa extends javax.swing.JDialog implements EsperaMesaView
           Poker a= new Poker(padre,false,mesa.getJugadores(),j,mesa);
         a.setVisible(true);
         
-         
+         a.cargarCartas(mesa.getCartas());
     
     }
 
