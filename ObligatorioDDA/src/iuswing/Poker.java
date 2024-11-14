@@ -4,6 +4,7 @@
  */
 package iuswing;
 
+import Dominio.Carta;
 import Dominio.EstadoMano;
 import Dominio.Fachada;
 import Dominio.Mesa;
@@ -35,19 +36,12 @@ private PokerController controller;
         this.jugadores=listJugadores;
          this.j=jugador;
          this.m=mesa;
-          
-    
         controller= new PokerController(this);
          EmpezarJuego(); 
-         
-        
+       
     }
     
 
-    public Poker(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        initComponents();
-    }
     
     private void EmpezarJuego() {
         AgregarMano();
