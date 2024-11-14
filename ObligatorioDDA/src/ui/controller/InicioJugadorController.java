@@ -40,6 +40,7 @@ public class InicioJugadorController implements observador{
     }
     
     
+ @Override
       public void actualizar(observable o, Object evento) {
         
         if (evento.equals(EventoMesa.NUEVA_MESA)) {
@@ -52,7 +53,15 @@ public class InicioJugadorController implements observador{
      
     }
       
+      public boolean jugadorEnMesa(Jugador jugador){
       
+       return fachada.jugadorEnMesa(jugador);
+      
+      }
+      
+      
+      
+    
       
     }
     

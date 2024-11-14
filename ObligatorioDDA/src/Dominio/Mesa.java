@@ -146,11 +146,32 @@ public class Mesa {
         
     }
     
+    public boolean jugadorEnMesa(Jugador jugador){
+    boolean ret=false;
+    for(Jugador j:jugadores){
+    
+    if(j.equals(jugador)){
+    
+     ret=true;
+    }
+    
+    }
+    return ret;
+    
+    
+    }
+    
+    
+    
+    
     public void PagarLuz(Jugador j){
-        Fachada.getInstancia().avisar(EventoFachada.NUEVA_INFO);
+     
        
         ActualizarPozo(apuestaBase);
-        j.ActualizarSaldo(false, apuestaBase);
+        Fachada.getInstancia().avisar(EventoFachada.NUEVA_INFO);
+         j.ActualizarSaldo(false, apuestaBase);
+        
+       
        
     }
     

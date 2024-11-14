@@ -61,7 +61,7 @@ private PokerController controller;
     public void AgregarMano(){
         DescontarLuz();
         cargarInfo(); 
-        controller.agregarMano(m);
+        //controller.agregarMano(m);
 
     } 
             

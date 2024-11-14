@@ -91,7 +91,12 @@ public class Fachada extends observable {
             
         }
 
+    public boolean jugadorEnMesa(Jugador jugador){
     
+    return sMesa.jugadorEnMesa(jugador);
+    
+    
+    }
         
      
 }

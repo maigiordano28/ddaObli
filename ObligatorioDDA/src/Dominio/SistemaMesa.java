@@ -55,4 +55,22 @@ public class SistemaMesa {
   public void actualizarCantidadJugadores(Mesa m, Jugador j) {
        m.getJugadores().add(j);
     }
+  
+  
+  public boolean jugadorEnMesa(Jugador jugador){
+      boolean ret=false;
+      for(Mesa m:mesas ){
+      
+      if(m.jugadorEnMesa(jugador)){
+           ret= true;
+          
+      }
+      
+      
+      
+      }
+      
+      return ret;
+  
+  }
 }

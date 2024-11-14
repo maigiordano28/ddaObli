@@ -22,7 +22,7 @@ public class inicioJugador extends javax.swing.JDialog implements InicioJugadorV
 
     Fachada fachada= Fachada.getInstancia();
     private Jugador jugador;
-    private Double saldo;
+   // private Double saldo;
 
     private String nombre;
     private InicioJugadorController controller;
@@ -33,7 +33,7 @@ public class inicioJugador extends javax.swing.JDialog implements InicioJugadorV
         super(parent, modal);
         initComponents();
         this.jugador=jugador;
-        this.saldo = jugador.getSaldoInicial();
+       // this.saldo = jugador.getSaldoInicial();
         
         this.nombre=jugador.getNombreCompleto();
         controller=new InicioJugadorController(this,jugador);
@@ -140,13 +140,15 @@ public class inicioJugador extends javax.swing.JDialog implements InicioJugadorV
         int index=listMesasAbiertas.getSelectedIndex();
         Mesa mesaSeleccionada = mesas.get(index);
       
-      if(saldo>mesaSeleccionada.getApuestaBase()*10){
+      if(jugador.getSaldoInicial()>mesaSeleccionada.getApuestaBase()*10){
              if(mesaSeleccionada.getCantidadJugadores()==mesaSeleccionada.getJugadores().size()){
       
       this.mostrarMensaje("Mesa Completa");
       
-      }else{
+      }else if(controller.jugadorEnMesa(jugador)){
+      this.mostrarMensaje("Ya estas en una mesa");
       
+}else{
         InicioMesa a= new InicioMesa(padre,false,mesaSeleccionada,jugador);
         a.setVisible(true);
              }     
@@ -196,7 +198,7 @@ public class inicioJugador extends javax.swing.JDialog implements InicioJugadorV
     @Override
     public void cargarSaldo() {
         
-      txtSaldo.setText(Double.toString(saldo));
+      txtSaldo.setText(Double.toString(jugador.getSaldoInicial()));
     }
 
     private void cargarNombre() {

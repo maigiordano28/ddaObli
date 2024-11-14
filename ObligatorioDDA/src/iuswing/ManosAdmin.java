@@ -26,7 +26,7 @@ public class ManosAdmin extends javax.swing.JDialog implements AgregarManoView {
         super(parent, modal);
         initComponents();
         this.mesa=m;
-        
+        this.mostrarManosCreadas();
         controller= new AgregarManoController(this);
     }
 
@@ -67,11 +67,7 @@ public class ManosAdmin extends javax.swing.JDialog implements AgregarManoView {
     }// </editor-fold>//GEN-END:initComponents
 
   
-public void CargarManos(){
-   List<Mano> manos=mesa.getManos();
-   ListManos.setListData((String[]) manos.toArray());
 
-}
 
 @Override
     public void mostrarManosCreadas() {
