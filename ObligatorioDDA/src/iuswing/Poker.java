@@ -39,7 +39,7 @@ private PokerController controller;
     
         controller= new PokerController(this);
          EmpezarJuego(); 
-         
+         CargarCartas();
         
     }
     
@@ -82,7 +82,9 @@ private PokerController controller;
     }
     
   
-    
+    public void CargarCartas(){
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
