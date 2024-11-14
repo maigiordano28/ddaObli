@@ -39,10 +39,15 @@ private PokerController controller;
     
         controller= new PokerController(this);
          EmpezarJuego(); 
+         
         
     }
     
 
+    public Poker(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+    }
     
     private void EmpezarJuego() {
         AgregarMano();
