@@ -193,7 +193,8 @@ public class inicioJugador extends javax.swing.JDialog implements InicioJugadorV
     private javax.swing.JLabel txtSaldo;
     // End of variables declaration//GEN-END:variables
 
-    private void cargarSaldo() {
+    @Override
+    public void cargarSaldo() {
         
       txtSaldo.setText(Double.toString(saldo));
     }

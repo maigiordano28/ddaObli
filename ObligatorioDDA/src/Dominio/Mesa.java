@@ -38,7 +38,7 @@ public class Mesa {
         this.jugadores=new ArrayList();
         this.manos = new ArrayList<Mano>();
         this.EstadoMesa = EstadoMesa.abierta;
-        this.pozo=pozo;
+        this.pozo=0.0;
     }
 
     public int getNumero() {
@@ -100,6 +100,14 @@ public class Mesa {
     public void setCartas(ArrayList<Carta> cartas) {
         this.cartas = cartas;
     }
+
+    public Double getPozo() {
+        return pozo;
+    }
+
+    public void setPozo(Double pozo) {
+        this.pozo = pozo;
+    }
     
     public void AgregarJugador(Jugador jugador){
         
@@ -107,6 +115,12 @@ public class Mesa {
         Fachada.getInstancia().avisar(EventoFachada.NUEVO_JUGADOR_MESA);
         
     
+    }
+    
+    public void ActualizarPozo(Double monto){
+     
+
+        this.pozo+=monto;
     }
     
     public void ActualizarEstado(){
@@ -128,11 +142,9 @@ public class Mesa {
     public void PagarLuz(Jugador j){
         Fachada.getInstancia().avisar(EventoFachada.NUEVA_INFO);
        
-        
+        ActualizarPozo(apuestaBase);
         j.ActualizarSaldo(false, apuestaBase);
-        
-        
-    
+       
     }
     
     

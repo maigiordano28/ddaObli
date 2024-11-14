@@ -34,11 +34,12 @@ private PokerController controller;
         this.jugadores=listJugadores;
          this.j=jugador;
          this.m=mesa;
+         mostrarJugadoresEnMesa();
            DescontarLuz();
           cargarInfo();
       
         
-          mostrarJugadoresEnMesa();
+          
       
         controller= new PokerController(this);
         
@@ -47,12 +48,13 @@ private PokerController controller;
 
     public void  DescontarLuz(){
       m.PagarLuz(j);
+      
     
     }
 @Override
     public void cargarInfo(){
      
-       
+            txtPozo.setText("Pozo: "+Double.toString(m.getPozo()));
            txtNombreJugador.setText("Jugador: " + j.getNombreCompleto()); // Ajusta para mostrar en la interfaz
             txtSaldo.setText("Saldo: "+ Double.toString(j.getSaldoInicial()));
            txtNombreMesa.setText("Mesa: "+String.valueOf(m.getNumero())); // Ajusta para mostrar en la interfaz;
@@ -135,7 +137,7 @@ private PokerController controller;
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(180, 50, 300, 130);
         getContentPane().add(txtPozo);
-        txtPozo.setBounds(60, 230, 90, 30);
+        txtPozo.setBounds(440, 230, 110, 30);
         getContentPane().add(txtEstadoActualMano);
         txtEstadoActualMano.setBounds(440, 250, 0, 0);
 

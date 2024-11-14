@@ -4,6 +4,7 @@
  */
 package ui.controller;
 
+import Dominio.EventoFachada;
 import Dominio.EventoMesa;
 import Dominio.Fachada;
 import Dominio.Usuario.Admin;
@@ -45,6 +46,9 @@ public class InicioJugadorController implements observador{
             vista.mostrarMesasCreadas();
         }
         
+          if (evento.equals(EventoFachada.NUEVA_INFO)) {
+            vista.cargarSaldo();
+        }
      
     }
       

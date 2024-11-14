@@ -12,4 +12,5 @@ public interface InicioJugadorView {
      public void mostrarMesasCreadas();
       public void mostrarMensaje(String msg);
     public void cargarSiguientePantalla();
+    public void cargarSaldo();
 }
