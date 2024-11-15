@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import Dominio.Exceptions.MesaException;
 import java.util.List;
 import Dominio.EventoFachada;
-import panelCartasPoker.CartaPoker;
+
 
 /**
  *
@@ -25,11 +25,12 @@ public class Mesa {
     private double porcentajeComision ;
     private List<Mano> manos;
     private Double pozo;
+    private Mazo mazo;
 
     public List<Mano> getManos() {
         return manos;
     }
-    private ArrayList<CartaPoker> cartas;
+    private ArrayList<Carta> cartas;
 
     public Mesa(int cantidadJugadores, double apuestaBase, double porcentajeComision) {
         this.cantidadJugadores = cantidadJugadores;
@@ -40,19 +41,39 @@ public class Mesa {
         this.manos = new ArrayList<Mano>();
         this.EstadoMesa = EstadoMesa.abierta;
         this.pozo=0.0;
-        this.cartas= new ArrayList<CartaPoker>();
+        this.cartas= new ArrayList<Carta>();
+        this.mazo = new Mazo();
+    }
+
+    public Mazo getMazo() {
+        return mazo;
     }
 
     public int getNumero() {
         return numero;
     }
     
+ public ArrayList<Carta> obtenerArrayMazo(){
  
+ return this.mazo.cartasMazo;
+ 
+ }
+ 
+    public void repartirCartas(){
+        ArrayList<Carta> cartas = obtenerArrayMazo();
+        for(Jugador j:jugadores){
+            for(int i = 0; i<cartas.size();i++){
+                j.getCartasMano().add(cartas.get(i));
+            }
+        }
+       
+    }
 
     public void setNumero(int numero) {
         this.numero = numero;
     }
 
+    
     public int getCantidadJugadores() {
         return cantidadJugadores;
     }
@@ -95,11 +116,11 @@ public class Mesa {
     }
 
   
-    public ArrayList<CartaPoker> getCartas() {
+    public ArrayList<Carta> getCartas() {
         return cartas;
     }
 
-    public void setCartas(ArrayList<CartaPoker> cartas) {
+    public void setCartas(ArrayList<Carta> cartas) {
         this.cartas = cartas;
     }
 

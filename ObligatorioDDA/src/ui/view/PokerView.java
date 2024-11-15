@@ -4,6 +4,9 @@
  */
 package ui.view;
 
+import java.util.ArrayList;
+import panelCartasPoker.CartaPoker;
+
 /**
  *
  * @author HOLA
@@ -13,4 +16,5 @@ public interface PokerView {
       public void mostrarMensaje(String msg);
     public void cargarSiguientePantalla();
     public void cargarInfo();
+    public void cargarCartas(ArrayList<CartaPoker> carta);
 }

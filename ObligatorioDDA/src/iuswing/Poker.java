@@ -4,6 +4,7 @@
  */
 package iuswing;
 
+import Dominio.Carta;
 import Dominio.EstadoMano;
 import Dominio.Fachada;
 import Dominio.Mesa;
@@ -216,13 +217,13 @@ private PokerController controller;
     private javax.swing.JLabel txtSaldo;
     // End of variables declaration//GEN-END:variables
 
-   public void cargarCartas(ArrayList<CartaPoker> cartas){
-        try {
-            panelCartasPoker1.cargarCartas(cartas);
-        } catch (PanelCartasPokerException ex) {
-             JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR",JOptionPane.ERROR_MESSAGE);
-        }
-   }
+  // public void RecibirCartas(ArrayList<Carta> cartas){
+       
+          
+   //     controller.repartirCartas(m, cartas);
+    
+     
+   //}
       
    
 
@@ -242,6 +243,15 @@ private PokerController controller;
     @Override
     public void clickEnCarta(CartaPoker carta) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void cargarCartas(ArrayList<CartaPoker> cartas) {
+        try {
+            panelCartasPoker1.cargarCartas(cartas);
+        } catch (PanelCartasPokerException ex) {
+             JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR",JOptionPane.ERROR_MESSAGE);
+        }
     }
 
 
