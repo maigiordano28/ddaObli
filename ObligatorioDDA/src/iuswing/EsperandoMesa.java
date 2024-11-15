@@ -33,7 +33,7 @@ public class EsperandoMesa extends javax.swing.JDialog implements EsperaMesaView
     public void CambiarInterfaz(Mesa mesaSeleccionada){
         controller.validarEntradaMesa();
          
-        controller.actualizarMesa(mesaSeleccionada);
+        //controller.actualizarMesa(mesaSeleccionada);
        
         lblJugadores.setText("Esperando inicio del juego, hay "+mesaSeleccionada.obtenerLargoListaJugadores()+" jugadores de "+mesaSeleccionada.getCantidadJugadores()+" en la mesa");
      
@@ -83,6 +83,7 @@ public class EsperandoMesa extends javax.swing.JDialog implements EsperaMesaView
 
     @Override
     public void cargarSiguientePantalla(Jugador j, Mesa mesa) {
+        this.setVisible(false);
       this.dispose();
           Poker a= new Poker(padre,false,j,mesa);
           a.setVisible(true);

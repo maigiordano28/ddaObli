@@ -39,7 +39,8 @@ public class EsperandoMesaController implements observador{
     
     
     public void validarEntradaMesa(){
-     if(mesaSeleccionada.obtenerLargoListaJugadores()==mesaSeleccionada.getCantidadJugadores()){
+     if(mesaSeleccionada.obtenerLargoListaJugadores()==mesaSeleccionada.getCantidadJugadores() && (!mesaSeleccionada.EnJuego() || mesaSeleccionada.jugadorEnMesa(jugador))){
+         mesaSeleccionada.setMesaEnJuego(true);
          vista.cargarSiguientePantalla(jugador, mesaSeleccionada);
          actualizarMesa(mesaSeleccionada);
      }

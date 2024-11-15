@@ -75,10 +75,10 @@ public class InicioJugadorController implements observador{
       
       }
       
-      public void EntrarAMesa(int index){
+      public void EntrarAMesa(Mesa mesaSeleccionada){
       
-      List<Mesa> mesas=fachada.getMesas();
-      Mesa mesaSeleccionada = mesas.get(index);
+      //List<Mesa> mesas=fachada.getMesas();
+      //Mesa mesaSeleccionada = mesas.get(index);
       
       if(jugador.getSaldoInicial()>mesaSeleccionada.getApuestaBase()*10){
             if(mesaSeleccionada.getCantidadJugadores()==mesaSeleccionada.obtenerLargoListaJugadores()){

@@ -118,8 +118,10 @@ public class inicioJugador extends javax.swing.JDialog implements InicioJugadorV
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
     private void listMesasAbiertasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMesasAbiertasMouseClicked
-        int index=listMesasAbiertas.getSelectedIndex();
-        controller.EntrarAMesa(index);
+        /*int index=listMesasAbiertas.getSelectedIndex();*/
+        
+        Mesa mesaSeleccionada = (Mesa)listMesasAbiertas.getSelectedValue();
+        controller.EntrarAMesa(mesaSeleccionada);
     }//GEN-LAST:event_listMesasAbiertasMouseClicked
 
    
@@ -131,7 +133,7 @@ public class inicioJugador extends javax.swing.JDialog implements InicioJugadorV
     private Inicio.DatosPrueba datosPrueba1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelSaldo;
-    private javax.swing.JList<String> listMesasAbiertas;
+    private javax.swing.JList<Object> listMesasAbiertas;
     private javax.swing.JLabel txtNombreCompleto;
     private javax.swing.JLabel txtSaldo;
     // End of variables declaration//GEN-END:variables
@@ -157,7 +159,9 @@ public class inicioJugador extends javax.swing.JDialog implements InicioJugadorV
     public void mostrarMesasCreadas(List<Mesa> mesasCreadas) {
         List<String> mesasFormateadas = formatearMesasCreadas(mesasCreadas);
         String[] listaMesasCreadasArray = new String[mesasFormateadas.size()];
-        listMesasAbiertas.setListData(mesasFormateadas.toArray(listaMesasCreadasArray));
+        //listMesasAbiertas.setListData(mesasFormateadas.toArray(listaMesasCreadasArray));
+        
+         listMesasAbiertas.setListData(mesasCreadas.toArray()); 
         }
 
      private List<String> formatearMesasCreadas(List<Mesa> mesasCreadas) {

@@ -26,9 +26,18 @@ public class Mesa {
     private List<Mano> manos;
     private Double pozo;
     private Mazo mazo;
+    private boolean mesaEnJuego = false;
 
     public List<Mano> getManos() {
         return manos;
+    }
+    
+    public boolean EnJuego(){
+        return this.mesaEnJuego;
+    }
+
+    public void setMesaEnJuego(boolean mesaEnJuego) {
+        this.mesaEnJuego = mesaEnJuego;
     }
     private ArrayList<Carta> cartas;
 
