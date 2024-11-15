@@ -17,5 +17,5 @@ public interface EsperaMesaView {
     public void CambiarInterfaz(Mesa mesa);
     public void mostrarMensaje(String msg);
        public void cargarSiguientePantalla(Jugador j, Mesa mesa);
-
+public void activarPoker();
 }

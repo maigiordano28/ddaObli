@@ -4,6 +4,7 @@
  */
 package ui.controller;
 
+import Dominio.EstadoMesa;
 import Dominio.EventoFachada;
 import Dominio.EventoMesa;
 import Dominio.Exceptions.MesaException;
@@ -28,6 +29,7 @@ public class EsperandoMesaController implements observador{
         EsperaMesaView vista;
         Mesa mesaSeleccionada;
         Jugador jugador;
+        boolean YaCargoMesa = false;
 
     public EsperandoMesaController( EsperaMesaView vista, Mesa mesa,Jugador jugador) {
         fachada=Fachada.getInstancia();
@@ -39,11 +41,14 @@ public class EsperandoMesaController implements observador{
     
     
     public void validarEntradaMesa(){
-     if(mesaSeleccionada.obtenerLargoListaJugadores()==mesaSeleccionada.getCantidadJugadores() && (!mesaSeleccionada.EnJuego() || mesaSeleccionada.jugadorEnMesa(jugador))){
-         mesaSeleccionada.setMesaEnJuego(true);
+    
+        
+        if(!YaCargoMesa){
          vista.cargarSiguientePantalla(jugador, mesaSeleccionada);
          actualizarMesa(mesaSeleccionada);
-     }
+         this.YaCargoMesa = true;
+        }
+     
     }
     
         public void actualizarMesa(Mesa mesa){
@@ -57,6 +62,11 @@ public class EsperandoMesaController implements observador{
          if (evento.equals(EventoFachada.NUEVO_JUGADOR_MESA)) {
            vista.CambiarInterfaz(mesaSeleccionada);
         }
+         
+         if(evento.equals(EventoFachada.ACTIVAR_POKER)){
+         vista.activarPoker();
+         
+         }
         
     }
     

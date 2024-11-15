@@ -144,6 +144,11 @@ public class Mesa {
     public void AgregarJugador(Jugador jugador){
         
         this.jugadores.add(jugador);
+        if(this.obtenerLargoListaJugadores()==this.getCantidadJugadores()){
+        
+        Fachada.getInstancia().avisar(EventoFachada.ACTIVAR_POKER);
+        
+        }
         Fachada.getInstancia().avisar(EventoFachada.NUEVO_JUGADOR_MESA);
         
     
@@ -208,9 +213,10 @@ public class Mesa {
     public void PagarLuz(Jugador j){
      
        
-        ActualizarPozo(apuestaBase);
+        ActualizarPozo(apuestaBase);       
+        j.ActualizarSaldo(false, apuestaBase);
         Fachada.getInstancia().avisar(EventoFachada.NUEVA_INFO);
-         j.ActualizarSaldo(false, apuestaBase);
+ 
         
        
        

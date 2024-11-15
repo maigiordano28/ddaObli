@@ -31,14 +31,19 @@ public class EsperandoMesa extends javax.swing.JDialog implements EsperaMesaView
     
     @Override
     public void CambiarInterfaz(Mesa mesaSeleccionada){
-        controller.validarEntradaMesa();
+       
          
-        //controller.actualizarMesa(mesaSeleccionada);
+       
        
         lblJugadores.setText("Esperando inicio del juego, hay "+mesaSeleccionada.obtenerLargoListaJugadores()+" jugadores de "+mesaSeleccionada.getCantidadJugadores()+" en la mesa");
      
   
     
+    }
+    @Override
+    public void activarPoker(){
+    
+    controller.validarEntradaMesa();
     }
 
     

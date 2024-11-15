@@ -31,11 +31,11 @@ public class InicioMesaController  {
     }
 
     public void EntrarAMesa(){
-        if(!mesaSeleccionada.getJugadores().contains(jugador)){
+       
+        vista.cargarSiguientePantalla(mesaSeleccionada,jugador);
+          if(!mesaSeleccionada.getJugadores().contains(jugador)){
             mesaSeleccionada.AgregarJugador(jugador);
           }
-        vista.cargarSiguientePantalla(mesaSeleccionada,jugador);
-         
     
     }
 }
