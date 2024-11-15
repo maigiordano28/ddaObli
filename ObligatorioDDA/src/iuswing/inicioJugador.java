@@ -20,26 +20,18 @@ import ui.view.InicioJugadorView;
  */
 public class inicioJugador extends javax.swing.JDialog implements InicioJugadorView {
 
-    Fachada fachada= Fachada.getInstancia();
-    private Jugador jugador;
-   // private Double saldo;
-
-    private String nombre;
+    private java.awt.Frame padre;
     private InicioJugadorController controller;
 
-    private java.awt.Frame padre;
+
     public inicioJugador(java.awt.Frame parent, boolean modal,Jugador jugador ) {
         
         super(parent, modal);
         initComponents();
-        this.jugador=jugador;
-       // this.saldo = jugador.getSaldoInicial();
-        
-        this.nombre=jugador.getNombreCompleto();
         controller=new InicioJugadorController(this,jugador);
-       cargarNombre();
-    cargarSaldo();
-    mostrarMesasCreadas();
+        cargarNombre(jugador);
+        cargarSaldo(jugador);
+        mostrarMesasCreadas(Fachada.getInstancia().getMesas());//aca como hago para pasarle mesas sin tener fachada?
         
     }
 
@@ -121,49 +113,54 @@ public class inicioJugador extends javax.swing.JDialog implements InicioJugadorV
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
-       try{
-        fachada.CerrarSesion((Usuario)jugador);
-        salir();
-       }
-       catch (UsuarioException ux) {
-            JOptionPane.showMessageDialog(
-                    this,
-                    ux.getMessage(),
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE);
-        }
+      controller.cerrarSesion();
+      
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
     private void listMesasAbiertasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMesasAbiertasMouseClicked
-        
-        List<Mesa> mesas=Fachada.getInstancia().getMesas();
         int index=listMesasAbiertas.getSelectedIndex();
-        Mesa mesaSeleccionada = mesas.get(index);
-      
-      if(jugador.getSaldoInicial()>mesaSeleccionada.getApuestaBase()*10){
-             if(mesaSeleccionada.getCantidadJugadores()==mesaSeleccionada.getJugadores().size()){
-      
-      this.mostrarMensaje("Mesa Completa");
-      
-      }else if(controller.jugadorEnMesa(jugador)){
-      this.mostrarMensaje("Ya estas en una mesa");
-      
-}else{
-        InicioMesa a= new InicioMesa(padre,false,mesaSeleccionada,jugador);
-        a.setVisible(true);
-             }     
-      }else{
-      
-      this.mostrarMensaje("Saldo Insuficiente");
-      
-      }
-      
-   
+        controller.EntrarAMesa(index);
     }//GEN-LAST:event_listMesasAbiertasMouseClicked
 
    
 
-    private List<String> formatearMesasCreadas(List<Mesa> mesasCreadas) {
+   
+  
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCerrarSesion;
+    private Inicio.DatosPrueba datosPrueba1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelSaldo;
+    private javax.swing.JList<String> listMesasAbiertas;
+    private javax.swing.JLabel txtNombreCompleto;
+    private javax.swing.JLabel txtSaldo;
+    // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void cargarSaldo(Jugador jugador) {
+        
+      txtSaldo.setText(Double.toString(jugador.getSaldoInicial()));
+    }
+
+    private void cargarNombre(Jugador jugador) {
+        txtNombreCompleto.setText(jugador.getNombreCompleto());
+      
+    }
+
+    @Override
+    public void cargarSiguientePantalla(Mesa mesaSeleccionada,Jugador jugador) {
+      InicioMesa a= new InicioMesa(padre,false,mesaSeleccionada,jugador);
+      a.setVisible(true);
+    }
+
+    @Override
+    public void mostrarMesasCreadas(List<Mesa> mesasCreadas) {
+        List<String> mesasFormateadas = formatearMesasCreadas(mesasCreadas);
+        String[] listaMesasCreadasArray = new String[mesasFormateadas.size()];
+        listMesasAbiertas.setListData(mesasFormateadas.toArray(listaMesasCreadasArray));
+        }
+
+     private List<String> formatearMesasCreadas(List<Mesa> mesasCreadas) {
         List<String> mesasFormateadas = new ArrayList<>();
         for (Mesa mesa: mesasCreadas) {
             mesasFormateadas.add(formatearMesasCreadas(mesa));
@@ -178,49 +175,18 @@ public class inicioJugador extends javax.swing.JDialog implements InicioJugadorV
                 mesa.getManos().size() + "|" + mesa.TotalApostado()+"|"+
                 mesa.getPorcentajeComision()+"|"+ mesa.getEstadoMesa();
     }
-    private void salir() {
+    
+    
+    @Override
+    public void mostrarMensaje(String msg) {
+        JOptionPane.showMessageDialog(this, msg);  
+    }
+    
+    @Override //no se si estao esta bien ahre
+     public void salir() {
         int opcion = JOptionPane.showConfirmDialog(this, "Desea Salir?");
         if (opcion == JOptionPane.YES_OPTION) {
             this.setVisible(false);
           
         }
-    }
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCerrarSesion;
-    private Inicio.DatosPrueba datosPrueba1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel labelSaldo;
-    private javax.swing.JList<String> listMesasAbiertas;
-    private javax.swing.JLabel txtNombreCompleto;
-    private javax.swing.JLabel txtSaldo;
-    // End of variables declaration//GEN-END:variables
-
-    @Override
-    public void cargarSaldo() {
-        
-      txtSaldo.setText(Double.toString(jugador.getSaldoInicial()));
-    }
-
-    private void cargarNombre() {
-        txtNombreCompleto.setText(nombre);
-      
-    }
-
-    @Override
-    public void cargarSiguientePantalla() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void mostrarMesasCreadas() {
-        List<Mesa> mesasCreadas = Fachada.getInstancia().getMesas();
-        List<String> mesasFormateadas = formatearMesasCreadas(mesasCreadas);
-        String[] listaMesasCreadasArray = new String[mesasFormateadas.size()];
-        listMesasAbiertas.setListData(mesasFormateadas.toArray(listaMesasCreadasArray));
-        }
-
-    @Override
-    public void mostrarMensaje(String msg) {
-        JOptionPane.showMessageDialog(this, msg);  
-    }
-}
+}}

@@ -14,8 +14,8 @@ import java.util.List;
  * @author HOLA
  */
 public interface EsperaMesaView {
-    public void CambiarInterfaz();
+    public void CambiarInterfaz(Mesa mesa);
     public void mostrarMensaje(String msg);
-       public void cargarSiguientePantalla(List<Jugador> js,Jugador j, Mesa mesa);
+       public void cargarSiguientePantalla(Jugador j, Mesa mesa);
 
 }

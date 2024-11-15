@@ -4,7 +4,10 @@
  */
 package ui.view;
 
+import Dominio.Mesa;
+import Dominio.Usuario.Jugador;
 import java.util.ArrayList;
+import java.util.List;
 import panelCartasPoker.CartaPoker;
 
 /**
@@ -12,9 +15,9 @@ import panelCartasPoker.CartaPoker;
  * @author HOLA
  */
 public interface PokerView {
-       public void mostrarJugadoresEnMesa();
+       public void mostrarJugadoresEnMesa(List<Jugador> nombresJugadores);
       public void mostrarMensaje(String msg);
     public void cargarSiguientePantalla();
-    public void cargarInfo();
+    public void cargarInfo(Jugador jugador,Mesa mesa);
     public void cargarCartas(ArrayList<CartaPoker> carta);
 }

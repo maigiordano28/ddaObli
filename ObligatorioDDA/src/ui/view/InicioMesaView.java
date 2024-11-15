@@ -4,18 +4,13 @@
  */
 package ui.view;
 
-import Dominio.Mano;
-import java.util.List;
+import Dominio.Mesa;
+import Dominio.Usuario.Jugador;
 
 /**
  *
  * @author HOLA
  */
-public interface AgregarManoView {
-    
-    
-     public void mostrarManosCreadas(List<Mano> manos);
-      public void mostrarMensaje(String msg);
-    public void cargarSiguientePantalla();
-    
+public interface InicioMesaView {
+    public void cargarSiguientePantalla(Mesa mesaSeleccionada,Jugador jugador);
 }

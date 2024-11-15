@@ -4,13 +4,18 @@
  */
 package ui.view;
 
+import Dominio.Mesa;
+import Dominio.Usuario.Jugador;
+import java.util.List;
+
 /**
  *
  * @author HOLA
  */
 public interface InicioJugadorView {
-     public void mostrarMesasCreadas();
+     public void mostrarMesasCreadas(List<Mesa> mesas);
       public void mostrarMensaje(String msg);
-    public void cargarSiguientePantalla();
-    public void cargarSaldo();
+    public void cargarSiguientePantalla(Mesa mesaSeleccionada,Jugador jugador);
+    public void cargarSaldo(Jugador jugador);
+    public void salir();
 }

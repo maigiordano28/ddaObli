@@ -3,19 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package iuswing;
-
-
-import Dominio.EventoMesa;
 import Dominio.Usuario.Admin;
 import javax.swing.JOptionPane;
-import iuswing.InicioAdmin;
 import ui.controller.MesaAdminController;
 import ui.view.MesaAdminView;
 
 public class AgregarMesa extends javax.swing.JDialog implements MesaAdminView {
 
     private InicioAdmin parent;
-   
     private MesaAdminController controller;
     public AgregarMesa(InicioAdmin parent, boolean modal,Admin admin) {
         super(parent, modal);

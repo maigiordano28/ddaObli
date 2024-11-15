@@ -4,16 +4,19 @@
  */
 package ui.view;
 
+import Dominio.Mesa;
 import Dominio.Usuario.Usuario;
 import Observador.observable;
+import java.util.List;
 
 /**
  *
  * @author HOLA
  */
 public interface InciarMesaView {
-    public void iniciarMesa();
-   public void mostrarMesasCreadas();
 
-    public void cargarSiguientePantalla();
+   public void mostrarMesasCreadas(List<Mesa> mesasCreadas);
+public void CargarTotalApostado(Double totalApostado);
+    public void cargarSiguientePantalla(Mesa mesaSeleccionada);
+    public void CargarMesas(List<Mesa> mesas);
 }

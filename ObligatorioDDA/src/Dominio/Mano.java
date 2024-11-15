@@ -52,10 +52,7 @@ public class Mano {
     public void setEstadoActual(String estadoActual) {
         this.estadoActual = estadoActual;
     }
-    
-    public void Barajar(){
-        
-    }
+
     public void ActualizarEstado(){
         
     }

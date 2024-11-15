@@ -172,7 +172,9 @@ public class Mesa {
     
    
     
-    
+    public int obtenerLargoListaJugadores(){
+         return this.jugadores.size();
+    }
 
     
     

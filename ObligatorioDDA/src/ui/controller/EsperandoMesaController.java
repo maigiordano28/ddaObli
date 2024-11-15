@@ -23,43 +23,47 @@ import ui.view.InciarMesaView;
  * @author HOLA
  */
 public class EsperandoMesaController implements observador{
-     Frame padre;
-      Fachada fachada;
-    EsperaMesaView vista;
-    Mesa mesa;
+        Frame padre;
+        Fachada fachada;
+        EsperaMesaView vista;
+        Mesa mesaSeleccionada;
+        Jugador jugador;
 
-    public EsperandoMesaController( EsperaMesaView vista, Mesa mesa) {
-         fachada=Fachada.getInstancia();
+    public EsperandoMesaController( EsperaMesaView vista, Mesa mesa,Jugador jugador) {
+        fachada=Fachada.getInstancia();
         this.vista = vista;
-        this.mesa = mesa;
+        this.mesaSeleccionada = mesa;
+        this.jugador=jugador;
         fachada.agregar(this);
     }
     
     
+    public void validarEntradaMesa(){
+     if(mesaSeleccionada.obtenerLargoListaJugadores()==mesaSeleccionada.getCantidadJugadores()){
+         vista.cargarSiguientePantalla(jugador, mesaSeleccionada);
+         actualizarMesa(mesaSeleccionada);
+     }
+    }
+    
+        public void actualizarMesa(Mesa mesa){
+        
+        fachada.ActualizarMesa(mesa); 
+    }   
 
     @Override
     public void actualizar(observable o, Object evento) {
         
          if (evento.equals(EventoFachada.NUEVO_JUGADOR_MESA)) {
-           vista.CambiarInterfaz();
+           vista.CambiarInterfaz(mesaSeleccionada);
         }
         
     }
     
-    public void actualizarMesa(Mesa mesa){
-        
-        fachada.ActualizarMesa(mesa); 
-    }    
+ 
     
 
 
     public void actualizarCantidadJugadores(Mesa m, Jugador j) {
         fachada.actualizarCantidadJugadores(m,j);
-    }
-    
-    public void cargarSiguientePantalla(List<Jugador> js,Jugador j, Mesa mesa){
-       
-      vista.cargarSiguientePantalla(js, j, mesa);
-       fachada.ActualizarMesa(mesa);
     }
 }

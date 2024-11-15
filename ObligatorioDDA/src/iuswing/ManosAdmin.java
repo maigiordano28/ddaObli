@@ -17,17 +17,13 @@ import ui.view.AgregarManoView;
  * @author HOLA
  */
 public class ManosAdmin extends javax.swing.JDialog implements AgregarManoView {
-    private Mesa mesa;
-    /**
-     * Creates new form ManosAdmin
-     */
+
     private AgregarManoController controller;
     public ManosAdmin(java.awt.Frame parent, boolean modal,Mesa m) {
         super(parent, modal);
         initComponents();
-        this.mesa=m;
-        this.mostrarManosCreadas();
-        controller= new AgregarManoController(this);
+        this.mostrarManosCreadas(m.getManos());
+        controller= new AgregarManoController(this,m);
     }
 
     /**
@@ -69,9 +65,8 @@ public class ManosAdmin extends javax.swing.JDialog implements AgregarManoView {
   
 
 
-@Override
-    public void mostrarManosCreadas() {
-        List<Mano> manosCreadas = mesa.getManos();
+    @Override
+    public void mostrarManosCreadas(List<Mano> manosCreadas) {
         List<String> manosFormateadas = formatearManosCreadas(manosCreadas);
         String[] listaManosCreadasArray = new String[manosFormateadas.size()];
         ListManos.setListData(manosFormateadas.toArray(listaManosCreadasArray));
@@ -83,7 +78,7 @@ public class ManosAdmin extends javax.swing.JDialog implements AgregarManoView {
             manosFormateadas.add(formatearManosCreadas(mano));
         }
         return manosFormateadas;
-    }
+        }
 
     private String formatearManosCreadas(Mano mano) {
         return mano.getNumero()+"|";//+ "|" +mano.getTotalApostado()+"|"+,mano.getEstadoActual()+"|"+mano.getJugadorGanador();

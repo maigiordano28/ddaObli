@@ -42,64 +42,7 @@ fachada.agregarAdmin("58491040" ,"mypassword8","Santiago Durán" );
  // TODO code application logic here
  
  
- ArrayList<CartaPoker> cartas = new ArrayList<>();
- cartas.add(new Carta(1, CartaPoker.CORAZON));
-cartas.add(new Carta(2, CartaPoker.CORAZON));
-cartas.add(new Carta(3, CartaPoker.CORAZON));
-cartas.add(new Carta(4, CartaPoker.CORAZON));
-cartas.add(new Carta(5, CartaPoker.CORAZON));
-cartas.add(new Carta(6, CartaPoker.CORAZON));
-cartas.add(new Carta(7, CartaPoker.CORAZON));
-cartas.add(new Carta(8, CartaPoker.CORAZON));
-cartas.add(new Carta(9, CartaPoker.CORAZON));
-cartas.add(new Carta(10, CartaPoker.CORAZON));
-cartas.add(new Carta(11, CartaPoker.CORAZON));
-cartas.add(new Carta(12, CartaPoker.CORAZON));
-cartas.add(new Carta(13, CartaPoker.CORAZON));
 
-// Diamantes
-cartas.add(new Carta(1, CartaPoker.DIAMANTE));
-cartas.add(new Carta(2, CartaPoker.DIAMANTE));
-cartas.add(new Carta(3, CartaPoker.DIAMANTE));
-cartas.add(new Carta(4, CartaPoker.DIAMANTE));
-cartas.add(new Carta(5, CartaPoker.DIAMANTE));
-cartas.add(new Carta(6, CartaPoker.DIAMANTE));
-cartas.add(new Carta(7, CartaPoker.DIAMANTE));
-cartas.add(new Carta(8, CartaPoker.DIAMANTE));
-cartas.add(new Carta(9, CartaPoker.DIAMANTE));
-cartas.add(new Carta(10, CartaPoker.DIAMANTE));
-cartas.add(new Carta(11, CartaPoker.DIAMANTE));
-cartas.add(new Carta(12, CartaPoker.DIAMANTE));
-cartas.add(new Carta(13, CartaPoker.DIAMANTE));
-
-// Tréboles
-cartas.add(new Carta(2, CartaPoker.TREBOL));
-cartas.add(new Carta(3, CartaPoker.TREBOL));
-cartas.add(new Carta(4, CartaPoker.TREBOL));
-cartas.add(new Carta(5, CartaPoker.TREBOL));
-cartas.add(new Carta(6, CartaPoker.TREBOL));
-cartas.add(new Carta(7, CartaPoker.TREBOL));
-cartas.add(new Carta(8, CartaPoker.TREBOL));
-cartas.add(new Carta(9, CartaPoker.TREBOL));
-cartas.add(new Carta(10, CartaPoker.TREBOL));
-cartas.add(new Carta(11, CartaPoker.TREBOL));
-cartas.add(new Carta(12, CartaPoker.TREBOL));
-cartas.add(new Carta(13, CartaPoker.TREBOL));
-
-// Picas
-cartas.add(new Carta(1, CartaPoker.PIQUE));
-cartas.add(new Carta(2, CartaPoker.PIQUE));
-cartas.add(new Carta(3, CartaPoker.PIQUE));
-cartas.add(new Carta(4, CartaPoker.PIQUE));
-cartas.add(new Carta(5, CartaPoker.PIQUE));
-cartas.add(new Carta(6, CartaPoker.PIQUE));
-cartas.add(new Carta(7, CartaPoker.PIQUE));
-cartas.add(new Carta(8, CartaPoker.PIQUE));
-cartas.add(new Carta(9, CartaPoker.PIQUE));
-cartas.add(new Carta(10, CartaPoker.PIQUE));
-cartas.add(new Carta(11, CartaPoker.PIQUE));
-cartas.add(new Carta(12, CartaPoker.PIQUE));
-cartas.add(new Carta(13, CartaPoker.PIQUE));
         
     }
 }

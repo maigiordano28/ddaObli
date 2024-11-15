@@ -6,10 +6,13 @@ package ui.controller;
 
 import Dominio.EventoMesa;
 import Dominio.Fachada;
+import Dominio.Mesa;
 import ui.view.InciarMesaView;
 import Dominio.Usuario.Admin;
 import Observador.observable;
 import Observador.observador;
+import iuswing.ManosAdmin;
+import java.util.List;
 import java.util.logging.Logger;
 /**
  *
@@ -28,22 +31,34 @@ public class IniciarMesaController implements observador{
         fachada.agregar(this);
     }
    
+    public void TotalApostado(){
     
-    public void iniciarMesa(){
-        
+    Double totalApostado=fachada.TotalApostado();
+    vista.CargarTotalApostado(totalApostado);
+    
+    
     }
 
-   
+   public void obtenerMesaSeleccionada(int index){
+    List<Mesa> mesas=Fachada.getInstancia().getMesas();
+    Mesa mesaSeleccionada = mesas.get(index);
+    vista.cargarSiguientePantalla(mesaSeleccionada);
+   }
 
     public Admin getAdmin() {
           return admin;
     }
     
+    public void ObtenerMesas(){
+    
+    List<Mesa> mesas= fachada.getMesas();
+    vista.CargarMesas(mesas);
+    }
     
       public void actualizar(observable o, Object evento) {
         
         if (evento.equals(EventoMesa.NUEVA_MESA)) {
-            vista.mostrarMesasCreadas();
+            vista.mostrarMesasCreadas(fachada.getMesas());
         }
         
      

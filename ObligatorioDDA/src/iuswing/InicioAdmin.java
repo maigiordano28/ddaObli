@@ -24,7 +24,7 @@ import ui.view.InciarMesaView;
  * @author HOLA
  */
 public class InicioAdmin extends javax.swing.JDialog implements InciarMesaView{
-    Fachada fachada= Fachada.getInstancia();
+   
   private java.awt.Frame padre;
    private IniciarMesaController controller;
     /**
@@ -33,9 +33,10 @@ public class InicioAdmin extends javax.swing.JDialog implements InciarMesaView{
     public InicioAdmin(java.awt.Frame parent, boolean modal, Admin u) {
         super(parent, modal);
         initComponents();
-        CargarTotalApostado();
-        this.CargarMesas();
         controller= new IniciarMesaController(this,u);
+        TotalApostado();
+        ObtenerMesas();//COMO HGAO ACA PARA RESPETAR MVC??????????????????????
+        
         
      
     }
@@ -105,24 +106,60 @@ public class InicioAdmin extends javax.swing.JDialog implements InciarMesaView{
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrarMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrarMesaActionPerformed
-     this.cargarSiguientePantalla();
+      AgregarMesa a= new AgregarMesa(null,false,controller.getAdmin());
+      a.setVisible(true);
        
     }//GEN-LAST:event_btnCrarMesaActionPerformed
 
     private void ListMesasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListMesasMouseClicked
-        List<Mesa> mesas=Fachada.getInstancia().getMesas();
         int index=ListMesas.getSelectedIndex();
-        Mesa mesaSeleccionada = mesas.get(index);
-      
-        ManosAdmin a= new ManosAdmin(padre,false,mesaSeleccionada);
-        a.setVisible(true);
+        controller.obtenerMesaSeleccionada(index);
+       
              
       
     }//GEN-LAST:event_ListMesasMouseClicked
 
 
-    
-    private List<String> formatearMesasCreadas(List<Mesa> mesasCreadas) {
+public void ObtenerMesas(){
+controller.ObtenerMesas();
+}
+@Override
+public void CargarMesas(List<Mesa> mesas){
+   ListMesas.setListData( mesas.toArray());
+
+}
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JList ListMesas;
+    private javax.swing.JButton btnCrarMesa;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelMontoTotal;
+    private javax.swing.JLabel labelMontoTotalH;
+    // End of variables declaration//GEN-END:variables
+
+    public void TotalApostado(){
+    controller.TotalApostado();
+    }
+    @Override
+    public void CargarTotalApostado(Double totalApostado) {
+         labelMontoTotalH.setText(Double.toString(totalApostado));
+
+    }
+
+    @Override
+    public void cargarSiguientePantalla(Mesa mesaSeleccionada) {
+        ManosAdmin a= new ManosAdmin(padre,false,mesaSeleccionada);
+        a.setVisible(true);
+    }
+
+    @Override
+    public void mostrarMesasCreadas(List<Mesa> mesasCreadas) {
+        List<String> mesasFormateadas = formatearMesasCreadas(mesasCreadas);
+        String[] listaMesasCreadasArray = new String[mesasFormateadas.size()];
+        ListMesas.setListData(mesasFormateadas.toArray(listaMesasCreadasArray));
+    }
+
+ 
+   private List<String> formatearMesasCreadas(List<Mesa> mesasCreadas) {
         List<String> mesasFormateadas = new ArrayList<>();
         for (Mesa mesa: mesasCreadas) {
             mesasFormateadas.add(formatearMesasCreadas(mesa));
@@ -139,53 +176,13 @@ public class InicioAdmin extends javax.swing.JDialog implements InciarMesaView{
                 mesa.getManos().size() + "|" + mesa.TotalApostado()+"|"+
                 mesa.getPorcentajeComision()+"|"+ mesa.getEstadoMesa();
     }
-public void CargarMesas(){
-   List<Mesa> mesas=fachada.getMesas();
-   ListMesas.setListData( mesas.toArray());
 
-}
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JList ListMesas;
-    private javax.swing.JButton btnCrarMesa;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel labelMontoTotal;
-    private javax.swing.JLabel labelMontoTotalH;
-    // End of variables declaration//GEN-END:variables
-
-    private void CargarTotalApostado() {
-         labelMontoTotalH.setText(Double.toString(fachada.TotalApostado()));
-    }
-
-    @Override
-    public void iniciarMesa() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void cargarSiguientePantalla() {
-        
-        AgregarMesa a= new AgregarMesa(null,false,controller.getAdmin());
-        a.setVisible(true);
-    }
-
-    @Override
-    public void mostrarMesasCreadas() {
-    
-        List<Mesa> mesasCreadas = Fachada.getInstancia().getMesas();
-        List<String> mesasFormateadas = formatearMesasCreadas(mesasCreadas);
-        String[] listaMesasCreadasArray = new String[mesasFormateadas.size()];
-        ListMesas.setListData(mesasFormateadas.toArray(listaMesasCreadasArray));
-    }
-
- 
-   
-
-    }
+  
 
       
 
 
     
-    
+}
     
 

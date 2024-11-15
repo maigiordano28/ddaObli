@@ -24,24 +24,16 @@ import ui.view.PokerView;
  *
  * @author PC
  */
-public class Poker extends javax.swing.JDialog implements PanelCartasListener,PokerView {
-private Jugador j;
-private List<Jugador> jugadores;
-private Mesa m;
+public class Poker extends javax.swing.JDialog implements PokerView , PanelCartasListener{
+
+  
 private PokerController controller;
    
-    public Poker(java.awt.Frame parent, boolean modal,List<Jugador> listJugadores,Jugador jugador,Mesa mesa) {
+    public Poker(java.awt.Frame parent, boolean modal,Jugador jugador,Mesa mesa) {
         super(parent, modal);
         initComponents();
-        this.jugadores=listJugadores;
-         this.j=jugador;
-         this.m=mesa;
-          
-    
-        controller= new PokerController(this);
-         EmpezarJuego(); 
-      
-        
+        controller = new PokerController(this,jugador,mesa);
+        EmpezarJuego(jugador,mesa);
     }
     
 
@@ -50,36 +42,30 @@ private PokerController controller;
         initComponents();
     }
     
-    private void EmpezarJuego() {
-        AgregarMano();
-        mostrarJugadoresEnMesa();
-
-
-
-    }
-    public void  DescontarLuz(){
-      m.PagarLuz(j);
-      
-      
-    
+    private void EmpezarJuego(Jugador jugador, Mesa mesa) {
+        AgregarMano(jugador,mesa);
+        mostrarJugadoresEnMesa(mesa.getJugadores());
     }
     
-    public void AgregarMano(){
+   
+    
+    public void AgregarMano(Jugador jugador,Mesa mesa){
         DescontarLuz();
-        cargarInfo(); 
-        //controller.agregarMano(m);
-
+        cargarInfo(jugador,mesa); 
+        //controller.agregarMano(m)
     } 
-            
-@Override
-    public void cargarInfo(){
-            
-            txtPozo.setText("Pozo: "+Double.toString(m.getPozo()));
-           txtNombreJugador.setText("Jugador: " + j.getNombreCompleto()); // Ajusta para mostrar en la interfaz
-            txtSaldo.setText("Saldo: "+ Double.toString(j.getSaldoInicial()));
-           txtNombreMesa.setText("Mesa: "+String.valueOf(m.getNumero())); // Ajusta para mostrar en la interfaz;
-           
     
+        
+    public void  DescontarLuz(){
+      controller.DescontarLuz();
+    }
+    
+    @Override
+    public void cargarInfo(Jugador jugador, Mesa mesa){
+           txtPozo.setText("Pozo: "+Double.toString(mesa.getPozo()));
+           txtNombreJugador.setText("Jugador: " + jugador.getNombreCompleto()); // Ajusta para mostrar en la interfaz
+           txtSaldo.setText("Saldo: "+ Double.toString(jugador.getSaldoInicial()));
+           txtNombreMesa.setText("Mesa: "+String.valueOf(mesa.getNumero())); // Ajusta para mostrar en la interfaz;
     }
 
 
@@ -174,6 +160,13 @@ private PokerController controller;
         }else panelCartasPoker1.setListener(null);
     }//GEN-LAST:event_checkListenerActionPerformed
 
+     @Override
+    public void mostrarJugadoresEnMesa( List<Jugador> nombresJugadores) {
+        List<String> nombreJugadoresFormateados = cargarNombresJugadores(nombresJugadores);
+        String[] listaNombreJugadoresArray = new String[nombreJugadoresFormateados.size()];
+        listJugadores.setListData(nombreJugadoresFormateados.toArray(listaNombreJugadoresArray));
+        }
+    
     
     private List<String> cargarNombresJugadores(List<Jugador> nombresJugadores) {
         List<String> nombresJugadoresString = new ArrayList<>();
@@ -185,18 +178,11 @@ private PokerController controller;
     
     private String formatearNombreJugadores(Jugador jugador) {
         return jugador.getNombreCompleto();
-                
     }
     
     
     
-    @Override
-    public void mostrarJugadoresEnMesa() {
-        List<Jugador> nombresJugadores = m.getJugadores();
-        List<String> nombreJugadoresFormateados = cargarNombresJugadores(nombresJugadores);
-        String[] listaNombreJugadoresArray = new String[nombreJugadoresFormateados.size()];
-        listJugadores.setListData(nombreJugadoresFormateados.toArray(listaNombreJugadoresArray));
-        }
+   
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -16,6 +16,7 @@ import Observador.observable;
 import Observador.observador;
 import iuswing.Poker;
 import java.util.ArrayList;
+import java.util.List;
 import panelCartasPoker.CartaPoker;
 import ui.view.InicioJugadorView;
 import ui.view.PokerView;
@@ -25,29 +26,34 @@ import ui.view.PokerView;
  * @author HOLA
  */
 public class PokerController implements observador{
- Fachada fachada;
+    Fachada fachada;
     PokerView vista;
+    private Jugador jugador;
+    private Mesa mesa;
    
-    
-
-    public PokerController(PokerView vista) {
+    public PokerController(PokerView vista,Jugador jugador,Mesa mesa) {
         fachada=Fachada.getInstancia();
         this.vista = vista;
-        
+        this.jugador=jugador;
+        this.mesa=mesa;
         Fachada.getInstancia().agregar(this);
+      
     }
 
- 
+    public void DescontarLuz(){
+        mesa.PagarLuz(jugador);
+        
+    }
     
     @Override
       public void actualizar(observable o, Object evento) {
         
         if (evento.equals(EventoFachada.NUEVO_MESA_INICIADA)) {
-            vista.mostrarJugadoresEnMesa();
+            vista.mostrarJugadoresEnMesa(mesa.getJugadores());
         }
         
-          if (evento.equals(EventoFachada.NUEVA_INFO)) {
-            vista.cargarInfo();
+        if (evento.equals(EventoFachada.NUEVA_INFO)) {
+            vista.cargarInfo(jugador, mesa);
         }
      
     }

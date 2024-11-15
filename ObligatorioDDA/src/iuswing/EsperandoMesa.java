@@ -17,36 +17,24 @@ import ui.view.EsperaMesaView;
  * @author HOLA
  */
 public class EsperandoMesa extends javax.swing.JDialog implements EsperaMesaView {
-    private Mesa mesa;
-    private Jugador jugador;
-
     private java.awt.Frame padre;
     private EsperandoMesaController controller;
-    /**
-     * Creates new form Jugar
-     */
+
     public EsperandoMesa(java.awt.Frame parent, boolean modal,Mesa mesaSeleccionada,Jugador jugador) {
         super(parent, modal);
         initComponents();
-        this.mesa=mesaSeleccionada;
-        this.jugador=jugador;
-
-         controller= new EsperandoMesaController(this, mesa);
-        CambiarInterfaz();
+        
+        controller= new EsperandoMesaController(this, mesaSeleccionada,jugador);
+        CambiarInterfaz(mesaSeleccionada);
     }
     
-    
-    public void CambiarInterfaz(){
-
-     if(mesa.getJugadores().size()==mesa.getCantidadJugadores()){
-         cargarSiguientePantalla(mesa.getJugadores(),jugador, mesa);
-        
-        controller.actualizarMesa(mesa);
+    @Override
+    public void CambiarInterfaz(Mesa mesaSeleccionada){
+        controller.validarEntradaMesa();
+        controller.actualizarMesa(mesaSeleccionada);
         this.dispose();
-        
-     }else{
-         lblJugadores.setText("Esperando inicio del juego, hay "+mesa.getJugadores().size()+"jugadores de "+mesa.getCantidadJugadores()+" en la mesa");
-     }
+        lblJugadores.setText("Esperando inicio del juego, hay "+mesaSeleccionada.obtenerLargoListaJugadores()+" jugadores de "+mesaSeleccionada.getCantidadJugadores()+" en la mesa");
+     
     
     
     }
@@ -92,10 +80,10 @@ public class EsperandoMesa extends javax.swing.JDialog implements EsperaMesaView
     }
 
     @Override
-    public void cargarSiguientePantalla(List<Jugador> js, Jugador j, Mesa mesa) {
+    public void cargarSiguientePantalla(Jugador j, Mesa mesa) {
      
-          Poker a= new Poker(padre,false,mesa.getJugadores(),j,mesa);
-        a.setVisible(true);
+          Poker a= new Poker(padre,false,j,mesa);
+          a.setVisible(true);
         
          
     //a.RecibirCartas(mesa.obtenerArrayMazo());

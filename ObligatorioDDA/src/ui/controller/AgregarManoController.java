@@ -20,13 +20,14 @@ import ui.view.EsperaMesaView;
  */
 public class AgregarManoController implements observador{
      Frame padre;
-      Fachada fachada;
-    AgregarManoView vista;
+     Fachada fachada;
+        AgregarManoView vista;
+private Mesa mesa;
 
-
-    public AgregarManoController( AgregarManoView vista) {
+    public AgregarManoController( AgregarManoView vista,Mesa mesa) {
          fachada=Fachada.getInstancia();
         this.vista = vista;
+        this.mesa=mesa;
        
         fachada.agregar(this);
     }
@@ -34,7 +35,7 @@ public class AgregarManoController implements observador{
     @Override
     public void actualizar(observable o, Object evento) {
         if (evento.equals(EventoFachada.NUEVA_MANO)) {
-            vista.mostrarManosCreadas();
+            vista.mostrarManosCreadas(mesa.getManos());
         }
     }
     
