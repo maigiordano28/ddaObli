@@ -20,7 +20,7 @@ public interface PokerView {
     public void cargarSiguientePantalla();
     public void cargarInfo(Jugador jugador,Mesa mesa);
     public void cargarCartas(ArrayList<CartaPoker> carta);
-    public void cambiarVistaPagar();
+    public void cambiarVistaPagar(Double apuesta);
 
     
 }

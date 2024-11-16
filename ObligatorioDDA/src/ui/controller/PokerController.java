@@ -33,6 +33,7 @@ public class PokerController implements observador{
     private Jugador jugador;
     private Mesa mesa;
     private Mano mano;
+    private Double apuestaAPagar;
    
     public PokerController(PokerView vista,Jugador jugador,Mesa mesa) {
         fachada=Fachada.getInstancia();
@@ -53,15 +54,16 @@ public class PokerController implements observador{
         }else{
             
             if(mano.getEstadoActual().equals(EstadoMano.Esperando_apuesta)){
-            
+            apuestaAPagar = apuesta;
             mesa.apostar(apuesta);
         jugador.ActualizarSaldo(false, apuesta);
         vista.mostrarMensaje("Apuesta realizada");
             
             }else if(mano.getEstadoActual().equals(EstadoMano.Apuesta_iniciada)){
             
-            mesa.ActualizarPozo(true, apuesta);
-            jugador.ActualizarSaldo(false, apuesta);
+            mesa.ActualizarPozo(true, apuestaAPagar);
+            
+            jugador.ActualizarSaldo(false, apuestaAPagar);
             vista.mostrarMensaje("Pago realizada");
             
             }
@@ -82,7 +84,7 @@ public class PokerController implements observador{
         }
         
         if (evento.equals(EventoFachada.NUEVA_APUESTA)) {
-            vista.cambiarVistaPagar();
+            vista.cambiarVistaPagar(apuestaAPagar);
         }
      
     }

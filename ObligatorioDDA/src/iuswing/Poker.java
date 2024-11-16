@@ -184,7 +184,7 @@ private PokerController controller;
     }//GEN-LAST:event_checkListenerActionPerformed
 
     private void btnApostarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApostarActionPerformed
-
+        
         Double apuesta = Double.parseDouble(txtApuesta.getText());
         controller.apostar(apuesta);
         
@@ -198,10 +198,10 @@ private PokerController controller;
     
     @Override
     
-        public void cambiarVistaPagar(){
+        public void cambiarVistaPagar(Double apuesta){
         
         btnApostar.setText("Pagar");
-        txtApuesta.disable();
+        txtApuesta.setText(String.valueOf(apuesta));
         
         
         }
