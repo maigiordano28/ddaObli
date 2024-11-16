@@ -50,7 +50,7 @@ public class Mano {
     }
 
     public void setEstadoActual(EstadoMano EstadoMano) {
-        this.estadoActual = estadoActual;
+        this.estadoActual = EstadoMano;
     }
 
     public void ActualizarEstado(){
