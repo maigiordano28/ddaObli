@@ -12,7 +12,7 @@ public class Mano {
     private static int s_ultNumero=1;
     private int numero;
     private int totalApostado;
-    private String estadoActual;
+    private EstadoMano estadoActual;
     private String jugadorGanador;
     private Figura figuraGanadora;
 
@@ -45,11 +45,11 @@ public class Mano {
         this.totalApostado = totalApostado;
     }
 
-    public String getEstadoActual() {
+    public EstadoMano getEstadoActual() {
         return estadoActual;
     }
 
-    public void setEstadoActual(String estadoActual) {
+    public void setEstadoActual(EstadoMano EstadoMano) {
         this.estadoActual = estadoActual;
     }
 

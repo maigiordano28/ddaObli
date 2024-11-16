@@ -71,17 +71,21 @@ public ArrayList<CartaPoker> obtenerArrayMazoComoCartasPoker() {
         return cartasPoker;
     }
  
-    public void repartirCartas(ArrayList<CartaPoker> cartas){
+    public ArrayList<CartaPoker> repartirCartas(ArrayList<CartaPoker> cartas){
+        
+        ArrayList<CartaPoker> cartasPoker = new ArrayList<>();
+       
         int i = 0;
         //ArrayList<CartaPoker> cartas = obtenerArrayMazoComoCartasPoker();
-        for(Jugador j:jugadores){
-            while(j.getCartasMano().size()<5 && i<cartas.size()){
+       
+            while(cartasPoker.size()<5 && i<cartas.size()){
 
-                j.getCartasMano().add((Carta) cartas.get(i));
+                cartasPoker.add(cartas.get(i));
                 i++;
             }
-        }
-
+        
+return cartasPoker;
+   
     }
 
     public void setNumero(int numero) {
@@ -167,11 +171,27 @@ public ArrayList<CartaPoker> obtenerArrayMazoComoCartasPoker() {
         return mano;
     }
     
-    public void ActualizarPozo(Double monto){
+    public void ActualizarPozo(boolean bollean ,Double monto){
+     if(bollean==true){
+     
+        pozo+=monto;
+     
+     }else{
+     
+     pozo-=monto;
+     
+     }
      
 
-        pozo+=monto;
     }
+    
+    public void apostar(Double apuesta){
+    ActualizarPozo(true,apuesta);
+     Fachada.getInstancia().avisar(EventoFachada.NUEVA_APUESTA);
+    
+    
+    }
+    
     
     public void ActualizarEstado(){
         
@@ -219,9 +239,9 @@ public ArrayList<CartaPoker> obtenerArrayMazoComoCartasPoker() {
     public void PagarLuz(Jugador j){
      
        
-        ActualizarPozo(apuestaBase);       
+        ActualizarPozo(true,apuestaBase);       
         j.ActualizarSaldo(false, apuestaBase);
-        Fachada.getInstancia().avisar(EventoFachada.NUEVA_INFO);
+     
         
         
        

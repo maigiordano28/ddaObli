@@ -14,6 +14,7 @@ public enum EventoFachada {
     NUEVO_MESA_INICIADA,
     NUEVA_INFO,
     NUEVA_MANO,
-    ACTIVAR_POKER
+    ACTIVAR_POKER,
+    NUEVA_APUESTA
    
 }

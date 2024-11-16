@@ -5,6 +5,8 @@
 package Dominio.Usuario;
 
 import Dominio.Carta;
+import Dominio.EventoFachada;
+import Dominio.Fachada;
 import Dominio.Usuario.Usuario;
 import java.util.ArrayList;
 import panelCartasPoker.CartaPoker;
@@ -69,7 +71,7 @@ public class Jugador extends Usuario{
         }else{
             SaldoInicial=SaldoInicial-num;
         }
-        
+           Fachada.getInstancia().avisar(EventoFachada.NUEVA_INFO);
         
 }
     

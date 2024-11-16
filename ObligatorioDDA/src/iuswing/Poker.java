@@ -40,9 +40,10 @@ private PokerController controller;
    
     
     private void EmpezarJuego(Jugador jugador, Mesa mesa) {
-        AgregarMano(jugador,mesa);
+        
         mostrarJugadoresEnMesa(mesa.getJugadores());
         cargarCartas(jugador.getCartasMano());
+        AgregarMano(jugador,mesa);
     }
     
    
@@ -50,7 +51,7 @@ private PokerController controller;
     public void AgregarMano(Jugador jugador,Mesa mesa){
         DescontarLuz();
         cargarInfo(jugador,mesa); 
-        //controller.agregarMano(m)
+        controller.agregarMano(mesa);
         controller.repartirCartas(mesa, mesa.obtenerArrayMazoComoCartasPoker());
     } 
     
@@ -92,6 +93,9 @@ private PokerController controller;
         listJugadores = new javax.swing.JList<>();
         txtPozo = new javax.swing.JLabel();
         txtEstadoActualMano = new javax.swing.JLabel();
+        btnApostar = new javax.swing.JButton();
+        txtApuesta = new javax.swing.JTextField();
+        txtPasar = new javax.swing.JButton();
 
         jLabel4.setText("jLabel4");
 
@@ -140,9 +144,29 @@ private PokerController controller;
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(180, 50, 300, 130);
         getContentPane().add(txtPozo);
-        txtPozo.setBounds(440, 230, 110, 30);
+        txtPozo.setBounds(250, 240, 110, 30);
         getContentPane().add(txtEstadoActualMano);
-        txtEstadoActualMano.setBounds(440, 250, 0, 0);
+        txtEstadoActualMano.setBounds(440, 230, 150, 20);
+
+        btnApostar.setText("Apostar");
+        btnApostar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApostarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnApostar);
+        btnApostar.setBounds(110, 580, 75, 23);
+        getContentPane().add(txtApuesta);
+        txtApuesta.setBounds(40, 580, 64, 22);
+
+        txtPasar.setText("Pasar");
+        txtPasar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtPasar);
+        txtPasar.setBounds(210, 580, 72, 23);
 
         setBounds(0, 0, 1064, 705);
     }// </editor-fold>//GEN-END:initComponents
@@ -159,6 +183,28 @@ private PokerController controller;
         }else panelCartasPoker1.setListener(null);
     }//GEN-LAST:event_checkListenerActionPerformed
 
+    private void btnApostarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApostarActionPerformed
+
+        Double apuesta = Double.parseDouble(txtApuesta.getText());
+        controller.apostar(apuesta);
+        
+    }//GEN-LAST:event_btnApostarActionPerformed
+
+    private void txtPasarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasarActionPerformed
+
+    
+    
+    @Override
+    
+        public void cambiarVistaPagar(){
+        
+        btnApostar.setText("Pagar");
+        txtApuesta.disable();
+        
+        
+        }
      @Override
     public void mostrarJugadoresEnMesa( List<Jugador> nombresJugadores) {
         List<String> nombreJugadoresFormateados = cargarNombresJugadores(nombresJugadores);
@@ -185,6 +231,7 @@ private PokerController controller;
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnApostar;
     private javax.swing.JCheckBox checkListener;
     private javax.swing.JCheckBox habilitarPanel;
     private javax.swing.JLabel jLabel4;
@@ -193,11 +240,13 @@ private PokerController controller;
     private javax.swing.JList<String> listFiguras;
     private javax.swing.JList<String> listJugadores;
     private panelCartasPoker.PanelCartasPoker panelCartasPoker1;
+    private javax.swing.JTextField txtApuesta;
     private javax.swing.JLabel txtEstadoActualMano;
     private javax.swing.JLabel txtFigurActual;
     private javax.swing.JLabel txtNombreJugador;
     private javax.swing.JLabel txtNombreMesa;
     private javax.swing.JLabel txtNumeroDeMano;
+    private javax.swing.JButton txtPasar;
     private javax.swing.JLabel txtPozo;
     private javax.swing.JLabel txtSaldo;
     // End of variables declaration//GEN-END:variables
