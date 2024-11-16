@@ -37,14 +37,12 @@ private PokerController controller;
     }
     
 
-    public Poker(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        initComponents();
-    }
+   
     
     private void EmpezarJuego(Jugador jugador, Mesa mesa) {
         AgregarMano(jugador,mesa);
         mostrarJugadoresEnMesa(mesa.getJugadores());
+        cargarCartas(jugador.getCartasMano());
     }
     
    
@@ -53,6 +51,7 @@ private PokerController controller;
         DescontarLuz();
         cargarInfo(jugador,mesa); 
         //controller.agregarMano(m)
+        controller.repartirCartas(mesa, mesa.obtenerArrayMazoComoCartasPoker());
     } 
     
         

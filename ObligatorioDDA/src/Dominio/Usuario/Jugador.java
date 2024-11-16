@@ -7,6 +7,7 @@ package Dominio.Usuario;
 import Dominio.Carta;
 import Dominio.Usuario.Usuario;
 import java.util.ArrayList;
+import panelCartasPoker.CartaPoker;
 
 
 /**
@@ -28,10 +29,15 @@ public class Jugador extends Usuario{
         super(nombreCompleto, password);
     }
 
-    public ArrayList<Carta> getCartasMano() {
-        return cartasMano;
+  public ArrayList<CartaPoker> getCartasMano() {
+        ArrayList<CartaPoker> cartasPoker = new ArrayList<>();
+    for (Carta carta : cartasMano) {
+        if (carta instanceof CartaPoker) {
+            cartasPoker.add((CartaPoker) carta);
+        }
     }
-
+    return cartasPoker;
+    }
     public void setCartasMano(ArrayList<Carta> cartasMano) {
         this.cartasMano = cartasMano;
     }

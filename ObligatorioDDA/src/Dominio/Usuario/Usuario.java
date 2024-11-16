@@ -53,5 +53,9 @@ public class Usuario {
         Usuario u = (Usuario)o;
         return nombreCompleto.equalsIgnoreCase(u.getNombreCompleto()) &&
                password.equals(u.getPassword());
-    }}
+    }
+
+
+
+}
 

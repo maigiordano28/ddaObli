@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import Dominio.Exceptions.MesaException;
 import java.util.List;
 import Dominio.EventoFachada;
+import panelCartasPoker.CartaPoker;
 
 
 /**
@@ -62,20 +63,25 @@ public class Mesa {
         return numero;
     }
     
- public ArrayList<Carta> obtenerArrayMazo(){
+public ArrayList<CartaPoker> obtenerArrayMazoComoCartasPoker() {
+        ArrayList<CartaPoker> cartasPoker = new ArrayList<>();
+        for (Carta carta : mazo.cartasMazo) {
+            cartasPoker.add(carta); // Usando el constructor de CartaPoker
+        }
+        return cartasPoker;
+    }
  
- return this.mazo.cartasMazo;
- 
- }
- 
-    public void repartirCartas(){
-        ArrayList<Carta> cartas = obtenerArrayMazo();
+    public void repartirCartas(ArrayList<CartaPoker> cartas){
+        int i = 0;
+        //ArrayList<CartaPoker> cartas = obtenerArrayMazoComoCartasPoker();
         for(Jugador j:jugadores){
-            for(int i = 0; i<cartas.size();i++){
-                j.getCartasMano().add(cartas.get(i));
+            while(j.getCartasMano().size()<5 && i<cartas.size()){
+
+                j.getCartasMano().add((Carta) cartas.get(i));
+                i++;
             }
         }
-       
+
     }
 
     public void setNumero(int numero) {
@@ -216,7 +222,7 @@ public class Mesa {
         ActualizarPozo(apuestaBase);       
         j.ActualizarSaldo(false, apuestaBase);
         Fachada.getInstancia().avisar(EventoFachada.NUEVA_INFO);
- 
+        
         
        
        

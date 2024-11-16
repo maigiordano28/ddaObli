@@ -6,6 +6,7 @@ package Dominio;
 
 import java.util.ArrayList;
 import java.util.Random;
+import panelCartasPoker.CartaPoker;
 
 
 /**
@@ -27,14 +28,14 @@ public class Mazo {
         return cartasMazo;
     }
        
-    public ArrayList<Carta> barajarMazo(ArrayList<Carta> cartas) {
+    public ArrayList<CartaPoker> barajarMazo(ArrayList<CartaPoker> cartas) {
         Random random = new Random();
         for (int i = 0; i < cartas.size(); i++) {
             // Elige un índice al azar para intercambiar con el índice actual
             int randomIndex = random.nextInt(cartas.size());
             
             // Intercambia cartas
-            Carta temp = cartas.get(i);
+            Carta temp = (Carta)cartas.get(i);
             cartas.set(i, cartas.get(randomIndex));
             cartas.set(randomIndex, temp);
         }
