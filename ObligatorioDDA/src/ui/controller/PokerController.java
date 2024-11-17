@@ -87,6 +87,7 @@ public class PokerController implements observador{
     
     
   public void descartarYRepartirCartas(){
+    
       if(cartasACambiar.size()<1){
           vista.mostrarMensaje("No ha seleccionado ninguna carta");
       
@@ -139,19 +140,7 @@ public class PokerController implements observador{
   }}
   
   
- /* public void cambiarCartas(){
-  
-  
-  
-   
-          ArrayList<CartaPoker> cartasARepartir = new ArrayList<>();
-          
-            for (Carta c : mesa.getMazoAux().getCartasMazo()) {
-            cartasARepartir.add(c); // Usando el constructor de CartaPoker
-            }
 
-           
-          ArrayList<CartaPoker> cartas =mesa.repartirCartas(cartasARepartir,cartasACambiar.size());}*/
   
   public void conseguirCartas(CartaPoker carta){
   cartasACambiar.add(carta);
