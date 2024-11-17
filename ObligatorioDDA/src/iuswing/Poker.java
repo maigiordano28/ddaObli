@@ -47,8 +47,7 @@ private PokerController controller;
         mostrarJugadoresEnMesa(mesa.getJugadores());
         conseguirFigura();
         AgregarMano(jugador,mesa);
-        ArrayList<CartaPoker> poker=controller.cambiarGet();
-       cargarCartas(poker);
+       cargarCartas(jugador.getCartasMano());
         CargarFiguraActual();
     }
     
@@ -58,7 +57,7 @@ private PokerController controller;
         DescontarLuz();
         cargarInfo(jugador,mesa); 
         controller.agregarMano(mesa);
-        controller.repartirCartas(mesa, mesa.obtenerArrayMazoComoCartasPoker());
+        controller.repartirCartas(mesa, mesa.obtenerCartasMazo());
     } 
    public void CargarFiguraActual(){
         String figura=controller.FiguraActual();
@@ -125,8 +124,9 @@ private PokerController controller;
             }
         });
         getContentPane().add(habilitarPanel);
-        habilitarPanel.setBounds(650, 580, 150, 20);
+        habilitarPanel.setBounds(800, 570, 150, 20);
 
+        checkListener.setSelected(true);
         checkListener.setText("Escuchar clicks del panel");
         checkListener.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,7 +134,7 @@ private PokerController controller;
             }
         });
         getContentPane().add(checkListener);
-        checkListener.setBounds(650, 610, 210, 20);
+        checkListener.setBounds(800, 600, 210, 20);
 
         jScrollPane1.setViewportView(listFiguras);
 
@@ -183,6 +183,7 @@ private PokerController controller;
         lblApuestaRealizada.setBounds(310, 560, 150, 60);
 
         btnCambiarCartas.setText("Cambiar Cartas");
+        btnCambiarCartas.setEnabled(false);
         btnCambiarCartas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCambiarCartasActionPerformed(evt);
@@ -231,6 +232,7 @@ private PokerController controller;
         btnApostar.setText("Pagar");
         txtApuesta.setText(String.valueOf(apuesta));
         txtApuesta.disable();
+        
         
         
         }
@@ -325,18 +327,18 @@ private PokerController controller;
     }
 
     @Override
-    public void cargarCartas(ArrayList<CartaPoker> cartas) {
+    public void cargarCartas(ArrayList<Carta> cartas) {
         try {
-            panelCartasPoker1.cargarCartas(cartas);
+            ArrayList<CartaPoker> cartasPoker = new ArrayList<>(cartas);
+            panelCartasPoker1.cargarCartas(cartasPoker);
         } catch (PanelCartasPokerException ex) {
              JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR",JOptionPane.ERROR_MESSAGE);
         }
     }
-  /*  @Override
-    public void cambiarCartas(){
-    
-    controller.cambiarCartas();
+
+    @Override
+    public void HabilitarBoton() {
+      btnCambiarCartas.enable();
     }
-*/
 
 }

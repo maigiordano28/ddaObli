@@ -71,7 +71,6 @@ public class Mesa {
         this.manos = new ArrayList<Mano>();
         this.EstadoMesa = EstadoMesa.abierta;
         this.pozo=0.0;
-        this.cartas= new ArrayList<Carta>();
         this.mazo = new Mazo();
         this.mazoAux=new Mazo();
     }
@@ -87,21 +86,18 @@ public class Mesa {
     public Mano getManoActiva() {
     return !manos.isEmpty() ? manos.getLast() : null;
 }
-public ArrayList<CartaPoker> obtenerArrayMazoComoCartasPoker() {
-        ArrayList<CartaPoker> cartasPoker = new ArrayList<>();
-        for (Carta carta : mazo.cartasMazo) {
-            cartasPoker.add(carta); // Usando el constructor de CartaPoker
-        }
-        return cartasPoker;
+public ArrayList<Carta> obtenerCartasMazo() {
+       
+        return mazo.cartasMazo;
     }
 
     public void setMazo(Mazo mazo) {
         this.mazo = mazo;
     }
  
-    public ArrayList<CartaPoker> repartirCartas(ArrayList<CartaPoker> cartas,int cantidad){
+    public ArrayList<Carta> repartirCartas(ArrayList<Carta> cartas,int cantidad){
         
-        ArrayList<CartaPoker> cartasPoker = new ArrayList<>();
+        ArrayList<Carta> cartasPoker = new ArrayList<>();
        
         int i = 0;
         //ArrayList<CartaPoker> cartas = obtenerArrayMazoComoCartasPoker();
@@ -267,17 +263,10 @@ return cartasPoker;
     
     public boolean jugadorEnMesa(Jugador jugador){
     boolean ret=false;
-    for(Jugador j:jugadores){
-    
-    if(j.equals(jugador)){
-    
+    if(jugadores.contains(jugador)){ 
      ret=true;
-    }
-    
-    }
+    }   
     return ret;
-    
-    //asfasfjkasfbaskjfbasf
     }
     
     

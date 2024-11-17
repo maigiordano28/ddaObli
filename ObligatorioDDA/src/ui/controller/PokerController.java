@@ -7,24 +7,17 @@ package ui.controller;
 import Dominio.Carta;
 import Dominio.EstadoJugador;
 import Dominio.EstadoMano;
-import Dominio.EstadoMesa;
 import Dominio.EventoFachada;
-import Dominio.EventoMesa;
-import Dominio.Exceptions.ManoException;
-import Dominio.Exceptions.PokerException;
 import Dominio.Fachada;
 import Dominio.Figura;
 import Dominio.Mano;
 import Dominio.Mesa;
 import Dominio.Usuario.Jugador;
-import Dominio.tipoFigura;
 import Observador.observable;
 import Observador.observador;
-import iuswing.Poker;
 import java.util.ArrayList;
 import java.util.List;
 import panelCartasPoker.CartaPoker;
-import ui.view.InicioJugadorView;
 import ui.view.PokerView;
 
 /**
@@ -79,13 +72,35 @@ public class PokerController implements observador{
             jugador.ActualizarSaldo(false, mesa.getApuestaActual());
              jugador.setEstadoActual(EstadoJugador.Apuesta_pagada);
             vista.mostrarMensaje("Pago realizada");
-           
+            
             }
-        
+          
+            
+            if(sePagoApuesta()){
+                vista.HabilitarBoton();
+            }
         }
     }
     
+    public boolean sePagoApuesta(){
+        
+        for(Jugador j:mesa.getJugadores()){
+            if(j.getEstadoActual().equals(EstadoJugador.Apuesta_pagada) && noHayAccionPendiente()){
+                return true;
+            }
+        }
+        return false;
+    }
     
+    public boolean noHayAccionPendiente(){
+      
+         for(Jugador j:mesa.getJugadores()){
+            if(j.getEstadoActual().equals(EstadoJugador.Accion_pendiente)){
+                return false;
+            }
+        }
+        return true;
+    }
   public void descartarYRepartirCartas(){
     
       if(cartasACambiar.size()<1){
@@ -98,43 +113,14 @@ public class PokerController implements observador{
               jugador.EliminarCartasDelMazo(carta);
           }
       }
-      
-      ArrayList<CartaPoker> cartasARepartir = new ArrayList<>();
-          
-            for (Carta c : mesa.getMazoAux().getCartasMazo()) {
-            cartasARepartir.add(c); // Usando el constructor de CartaPoker
-            }
-      
-      
-      
-      ArrayList<CartaPoker> nuevasCartas = mesa.repartirCartas(cartasARepartir, cartasACambiar.size());
-      
-      
-      
-      ArrayList<Carta> cartasAux = new ArrayList<>();
-          
-            for (CartaPoker cp:nuevasCartas) {
-            cartasAux.add((Carta) cp); 
-            }
-      
-      
-      
-    for (Carta nueva : cartasAux) {
+       
+      ArrayList<Carta> nuevasCartas = mesa.repartirCartas( mesa.getMazoAux().getCartasMazo(), cartasACambiar.size());
+        
+    for (Carta nueva : nuevasCartas) {
         jugador.AgregarCartasAlMazo(nueva);
     }
        cartasACambiar.clear();
-    
-       
-           ArrayList<CartaPoker> cartasDelMazoCasteadas = new ArrayList<>();
-          
-            for (CartaPoker cp:jugador.getCartasMano()) {
-            cartasDelMazoCasteadas.add( cp); // Usando el constructor de CartaPoker
-            }
-      
-       
-       
-    
-    vista.cargarCartas(cartasDelMazoCasteadas);
+    vista.cargarCartas(jugador.getCartasMano());
     vista.mostrarMensaje("Se han cambiado las cartas seleccionadas.");
   
   }}
@@ -170,14 +156,9 @@ public class PokerController implements observador{
 
       if(mesa.getApuestaActual()!=null){
       mesa.getManoActiva().EliminarJugador(jugador);
-      procesarMano();
-      }else{
-
-
-
+     
       }
-      }
-    
+    }
     
     
     
@@ -210,12 +191,18 @@ public class PokerController implements observador{
           return mesa.pagarPozo();
       }
 
+      public void InicializarEstadoJugador(ArrayList<Jugador> jugadores){
+          for(Jugador j :jugadores){
+              j.setEstadoActual(EstadoJugador.Accion_pendiente);
+          }
+      }
+      
     public void agregarMano(Mesa mesa) {
         mesa.setPozo(0.0);
         if(mesa.getManoActiva()==null){
         Mano m = fachada.agregarMano( mesa);
         m.setJugadoresEnMano(mesa.getJugadores());
-        
+        InicializarEstadoJugador(mesa.getJugadores());
         mesa.getManoActiva().setEstadoActual(EstadoMano.Esperando_apuesta);
         vista.mostrarMensaje("Mano numero"+m.getNumero());
       }else{
@@ -233,16 +220,7 @@ public class PokerController implements observador{
     }
     
     
-    public ArrayList<CartaPoker> cambiarGet(){
     
-    ArrayList<CartaPoker> cartasPoker = new ArrayList<>();
-    for (Carta carta : jugador.getCartasMano()) {
-        if (carta instanceof CartaPoker) {
-            cartasPoker.add((CartaPoker) carta);
-        }
-    }
-    return cartasPoker;
-    }
     
     
     
@@ -254,30 +232,17 @@ public class PokerController implements observador{
      
      }
    
-      public void repartirCartas(Mesa mesa,ArrayList<CartaPoker> carta){
-          ArrayList<CartaPoker> cartasBarajadas= mesa.getMazo().barajarMazo(carta);
-          ArrayList<CartaPoker> cartas =mesa.repartirCartas(cartasBarajadas,5);
-          
-          ArrayList<Carta> cartaBarajadas = new ArrayList<>();
-            for (CartaPoker c : cartasBarajadas) {
-            cartaBarajadas.add((Carta) c); // Usando el constructor de CartaPoker
-            }
-
-            mesa.getMazoAux().setCartasMazo(cartaBarajadas);
+      public void repartirCartas(Mesa mesa,ArrayList<Carta> carta){
+          ArrayList<Carta> cartasBarajadas= mesa.getMazo().barajarMazo(carta);
+          ArrayList<Carta> cartas =mesa.repartirCartas(cartasBarajadas,5);
+            
+            mesa.getMazoAux().setCartasMazo(cartasBarajadas);
+            for (Carta c : cartas) {
         
-        
-       
-        
-        
-             ArrayList<Carta> cartasPok = new ArrayList<>();
-            for (CartaPoker c : cartas) {
-            cartasPok.add((Carta) c);
               mesa.getMazoAux().getCartasMazo().remove(c);// Usando el constructor de CartaPoker
             }
         
-           jugador.setCartasMano(cartasPok);
-           
-           
+           jugador.setCartasMano(cartas);      
            
           vista.cargarCartas(cartas);
           

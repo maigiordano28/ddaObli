@@ -32,7 +32,7 @@ public class Mazo {
         this.cartasMazo = cartasMazo;
     }
        
-    public ArrayList<CartaPoker> barajarMazo(ArrayList<CartaPoker> cartas) {
+    public ArrayList<Carta> barajarMazo(ArrayList<Carta> cartas) {
         Random random = new Random();
         for (int i = 0; i < cartas.size(); i++) {
             // Elige un índice al azar para intercambiar con el índice actual
