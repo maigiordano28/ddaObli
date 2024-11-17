@@ -61,8 +61,8 @@ private PokerController controller;
         controller.repartirCartas(mesa, mesa.obtenerArrayMazoComoCartasPoker());
     } 
    public void CargarFiguraActual(){
-        tipoFigura figura=controller.FiguraActual();
-        txtFiguraActual.setText(figura.getNombre());
+        String figura=controller.FiguraActual();
+        txtFiguraActual.setText(figura);
     
     }
         
@@ -107,6 +107,7 @@ private PokerController controller;
         txtApuesta = new javax.swing.JTextField();
         txtPasar = new javax.swing.JButton();
         lblApuestaRealizada = new javax.swing.JLabel();
+        btnCambiarCartas = new javax.swing.JButton();
 
         jLabel4.setText("jLabel4");
 
@@ -179,7 +180,16 @@ private PokerController controller;
         getContentPane().add(txtPasar);
         txtPasar.setBounds(210, 580, 72, 23);
         getContentPane().add(lblApuestaRealizada);
-        lblApuestaRealizada.setBounds(340, 560, 150, 60);
+        lblApuestaRealizada.setBounds(310, 560, 150, 60);
+
+        btnCambiarCartas.setText("Cambiar Cartas");
+        btnCambiarCartas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCambiarCartasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnCambiarCartas);
+        btnCambiarCartas.setBounds(480, 580, 150, 23);
 
         setBounds(0, 0, 1064, 705);
     }// </editor-fold>//GEN-END:initComponents
@@ -207,6 +217,10 @@ private PokerController controller;
     private void txtPasarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasarActionPerformed
         controller.pasar();
     }//GEN-LAST:event_txtPasarActionPerformed
+
+    private void btnCambiarCartasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarCartasActionPerformed
+        controller.descartarYRepartirCartas();
+    }//GEN-LAST:event_btnCambiarCartasActionPerformed
 
  
     
@@ -260,6 +274,7 @@ private PokerController controller;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnApostar;
+    private javax.swing.JButton btnCambiarCartas;
     private javax.swing.JCheckBox checkListener;
     private javax.swing.JCheckBox habilitarPanel;
     private javax.swing.JLabel jLabel4;
@@ -305,7 +320,8 @@ private PokerController controller;
 
     @Override
     public void clickEnCarta(CartaPoker carta) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            
+          controller.conseguirCartas(carta);
     }
 
     @Override

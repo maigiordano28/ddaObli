@@ -5,6 +5,7 @@
 
 package Dominio;
 
+import Dominio.Usuario.Jugador;
 import java.util.ArrayList;
 import panelCartasPoker.CartaPoker;
 
@@ -32,7 +33,7 @@ public class Figura {
         this.nombre = nombre;
     }
     
-     public tipoFigura determinarFigura(ArrayList<Carta> cartas ) {
+     public String determinarFigura(ArrayList<Carta> cartas ,Jugador jugador) {
         ArrayList<tipoFigura> tiposFigura = new ArrayList<>();
     
     // Agrega los diferentes tipos de figuras posibles
@@ -42,11 +43,11 @@ public class Figura {
     tiposFigura.add(new Poker());    
         for (tipoFigura tipo : tiposFigura) {
             if (tipo.esFigura(cartas)) {
-                return tipo;
+                return tipo.getNombre();
             }
         }
        
-        return this.tipoFigura; // Si no se encuentra figura, retorna null
+        return jugador.getFiguraActual().getNombre(); // Si no se encuentra figura, retorna null
     }
 
     

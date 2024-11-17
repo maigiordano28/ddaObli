@@ -30,6 +30,15 @@ public class Mesa {
     private Mazo mazo;
     private boolean mesaEnJuego = false;
     private Double apuestaActual;
+    private Mazo mazoAux;
+
+    public Mazo getMazoAux() {
+        return mazoAux;
+    }
+
+    public void setMazoAux(Mazo mazoAux) {
+        this.mazoAux = mazoAux;
+    }
     
 
     public Double getApuestaActual() {
@@ -64,6 +73,7 @@ public class Mesa {
         this.pozo=0.0;
         this.cartas= new ArrayList<Carta>();
         this.mazo = new Mazo();
+        this.mazoAux=new Mazo();
     }
 
     public Mazo getMazo() {
@@ -84,15 +94,19 @@ public ArrayList<CartaPoker> obtenerArrayMazoComoCartasPoker() {
         }
         return cartasPoker;
     }
+
+    public void setMazo(Mazo mazo) {
+        this.mazo = mazo;
+    }
  
-    public ArrayList<CartaPoker> repartirCartas(ArrayList<CartaPoker> cartas){
+    public ArrayList<CartaPoker> repartirCartas(ArrayList<CartaPoker> cartas,int cantidad){
         
         ArrayList<CartaPoker> cartasPoker = new ArrayList<>();
        
         int i = 0;
         //ArrayList<CartaPoker> cartas = obtenerArrayMazoComoCartasPoker();
        
-            while(cartasPoker.size()<5 && i<cartas.size()){
+            while(cartasPoker.size()<cantidad && i<cartas.size()){
 
                 cartasPoker.add(cartas.get(i));
                 i++;

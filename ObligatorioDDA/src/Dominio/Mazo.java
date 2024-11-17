@@ -18,14 +18,18 @@ public class Mazo {
     ArrayList<Carta> cartasMazo;
 
     public Mazo() {
-        this.cartasMazo = AgregarCartasAMazo();
-        
+        this.cartasMazo = new ArrayList<>();
+        AgregarCartasAMazo();
         
       
     }
 
     public ArrayList<Carta> getCartasMazo() {
         return cartasMazo;
+    }
+
+    public void setCartasMazo(ArrayList<Carta> cartasMazo) {
+        this.cartasMazo = cartasMazo;
     }
        
     public ArrayList<CartaPoker> barajarMazo(ArrayList<CartaPoker> cartas) {
@@ -42,66 +46,68 @@ public class Mazo {
         return cartas;
     }
     
-    public ArrayList<Carta> AgregarCartasAMazo(){
-        ArrayList<Carta>cartas =new ArrayList<Carta>();
-        cartas.add(new Carta(1, Carta.CORAZON));
-cartas.add(new Carta(2, Carta.CORAZON));
-cartas.add(new Carta(3, Carta.CORAZON));
-cartas.add(new Carta(4, Carta.CORAZON));
-cartas.add(new Carta(5, Carta.CORAZON));
-cartas.add(new Carta(6, Carta.CORAZON));
-cartas.add(new Carta(7, Carta.CORAZON));
-cartas.add(new Carta(8, Carta.CORAZON));
-cartas.add(new Carta(9, Carta.CORAZON));
-cartas.add(new Carta(10, Carta.CORAZON));
-cartas.add(new Carta(11, Carta.CORAZON));
-cartas.add(new Carta(12, Carta.CORAZON));
-cartas.add(new Carta(13, Carta.CORAZON));
+    public void AgregarCartasAMazo(){
+      
+        cartasMazo.add(new Carta(1, Carta.CORAZON));
+        cartasMazo.add(new Carta(2, Carta.CORAZON));
+        cartasMazo.add(new Carta(3, Carta.CORAZON));
+        cartasMazo.add(new Carta(4, Carta.CORAZON));
+        cartasMazo.add(new Carta(5, Carta.CORAZON));
+        cartasMazo.add(new Carta(6, Carta.CORAZON));
+cartasMazo.add(new Carta(7, Carta.CORAZON));
+cartasMazo.add(new Carta(8, Carta.CORAZON));
+cartasMazo.add(new Carta(9, Carta.CORAZON));
+cartasMazo.add(new Carta(10, Carta.CORAZON));
+cartasMazo.add(new Carta(11, Carta.CORAZON));
+cartasMazo.add(new Carta(12, Carta.CORAZON));
+cartasMazo.add(new Carta(13, Carta.CORAZON));
 
 // Diamantes
-cartas.add(new Carta(1, Carta.DIAMANTE));
-cartas.add(new Carta(2, Carta.DIAMANTE));
-cartas.add(new Carta(3, Carta.DIAMANTE));
-cartas.add(new Carta(4, Carta.DIAMANTE));
-cartas.add(new Carta(5, Carta.DIAMANTE));
-cartas.add(new Carta(6, Carta.DIAMANTE));
-cartas.add(new Carta(7, Carta.DIAMANTE));
-cartas.add(new Carta(8, Carta.DIAMANTE));
-cartas.add(new Carta(9, Carta.DIAMANTE));
-cartas.add(new Carta(10, Carta.DIAMANTE));
-cartas.add(new Carta(11, Carta.DIAMANTE));
-cartas.add(new Carta(12, Carta.DIAMANTE));
-cartas.add(new Carta(13, Carta.DIAMANTE));
+cartasMazo.add(new Carta(1, Carta.DIAMANTE));
+cartasMazo.add(new Carta(2, Carta.DIAMANTE));
+cartasMazo.add(new Carta(3, Carta.DIAMANTE));
+cartasMazo.add(new Carta(4, Carta.DIAMANTE));
+cartasMazo.add(new Carta(5, Carta.DIAMANTE));
+cartasMazo.add(new Carta(6, Carta.DIAMANTE));
+cartasMazo.add(new Carta(7, Carta.DIAMANTE));
+cartasMazo.add(new Carta(8, Carta.DIAMANTE));
+cartasMazo.add(new Carta(9, Carta.DIAMANTE));
+cartasMazo.add(new Carta(10, Carta.DIAMANTE));
+cartasMazo.add(new Carta(11, Carta.DIAMANTE));
+cartasMazo.add(new Carta(12, Carta.DIAMANTE));
+cartasMazo.add(new Carta(13, Carta.DIAMANTE));
 
 // Treboles
-cartas.add(new Carta(2, Carta.TREBOL));
-cartas.add(new Carta(3, Carta.TREBOL));
-cartas.add(new Carta(4, Carta.TREBOL));
-cartas.add(new Carta(5, Carta.TREBOL));
-cartas.add(new Carta(6, Carta.TREBOL));
-cartas.add(new Carta(7, Carta.TREBOL));
-cartas.add(new Carta(8, Carta.TREBOL));
-cartas.add(new Carta(9, Carta.TREBOL));
-cartas.add(new Carta(10, Carta.TREBOL));
-cartas.add(new Carta(11, Carta.TREBOL));
-cartas.add(new Carta(12, Carta.TREBOL));
-cartas.add(new Carta(13, Carta.TREBOL));
+cartasMazo.add(new Carta(2, Carta.TREBOL));
+cartasMazo.add(new Carta(3, Carta.TREBOL));
+cartasMazo.add(new Carta(4, Carta.TREBOL));
+cartasMazo.add(new Carta(5, Carta.TREBOL));
+cartasMazo.add(new Carta(6, Carta.TREBOL));
+cartasMazo.add(new Carta(7, Carta.TREBOL));
+cartasMazo.add(new Carta(8, Carta.TREBOL));
+cartasMazo.add(new Carta(9, Carta.TREBOL));
+cartasMazo.add(new Carta(10, Carta.TREBOL));
+cartasMazo.add(new Carta(11, Carta.TREBOL));
+cartasMazo.add(new Carta(12, Carta.TREBOL));
+cartasMazo.add(new Carta(13, Carta.TREBOL));
 
 // Picas
-cartas.add(new Carta(1, Carta.PIQUE));
-cartas.add(new Carta(2, Carta.PIQUE));
-cartas.add(new Carta(3, Carta.PIQUE));
-cartas.add(new Carta(4, Carta.PIQUE));
-cartas.add(new Carta(5, Carta.PIQUE));
-cartas.add(new Carta(6, Carta.PIQUE));
-cartas.add(new Carta(7, Carta.PIQUE));
-cartas.add(new Carta(8, Carta.PIQUE));
-cartas.add(new Carta(9, Carta.PIQUE));
-cartas.add(new Carta(10, Carta.PIQUE));
-cartas.add(new Carta(11, Carta.PIQUE));
-cartas.add(new Carta(12, Carta.PIQUE));
-cartas.add(new Carta(13, Carta.PIQUE));
-return cartas;
-    }
+cartasMazo.add(new Carta(1, Carta.PIQUE));
+cartasMazo.add(new Carta(2, Carta.PIQUE));
+cartasMazo.add(new Carta(3, Carta.PIQUE));
+cartasMazo.add(new Carta(4, Carta.PIQUE));
+cartasMazo.add(new Carta(5, Carta.PIQUE));
+cartasMazo.add(new Carta(6, Carta.PIQUE));
+cartasMazo.add(new Carta(7, Carta.PIQUE));
+cartasMazo.add(new Carta(8, Carta.PIQUE));
+cartasMazo.add(new Carta(9, Carta.PIQUE));
+cartasMazo.add(new Carta(10, Carta.PIQUE));
+cartasMazo.add(new Carta(11, Carta.PIQUE));
+cartasMazo.add(new Carta(12, Carta.PIQUE));
+cartasMazo.add(new Carta(13, Carta.PIQUE));
     
+
+    
+    
+}
 }

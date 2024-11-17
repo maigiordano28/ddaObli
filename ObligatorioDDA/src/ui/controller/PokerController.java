@@ -38,6 +38,8 @@ public class PokerController implements observador{
     private Mesa mesa;
     //private Mano mano;
     
+  private ArrayList<CartaPoker> cartasACambiar=new ArrayList<>();
+    
    
     public PokerController(PokerView vista,Jugador jugador,Mesa mesa) {
         fachada=Fachada.getInstancia();
@@ -82,7 +84,43 @@ public class PokerController implements observador{
         
         }
     }
+    
+    
+  public void descartarYRepartirCartas(){
+      if(cartasACambiar.size()<1){
+          vista.mostrarMensaje("No ha seleccionado ninguna carta");
+      
+      }else{
+      
+      for(CartaPoker carta:cartasACambiar){
+          if(carta.equals(jugador.getCartasMano())){
+              jugador.getCartasMano().remove(carta);
+          }
+          
+          ArrayList<CartaPoker> cartasARepartir = new ArrayList<>();
+          
+            for (Carta c : mesa.getMazoAux().getCartasMazo()) {
+            cartasARepartir.add(c); // Usando el constructor de CartaPoker
+            }
+
+           
+          ArrayList<CartaPoker> cartas =mesa.repartirCartas(cartasARepartir,cartasACambiar.size());
+          
+          
+      
+      
+      
+      }
+      
+      }
+      
   
+  
+  }
+  
+  public void conseguirCartas(CartaPoker carta){
+  cartasACambiar.add(carta);
+  }
     
     @Override
       public void actualizar(observable o, Object evento) {
@@ -112,9 +150,14 @@ public class PokerController implements observador{
 
       }
       }
+    
+    
+    
+    
+    
      
-    public tipoFigura FiguraActual(){
-            return jugador.getFiguraActual().determinarFigura(jugador.getCartasMano());
+    public String FiguraActual(){
+            return jugador.getFiguraActual().determinarFigura(jugador.getCartasMano(),jugador);
 
 
     
@@ -186,11 +229,23 @@ public class PokerController implements observador{
    
       public void repartirCartas(Mesa mesa,ArrayList<CartaPoker> carta){
           ArrayList<CartaPoker> cartasBarajadas= mesa.getMazo().barajarMazo(carta);
-           ArrayList<CartaPoker> cartas =mesa.repartirCartas(cartasBarajadas);
+          ArrayList<CartaPoker> cartas =mesa.repartirCartas(cartasBarajadas,5);
+          
+          ArrayList<Carta> cartaBarajadas = new ArrayList<>();
+            for (CartaPoker c : cartasBarajadas) {
+            cartaBarajadas.add((Carta) c); // Usando el constructor de CartaPoker
+            }
+
+            mesa.getMazoAux().setCartasMazo(cartaBarajadas);
+        
+        
+       
+        
         
              ArrayList<Carta> cartasPok = new ArrayList<>();
             for (CartaPoker c : cartas) {
-            cartasPok.add((Carta) c); // Usando el constructor de CartaPoker
+            cartasPok.add((Carta) c);
+              mesa.getMazoAux().getCartasMazo().remove(c);// Usando el constructor de CartaPoker
             }
         
            jugador.setCartasMano(cartasPok);
