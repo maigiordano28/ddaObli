@@ -46,10 +46,10 @@ private PokerController controller;
         
         mostrarJugadoresEnMesa(mesa.getJugadores());
         conseguirFigura();
+        AgregarMano(jugador,mesa);
         ArrayList<CartaPoker> poker=controller.cambiarGet();
         cargarCartas(poker);
         CargarFiguraActual();
-        AgregarMano(jugador,mesa);
     }
     
    

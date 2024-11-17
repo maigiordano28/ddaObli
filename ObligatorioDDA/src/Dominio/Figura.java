@@ -45,7 +45,8 @@ public class Figura {
                 return tipo;
             }
         }
-        return null; // Si no se encuentra figura, retorna null
+       
+        return this.tipoFigura; // Si no se encuentra figura, retorna null
     }
 
     
