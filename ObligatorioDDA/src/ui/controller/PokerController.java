@@ -188,6 +188,15 @@ public class PokerController implements observador{
           ArrayList<CartaPoker> cartasBarajadas= mesa.getMazo().barajarMazo(carta);
            ArrayList<CartaPoker> cartas =mesa.repartirCartas(cartasBarajadas);
         
+             ArrayList<Carta> cartasPok = new ArrayList<>();
+            for (CartaPoker c : cartas) {
+            cartasPok.add((Carta) c); // Usando el constructor de CartaPoker
+            }
+        
+           jugador.setCartasMano(cartasPok);
+           
+           
+           
           vista.cargarCartas(cartas);
           
      }

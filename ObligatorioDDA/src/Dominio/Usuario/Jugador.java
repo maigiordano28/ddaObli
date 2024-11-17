@@ -69,9 +69,7 @@ public class Jugador extends Usuario{
         this.estadoActual = estadoActual;
     }
     
-    public void RepartirCartas(){
-        
-    }
+
     
     public void ActualizarSaldo(boolean operacion, Double num){
         if(operacion){

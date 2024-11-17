@@ -97,6 +97,7 @@ public ArrayList<CartaPoker> obtenerArrayMazoComoCartasPoker() {
                 cartasPoker.add(cartas.get(i));
                 i++;
             }
+            
         
 return cartasPoker;
    
