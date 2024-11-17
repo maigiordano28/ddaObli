@@ -30,19 +30,15 @@ public class Jugador extends Usuario{
         super(nombreCompleto, cedula, password);
         this.SaldoInicial=saldoInicial;
         this.cartasMano = new ArrayList<Carta>();
+        this.figuraActual=new Figura("Sin figura");
     }
      public Jugador(String nombreCompleto, String password) {
         super(nombreCompleto, password);
     }
 
-  public ArrayList<CartaPoker> getCartasMano() {
-        ArrayList<CartaPoker> cartasPoker = new ArrayList<>();
-    for (Carta carta : cartasMano) {
-        if (carta instanceof CartaPoker) {
-            cartasPoker.add((CartaPoker) carta);
-        }
-    }
-    return cartasPoker;
+  public ArrayList<Carta> getCartasMano() {
+    
+    return cartasMano;
     }
     public void setCartasMano(ArrayList<Carta> cartasMano) {
         this.cartasMano = cartasMano;

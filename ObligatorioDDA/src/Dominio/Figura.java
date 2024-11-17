@@ -6,6 +6,7 @@
 package Dominio;
 
 import java.util.ArrayList;
+import panelCartasPoker.CartaPoker;
 
 /**
  *

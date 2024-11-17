@@ -10,6 +10,7 @@ import Dominio.Fachada;
 import Dominio.Figura;
 import Dominio.Mesa;
 import Dominio.Usuario.Jugador;
+import Dominio.tipoFigura;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -44,7 +45,8 @@ private PokerController controller;
     private void EmpezarJuego(Jugador jugador, Mesa mesa) {
         
         mostrarJugadoresEnMesa(mesa.getJugadores());
-        cargarCartas(jugador.getCartasMano());
+        ArrayList<CartaPoker> poker=controller.cambiarGet();
+        cargarCartas(poker);
         CargarFiguraActual();
         AgregarMano(jugador,mesa);
     }
@@ -57,9 +59,9 @@ private PokerController controller;
         controller.agregarMano(mesa);
         controller.repartirCartas(mesa, mesa.obtenerArrayMazoComoCartasPoker());
     } 
-    public void CargarFiguraActual(){
-        String figura=controller.FiguraActual();
-        txtFiguraActual.setText(figura);
+   public void CargarFiguraActual(){
+        tipoFigura figura=controller.FiguraActual();
+        txtFiguraActual.setText(figura.getNombre());
     
     }
         

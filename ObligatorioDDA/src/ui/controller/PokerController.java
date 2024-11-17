@@ -17,6 +17,7 @@ import Dominio.Figura;
 import Dominio.Mano;
 import Dominio.Mesa;
 import Dominio.Usuario.Jugador;
+import Dominio.tipoFigura;
 import Observador.observable;
 import Observador.observador;
 import iuswing.Poker;
@@ -112,11 +113,10 @@ public class PokerController implements observador{
       }
       }
      
-    public Figura FiguraActual(){
-    jugador.setFiguraActual(jugador.getFiguraActual().determinarFigura(jugador.getCartasMano()));
-        return jugador.obtenerFiguraActual();
-        
-    
+    public tipoFigura FiguraActual(){
+            return jugador.getFiguraActual().determinarFigura(jugador.getCartasMano());
+
+
     
     }
     
@@ -161,6 +161,22 @@ public class PokerController implements observador{
 }
         
     }
+    
+    
+    public ArrayList<CartaPoker> cambiarGet(){
+    
+    ArrayList<CartaPoker> cartasPoker = new ArrayList<>();
+    for (Carta carta : jugador.getCartasMano()) {
+        if (carta instanceof CartaPoker) {
+            cartasPoker.add((CartaPoker) carta);
+        }
+    }
+    return cartasPoker;
+    }
+    
+    
+    
+    
      public void conseguirFiguras(){
      
      List<Figura> figuras= fachada.getFiguras();

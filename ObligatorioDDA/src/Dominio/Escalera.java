@@ -22,7 +22,7 @@ public class Escalera extends tipoFigura{
         cartas.sort(null);
 
         
-        for (int i = 0; i < cartas.size() - 1; i++) {
+        for (int i = 0; i < cartas.size(); i++) {
             if (cartas.get(i).getValorCarta()+ 1 != cartas.get(i + 1).getValorCarta()) {
                 return false; 
             }
