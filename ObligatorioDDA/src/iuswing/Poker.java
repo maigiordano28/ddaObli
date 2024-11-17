@@ -195,10 +195,17 @@ private PokerController controller;
     }//GEN-LAST:event_btnApostarActionPerformed
 
     private void txtPasarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasarActionPerformed
-        // TODO add your handling code here:
+        controller.pasar();
     }//GEN-LAST:event_txtPasarActionPerformed
 
+    @Override
+    public void Pasar(){
     
+    this.setVisible(false);
+    
+    
+    
+    }
     
     @Override
     
@@ -206,6 +213,7 @@ private PokerController controller;
         
         btnApostar.setText("Pagar");
         txtApuesta.setText(String.valueOf(apuesta));
+        txtApuesta.disable();
         
         
         }

@@ -94,15 +94,44 @@ public class PokerController implements observador{
         }
      
     }
+      
+      public void pasar(){
+      
+      if(mesa.getApuestaActual()!=null){
+      
+      mesa.EliminarJugador(jugador);
+      
+      if(mesa.obtenerLargoListaJugadores()<2){
+      mesa.ActualizarEstado(1);
+      mesa.getManoActiva().ActualizarEstado(1);
+      vista.Pasar();
+      
+      
+      }
+      
+      }
+      
+      
+      }
+      
+      
 
     public void agregarMano(Mesa mesa) {
-      
+        if(mesa.getManoActiva()==null){
         Mano m = fachada.agregarMano( mesa);
         
         mesa.getManoActiva().setEstadoActual(EstadoMano.Esperando_apuesta);
         vista.mostrarMensaje("Mano numero"+m.getNumero());
-    
-       
+      }else{
+      
+      if(mesa.getManoActiva().getEstadoActual().equals(EstadoMano.Terminada)){
+        Mano m = fachada.agregarMano( mesa);
+        
+        mesa.getManoActiva().setEstadoActual(EstadoMano.Esperando_apuesta);
+        vista.mostrarMensaje("Mano numero"+m.getNumero());
+      
+      }
+}
         
     }
      

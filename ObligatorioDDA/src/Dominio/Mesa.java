@@ -206,10 +206,18 @@ return cartasPoker;
     }
     
     
-    public void ActualizarEstado(){
+    public void ActualizarEstado(int i){
+        if(i==1){
+        this.EstadoMesa=EstadoMesa.finalizada;
+        }
         
     }
-    public void EliminarJugador(){
+    public void EliminarJugador(Jugador jugador){
+        
+        this.jugadores.remove(jugador);
+        
+        
+        
         
     }
     public void IniciarJuego(){
