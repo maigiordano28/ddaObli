@@ -93,10 +93,57 @@ public class PokerController implements observador{
       }else{
       
       for(CartaPoker carta:cartasACambiar){
-          if(carta.equals(jugador.getCartasMano())){
-              jugador.getCartasMano().remove(carta);
+        if(jugador.getCartasMano().contains(carta)){
+              jugador.EliminarCartasDelMazo(carta);
           }
+      }
+      
+      ArrayList<CartaPoker> cartasARepartir = new ArrayList<>();
           
+            for (Carta c : mesa.getMazoAux().getCartasMazo()) {
+            cartasARepartir.add(c); // Usando el constructor de CartaPoker
+            }
+      
+      
+      
+      ArrayList<CartaPoker> nuevasCartas = mesa.repartirCartas(cartasARepartir, cartasACambiar.size());
+      
+      
+      
+      ArrayList<Carta> cartasAux = new ArrayList<>();
+          
+            for (CartaPoker cp:nuevasCartas) {
+            cartasAux.add((Carta) cp); 
+            }
+      
+      
+      
+    for (Carta nueva : cartasAux) {
+        jugador.AgregarCartasAlMazo(nueva);
+    }
+       cartasACambiar.clear();
+    
+       
+           ArrayList<CartaPoker> cartasDelMazoCasteadas = new ArrayList<>();
+          
+            for (CartaPoker cp:jugador.getCartasMano()) {
+            cartasDelMazoCasteadas.add( cp); // Usando el constructor de CartaPoker
+            }
+      
+       
+       
+    
+    vista.cargarCartas(cartasDelMazoCasteadas);
+    vista.mostrarMensaje("Se han cambiado las cartas seleccionadas.");
+  
+  }}
+  
+  
+ /* public void cambiarCartas(){
+  
+  
+  
+   
           ArrayList<CartaPoker> cartasARepartir = new ArrayList<>();
           
             for (Carta c : mesa.getMazoAux().getCartasMazo()) {
@@ -104,19 +151,7 @@ public class PokerController implements observador{
             }
 
            
-          ArrayList<CartaPoker> cartas =mesa.repartirCartas(cartasARepartir,cartasACambiar.size());
-          
-          
-      
-      
-      
-      }
-      
-      }
-      
-  
-  
-  }
+          ArrayList<CartaPoker> cartas =mesa.repartirCartas(cartasARepartir,cartasACambiar.size());}*/
   
   public void conseguirCartas(CartaPoker carta){
   cartasACambiar.add(carta);
@@ -136,6 +171,9 @@ public class PokerController implements observador{
         if (evento.equals(EventoFachada.NUEVA_APUESTA)) {
             vista.cambiarVistaPagar(mesa.getApuestaActual());
         }
+       /*  if (evento.equals(EventoFachada.NUEVA_APUESTA)) {
+            vista.cambiarCartas();
+        }*/
      
     }
       

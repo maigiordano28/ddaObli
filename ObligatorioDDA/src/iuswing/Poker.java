@@ -48,7 +48,7 @@ private PokerController controller;
         conseguirFigura();
         AgregarMano(jugador,mesa);
         ArrayList<CartaPoker> poker=controller.cambiarGet();
-        cargarCartas(poker);
+       cargarCartas(poker);
         CargarFiguraActual();
     }
     
@@ -321,7 +321,7 @@ private PokerController controller;
     @Override
     public void clickEnCarta(CartaPoker carta) {
             
-          controller.conseguirCartas(carta);
+   controller.conseguirCartas(carta);
     }
 
     @Override
@@ -332,7 +332,11 @@ private PokerController controller;
              JOptionPane.showMessageDialog(this, ex.getMessage(), "ERROR",JOptionPane.ERROR_MESSAGE);
         }
     }
-
-
+  /*  @Override
+    public void cambiarCartas(){
+    
+    controller.cambiarCartas();
+    }
+*/
 
 }

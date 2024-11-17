@@ -23,6 +23,7 @@ public interface PokerView {
     public void cargarCartas(ArrayList<CartaPoker> carta);
     public void cambiarVistaPagar(Double apuesta);
  public void mostrarFiguras(List<Figura> figuras);
+ //public void cambiarCartas();
 
     
 }

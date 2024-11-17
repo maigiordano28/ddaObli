@@ -83,8 +83,19 @@ public class Jugador extends Usuario{
     this.setFiguraActual(figuraActual);
     
 }
+    public void EliminarCartasDelMazo(CartaPoker carta){
+    this.getCartasMano().remove(carta);
+    Fachada.getInstancia().avisar(EventoFachada.NUEVAS_CARTAS);
+    }
     
     
+    public void AgregarCartasAlMazo(Carta carta){
+        
+        this.cartasMano.add(carta);
+    
+    
+    
+    }
     
     public void RegistrarApuesta(){
         
