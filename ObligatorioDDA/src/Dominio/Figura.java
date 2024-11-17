@@ -17,6 +17,16 @@ public class Figura {
     private ArrayList<Carta> cartas;
     private tipoFigura tipoFigura;
 
+    public Figura(String nombre, ArrayList<Carta> cartas, tipoFigura tipoFigura) {
+        this.nombre = nombre;
+        this.cartas = cartas;
+        this.tipoFigura = tipoFigura;
+    }
+    
+    public boolean determinarFiguraGanadora(){
+    return tipoFigura.esFigura(cartas);
+    }
+
     public String getNombre() {
         return nombre;
     }

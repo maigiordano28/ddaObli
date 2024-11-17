@@ -16,7 +16,7 @@ public class Mano {
     private int numero;
     private int totalApostado;
     private EstadoMano estadoActual;
-    private String jugadorGanador;
+    private Jugador jugadorGanador;
     private Figura figuraGanadora;
     ArrayList<Jugador> jugadoresEnMano;
 
@@ -34,11 +34,11 @@ public class Mano {
         this.jugadoresEnMano = new ArrayList();
     }
 
-    public String getJugadorGanador() {
+    public Jugador getJugadorGanador() {
         return jugadorGanador;
     }
 
-    public void setJugadorGanador(String jugadorGanador) {
+    public void setJugadorGanador(Jugador jugadorGanador) {
         this.jugadorGanador = jugadorGanador;
     }
 

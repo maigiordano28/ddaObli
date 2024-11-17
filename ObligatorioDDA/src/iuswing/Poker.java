@@ -198,14 +198,7 @@ private PokerController controller;
         controller.pasar();
     }//GEN-LAST:event_txtPasarActionPerformed
 
-    @Override
-    public void Pasar(){
-    
-    
-    
-    
-    
-    }
+ 
     
     @Override
     

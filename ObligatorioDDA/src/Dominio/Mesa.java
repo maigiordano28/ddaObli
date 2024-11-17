@@ -232,9 +232,16 @@ return cartasPoker;
     }
     
     public Double pagarPozo(){
-      return (pozo*porcentajeComision)/100;
+        Double ret= (pozo*porcentajeComision)/100;
+        ActualizarComision(ret);
+      return pozo-ret;
+      
     }
     
+    public void ActualizarComision(Double ret){
+     this.montoRecaudado+=ret;
+    
+    }
    
     
     public int obtenerLargoListaJugadores(){

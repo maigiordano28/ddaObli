@@ -117,11 +117,14 @@ public class PokerController implements observador{
       if(mesa.getManoActiva().getJugadoresEnMano().size()<2){
       mesa.getManoActiva().ActualizarEstado(1);
       Jugador jugadorEnMano = mesa.getManoActiva().getJugadoresEnMano().getFirst();
+      mesa.getManoActiva().setJugadorGanador(jugadorEnMano);
       jugadorEnMano.ActualizarSaldo(true,pagoPozo());
-      vista.Pasar();
+      if(jugadorEnMano.equals(jugador)){
+      vista.mostrarMensaje("GANASTE " +pagoPozo()+"!!!" );
+    
       }
-
-
+      agregarMano(mesa);
+      }
       }
       
       public Double pagoPozo(){
