@@ -99,30 +99,41 @@ public class PokerController implements observador{
      
     }
       
-      public void pasar(){
-      
+    public void pasar(){
+
       if(mesa.getApuestaActual()!=null){
-      
-      mesa.EliminarJugador(jugador);
-      
-      if(mesa.obtenerLargoListaJugadores()<2){
-      mesa.ActualizarEstado(1);
+      mesa.getManoActiva().EliminarJugador(jugador);
+      procesarMano();
+      }else{
+
+
+
+      }
+      }
+     
+    
+    public void procesarMano(){
+
+      if(mesa.getManoActiva().getJugadoresEnMano().size()<2){
       mesa.getManoActiva().ActualizarEstado(1);
+      Jugador jugadorEnMano = mesa.getManoActiva().getJugadoresEnMano().getFirst();
+      jugadorEnMano.ActualizarSaldo(true,pagoPozo());
       vista.Pasar();
-      
-      
+      }
+
+
       }
       
+      public Double pagoPozo(){
+          
+          return mesa.pagarPozo();
       }
-      
-      
-      }
-      
-      
 
     public void agregarMano(Mesa mesa) {
+        mesa.setPozo(0.0);
         if(mesa.getManoActiva()==null){
         Mano m = fachada.agregarMano( mesa);
+        m.setJugadoresEnMano(mesa.getJugadores());
         
         mesa.getManoActiva().setEstadoActual(EstadoMano.Esperando_apuesta);
         vista.mostrarMensaje("Mano numero"+m.getNumero());
@@ -130,6 +141,7 @@ public class PokerController implements observador{
       
       if(mesa.getManoActiva().getEstadoActual().equals(EstadoMano.Terminada)){
         Mano m = fachada.agregarMano( mesa);
+         m.setJugadoresEnMano(mesa.getJugadores());
         
         mesa.getManoActiva().setEstadoActual(EstadoMano.Esperando_apuesta);
         vista.mostrarMensaje("Mano numero"+m.getNumero());

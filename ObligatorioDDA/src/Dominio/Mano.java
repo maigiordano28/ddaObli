@@ -4,6 +4,9 @@
  */
 package Dominio;
 
+import Dominio.Usuario.Jugador;
+import java.util.ArrayList;
+
 /**
  *
  * @author bsout
@@ -15,10 +18,20 @@ public class Mano {
     private EstadoMano estadoActual;
     private String jugadorGanador;
     private Figura figuraGanadora;
+    ArrayList<Jugador> jugadoresEnMano;
+
+    public ArrayList<Jugador> getJugadoresEnMano() {
+        return jugadoresEnMano;
+    }
+
+    public void setJugadoresEnMano(ArrayList<Jugador> jugadoresEnMano) {
+        this.jugadoresEnMano = jugadoresEnMano;
+    }
 
     public Mano() {
         
         this.numero = s_ultNumero++;
+        this.jugadoresEnMano = new ArrayList();
     }
 
     public String getJugadorGanador() {
@@ -53,10 +66,19 @@ public class Mano {
         this.estadoActual = EstadoMano;
     }
 
-    public void ActualizarEstado(){
+     public void ActualizarEstado(int i){
+        if(i==1){
+        this.estadoActual=EstadoMano.Terminada;
+        }
         
     }
-    
+     
+     public void EliminarJugador(Jugador jugador){
+        
+        this.jugadoresEnMano.remove(jugador);
+            
+        
+    }
      @Override
     public String toString() {
         return "Mano: " +numero + " Jugadores Actuales: "+ /*jugadores.size()+*/" - Total Apostado: "+totalApostado+ " - Estado: "+ estadoActual+" - Jugador Ganador: "+jugadorGanador +" - Figura Ganadaora: "+ figuraGanadora ;

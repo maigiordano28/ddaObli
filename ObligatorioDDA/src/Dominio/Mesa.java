@@ -24,6 +24,7 @@ public class Mesa {
     private double apuestaBase;
     private EstadoMesa EstadoMesa;
     private double porcentajeComision ;
+    private double montoRecaudado;
     private List<Mano> manos;
     private Double pozo;
     private Mazo mazo;
@@ -230,6 +231,9 @@ return cartasPoker;
         
     }
     
+    public Double pagarPozo(){
+      return (pozo*porcentajeComision)/100;
+    }
     
    
     
@@ -251,7 +255,7 @@ return cartasPoker;
     }
     return ret;
     
-    
+    //asfasfjkasfbaskjfbasf
     }
     
     
