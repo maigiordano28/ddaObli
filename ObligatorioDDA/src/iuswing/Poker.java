@@ -201,7 +201,7 @@ private PokerController controller;
     @Override
     public void Pasar(){
     
-    this.setVisible(false);
+    
     
     
     

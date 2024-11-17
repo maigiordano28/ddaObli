@@ -5,6 +5,7 @@
 package Dominio.Usuario;
 
 import Dominio.Carta;
+import Dominio.EstadoJugador;
 import Dominio.EventoFachada;
 import Dominio.Fachada;
 import Dominio.Usuario.Usuario;
@@ -19,7 +20,7 @@ import panelCartasPoker.CartaPoker;
 public class Jugador extends Usuario{
     
     private Double SaldoInicial;
-    private String estadoActual;
+    private EstadoJugador estadoActual;
     private ArrayList<Carta> cartasMano; 
 
     public Jugador(String nombreCompleto, String cedula, String password,Double saldoInicial) {
@@ -53,11 +54,11 @@ public class Jugador extends Usuario{
         this.SaldoInicial = SaldoInicial;
     }
 
-    public String getEstadoActual() {
+    public EstadoJugador getEstadoActual() {
         return estadoActual;
     }
 
-    public void setEstadoActual(String estadoActual) {
+    public void setEstadoActual(EstadoJugador estadoActual) {
         this.estadoActual = estadoActual;
     }
     

@@ -5,6 +5,7 @@
 package ui.controller;
 
 import Dominio.Carta;
+import Dominio.EstadoJugador;
 import Dominio.EstadoMano;
 import Dominio.EstadoMesa;
 import Dominio.EventoFachada;
@@ -63,15 +64,18 @@ public class PokerController implements observador{
             mesa.setApuestaActual(apuesta);
             mesa.apostar(apuesta);
         jugador.ActualizarSaldo(false, apuesta);
+        jugador.setEstadoActual(EstadoJugador.Apuesta_iniciada);
         vista.mostrarMensaje("Apuesta realizada");
         mesa.getManoActiva().setEstadoActual(EstadoMano.Apuesta_iniciada);
+        
             
             }else if(mesa.getManoActiva().getEstadoActual().equals(EstadoMano.Apuesta_iniciada)){
          
             mesa.ActualizarPozo(true, mesa.getApuestaActual());
             jugador.ActualizarSaldo(false, mesa.getApuestaActual());
+             jugador.setEstadoActual(EstadoJugador.Apuesta_pagada);
             vista.mostrarMensaje("Pago realizada");
-            
+           
             }
         
         }
