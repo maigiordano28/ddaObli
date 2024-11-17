@@ -43,6 +43,14 @@ public class Fachada extends observable {
         sUsuario.agregarJugador(nombre,cedula,password,saldo);
        
     }
+    
+    
+    
+    public void agregarFigura(String palo){
+    
+    sFigura.agregarFigura(palo);
+    
+    }
         public void agregarAdmin(String cedula, String password, String nombre) {
         sUsuario.agregarAdmin(nombre,cedula,password);
        
@@ -84,6 +92,13 @@ public class Fachada extends observable {
             
           return sUsuario.getJugadores();
             }
+            
+            
+               public ArrayList<Figura> getFiguras(){
+            
+          return sFigura.getFiguras();
+            }
+        
         
         public double TotalApostado(){
         return sMesa.TotalApostado();
@@ -101,5 +116,8 @@ public class Fachada extends observable {
     
     }
         
+    
+    
+    
      
 }

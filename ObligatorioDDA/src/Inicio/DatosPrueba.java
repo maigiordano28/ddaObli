@@ -41,6 +41,10 @@ fachada.agregarAdmin("58491040" ,"mypassword8","Santiago Durán" );
 
  // TODO code application logic here
  
+ fachada.agregarFigura("Par");
+ fachada.agregarFigura("Pierna");
+ fachada.agregarFigura("Escalera");
+ fachada.agregarFigura("Poker");
  
 
         

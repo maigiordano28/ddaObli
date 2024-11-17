@@ -157,8 +157,8 @@ public class inicioJugador extends javax.swing.JDialog implements InicioJugadorV
 
     @Override
     public void mostrarMesasCreadas(List<Mesa> mesasCreadas) {
-        List<String> mesasFormateadas = formatearMesasCreadas(mesasCreadas);
-        String[] listaMesasCreadasArray = new String[mesasFormateadas.size()];
+      //  List<String> mesasFormateadas = formatearMesasCreadas(mesasCreadas);
+       // String[] listaMesasCreadasArray = new String[mesasFormateadas.size()];
         //listMesasAbiertas.setListData(mesasFormateadas.toArray(listaMesasCreadasArray));
         
          listMesasAbiertas.setListData(mesasCreadas.toArray()); 

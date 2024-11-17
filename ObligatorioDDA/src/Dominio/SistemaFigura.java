@@ -12,5 +12,14 @@ import java.util.ArrayList;
  */
 public class SistemaFigura {
     
-     private ArrayList<Figura> figuras;
+     private ArrayList<Figura> figuras=new ArrayList();
+
+    public ArrayList<Figura> getFiguras() {
+        return figuras;
+    }
+    
+    
+    public void agregarFigura(String palo){
+    this.figuras.add(new Figura(palo));
+    }
 }

@@ -8,6 +8,7 @@ import Dominio.Carta;
 import Dominio.EstadoJugador;
 import Dominio.EventoFachada;
 import Dominio.Fachada;
+import Dominio.Figura;
 import Dominio.Usuario.Usuario;
 import java.util.ArrayList;
 import panelCartasPoker.CartaPoker;
@@ -75,6 +76,15 @@ public class Jugador extends Usuario{
            Fachada.getInstancia().avisar(EventoFachada.NUEVA_INFO);
         
 }
+    
+    public String obtenerFiguraActual(){
+    Figura figura=new Figura(this.getCartasMano());
+    if( figura.getTipoFigura().esFigura(cartasMano)){
+    return figura.getTipoFigura().getNombre();
+    
+    
+    }
+    }
     
     public void RegistrarApuesta(){
         

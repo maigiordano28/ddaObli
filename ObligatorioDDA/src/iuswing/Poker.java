@@ -7,6 +7,7 @@ package iuswing;
 import Dominio.Carta;
 import Dominio.EstadoMano;
 import Dominio.Fachada;
+import Dominio.Figura;
 import Dominio.Mesa;
 import Dominio.Usuario.Jugador;
 import java.util.ArrayList;
@@ -34,6 +35,7 @@ private PokerController controller;
         initComponents();
         controller = new PokerController(this,jugador,mesa);
         EmpezarJuego(jugador,mesa);
+       conseguirFigura();
     }
     
 
@@ -43,6 +45,7 @@ private PokerController controller;
         
         mostrarJugadoresEnMesa(mesa.getJugadores());
         cargarCartas(jugador.getCartasMano());
+        CargarFiguraActual();
         AgregarMano(jugador,mesa);
     }
     
@@ -54,7 +57,11 @@ private PokerController controller;
         controller.agregarMano(mesa);
         controller.repartirCartas(mesa, mesa.obtenerArrayMazoComoCartasPoker());
     } 
+    public void CargarFiguraActual(){
+        String figura=controller.FiguraActual();
+        txtFiguraActual.setText(figura);
     
+    }
         
     public void  DescontarLuz(){
       controller.DescontarLuz();
@@ -84,7 +91,7 @@ private PokerController controller;
         checkListener = new javax.swing.JCheckBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         listFiguras = new javax.swing.JList<>();
-        txtFigurActual = new javax.swing.JLabel();
+        txtFiguraActual = new javax.swing.JLabel();
         txtNombreMesa = new javax.swing.JLabel();
         txtNombreJugador = new javax.swing.JLabel();
         txtSaldo = new javax.swing.JLabel();
@@ -129,8 +136,8 @@ private PokerController controller;
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(60, 50, 90, 130);
-        getContentPane().add(txtFigurActual);
-        txtFigurActual.setBounds(60, 210, 37, 16);
+        getContentPane().add(txtFiguraActual);
+        txtFiguraActual.setBounds(60, 210, 190, 30);
         getContentPane().add(txtNombreMesa);
         txtNombreMesa.setBounds(60, 10, 120, 20);
         getContentPane().add(txtNombreJugador);
@@ -145,9 +152,9 @@ private PokerController controller;
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(180, 50, 300, 130);
         getContentPane().add(txtPozo);
-        txtPozo.setBounds(250, 240, 110, 30);
+        txtPozo.setBounds(270, 210, 110, 30);
         getContentPane().add(txtEstadoActualMano);
-        txtEstadoActualMano.setBounds(440, 230, 150, 20);
+        txtEstadoActualMano.setBounds(440, 200, 150, 20);
 
         btnApostar.setText("Apostar");
         btnApostar.addActionListener(new java.awt.event.ActionListener() {
@@ -156,7 +163,7 @@ private PokerController controller;
             }
         });
         getContentPane().add(btnApostar);
-        btnApostar.setBounds(110, 580, 75, 23);
+        btnApostar.setBounds(110, 580, 90, 23);
         getContentPane().add(txtApuesta);
         txtApuesta.setBounds(40, 580, 64, 22);
 
@@ -230,6 +237,19 @@ private PokerController controller;
         return jugador.getNombreCompleto();
     }
     
+  
+    public void conseguirFigura() {
+        controller.conseguirFiguras();
+        
+        
+       
+        }
+    
+    @Override
+    public void mostrarFiguras(List<Figura> figuras ){
+        
+         listFiguras.setListData(figuras.toArray()); 
+    }
     
     
    
@@ -243,12 +263,12 @@ private PokerController controller;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblApuestaRealizada;
-    private javax.swing.JList<String> listFiguras;
+    private javax.swing.JList<Object> listFiguras;
     private javax.swing.JList<String> listJugadores;
     private panelCartasPoker.PanelCartasPoker panelCartasPoker1;
     private javax.swing.JTextField txtApuesta;
     private javax.swing.JLabel txtEstadoActualMano;
-    private javax.swing.JLabel txtFigurActual;
+    private javax.swing.JLabel txtFiguraActual;
     private javax.swing.JLabel txtNombreJugador;
     private javax.swing.JLabel txtNombreMesa;
     private javax.swing.JLabel txtNumeroDeMano;

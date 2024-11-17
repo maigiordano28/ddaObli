@@ -13,6 +13,7 @@ import Dominio.EventoMesa;
 import Dominio.Exceptions.ManoException;
 import Dominio.Exceptions.PokerException;
 import Dominio.Fachada;
+import Dominio.Figura;
 import Dominio.Mano;
 import Dominio.Mesa;
 import Dominio.Usuario.Jugador;
@@ -111,6 +112,13 @@ public class PokerController implements observador{
       }
       }
      
+    public String FiguraActual(){
+    
+        return jugador.obtenerFiguraActual();
+        
+    
+    
+    }
     
     public void procesarMano(){
 
@@ -153,7 +161,12 @@ public class PokerController implements observador{
 }
         
     }
+     public void conseguirFiguras(){
      
+     List<Figura> figuras= fachada.getFiguras();
+     vista.mostrarFiguras(figuras);
+     
+     }
    
       public void repartirCartas(Mesa mesa,ArrayList<CartaPoker> carta){
           ArrayList<CartaPoker> cartasBarajadas= mesa.getMazo().barajarMazo(carta);

@@ -4,6 +4,7 @@
  */
 package ui.view;
 
+import Dominio.Figura;
 import Dominio.Mesa;
 import Dominio.Usuario.Jugador;
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public interface PokerView {
     public void cargarInfo(Jugador jugador,Mesa mesa);
     public void cargarCartas(ArrayList<CartaPoker> carta);
     public void cambiarVistaPagar(Double apuesta);
-
+ public void mostrarFiguras(List<Figura> figuras);
 
     
 }

@@ -17,6 +17,14 @@ public abstract class tipoFigura {
     public tipoFigura(String Nombre) {
         this.nombre = Nombre;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public Figura getFigura() {
+        return figura;
+    }
     
     public abstract boolean esFigura(ArrayList<Carta> cartas);
     // Devuelve el valor principal de la figura (para desempate)
