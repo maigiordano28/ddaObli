@@ -36,7 +36,7 @@ private PokerController controller;
         initComponents();
         controller = new PokerController(this,jugador,mesa);
         EmpezarJuego(jugador,mesa);
-       conseguirFigura();
+      
     }
     
 
@@ -45,6 +45,7 @@ private PokerController controller;
     private void EmpezarJuego(Jugador jugador, Mesa mesa) {
         
         mostrarJugadoresEnMesa(mesa.getJugadores());
+        conseguirFigura();
         ArrayList<CartaPoker> poker=controller.cambiarGet();
         cargarCartas(poker);
         CargarFiguraActual();
