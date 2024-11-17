@@ -6,6 +6,7 @@ package ui.controller;
 
 import Dominio.Carta;
 import Dominio.EstadoMano;
+import Dominio.EstadoMesa;
 import Dominio.EventoFachada;
 import Dominio.EventoMesa;
 import Dominio.Exceptions.ManoException;
@@ -32,8 +33,8 @@ public class PokerController implements observador{
     PokerView vista;
     private Jugador jugador;
     private Mesa mesa;
-    private Mano mano;
-    private Double apuestaAPagar;
+    //private Mano mano;
+    
    
     public PokerController(PokerView vista,Jugador jugador,Mesa mesa) {
         fachada=Fachada.getInstancia();
@@ -44,33 +45,38 @@ public class PokerController implements observador{
       
     }
 
+   
     public void DescontarLuz(){
         mesa.PagarLuz(jugador);
         
+    }
+    
+    public Mano getMano(){
+        return mesa.getManoActiva();
     }
     public void apostar(Double apuesta){
         if(jugador.getSaldoInicial()<apuesta){
         vista.mostrarMensaje("Saldo Insuficiente");
         }else{
             
-            if(mano.getEstadoActual().equals(EstadoMano.Esperando_apuesta)){
-            apuestaAPagar = apuesta;
+            if(mesa.getManoActiva().getEstadoActual().equals(EstadoMano.Esperando_apuesta)){
+            mesa.setApuestaActual(apuesta);
             mesa.apostar(apuesta);
         jugador.ActualizarSaldo(false, apuesta);
         vista.mostrarMensaje("Apuesta realizada");
+        mesa.getManoActiva().setEstadoActual(EstadoMano.Apuesta_iniciada);
             
-            }else if(mano.getEstadoActual().equals(EstadoMano.Apuesta_iniciada)){
-            
-            mesa.ActualizarPozo(true, apuestaAPagar);
-            
-            jugador.ActualizarSaldo(false, apuestaAPagar);
+            }else if(mesa.getManoActiva().getEstadoActual().equals(EstadoMano.Apuesta_iniciada)){
+         
+            mesa.ActualizarPozo(true, mesa.getApuestaActual());
+            jugador.ActualizarSaldo(false, mesa.getApuestaActual());
             vista.mostrarMensaje("Pago realizada");
             
             }
         
         }
     }
-   
+  
     
     @Override
       public void actualizar(observable o, Object evento) {
@@ -84,19 +90,19 @@ public class PokerController implements observador{
         }
         
         if (evento.equals(EventoFachada.NUEVA_APUESTA)) {
-            vista.cambiarVistaPagar(apuestaAPagar);
+            vista.cambiarVistaPagar(mesa.getApuestaActual());
         }
      
     }
 
     public void agregarMano(Mesa mesa) {
-      if(mesa.getManos().size()<1){
+      
         Mano m = fachada.agregarMano( mesa);
-        this.mano=m;
-        m.setEstadoActual(EstadoMano.Esperando_apuesta);
+        
+        mesa.getManoActiva().setEstadoActual(EstadoMano.Esperando_apuesta);
         vista.mostrarMensaje("Mano numero"+m.getNumero());
     
-       }
+       
         
     }
      

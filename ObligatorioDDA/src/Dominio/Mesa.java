@@ -28,6 +28,16 @@ public class Mesa {
     private Double pozo;
     private Mazo mazo;
     private boolean mesaEnJuego = false;
+    private Double apuestaActual;
+    
+
+    public Double getApuestaActual() {
+        return apuestaActual;
+    }
+
+    public void setApuestaActual(Double apuestaActual) {
+        this.apuestaActual = apuestaActual;
+    }
 
     public List<Mano> getManos() {
         return manos;
@@ -63,6 +73,9 @@ public class Mesa {
         return numero;
     }
     
+    public Mano getManoActiva() {
+    return !manos.isEmpty() ? manos.getLast() : null;
+}
 public ArrayList<CartaPoker> obtenerArrayMazoComoCartasPoker() {
         ArrayList<CartaPoker> cartasPoker = new ArrayList<>();
         for (Carta carta : mazo.cartasMazo) {

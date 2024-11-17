@@ -96,6 +96,7 @@ private PokerController controller;
         btnApostar = new javax.swing.JButton();
         txtApuesta = new javax.swing.JTextField();
         txtPasar = new javax.swing.JButton();
+        lblApuestaRealizada = new javax.swing.JLabel();
 
         jLabel4.setText("jLabel4");
 
@@ -113,7 +114,7 @@ private PokerController controller;
             }
         });
         getContentPane().add(habilitarPanel);
-        habilitarPanel.setBounds(420, 580, 150, 20);
+        habilitarPanel.setBounds(650, 580, 150, 20);
 
         checkListener.setText("Escuchar clicks del panel");
         checkListener.addActionListener(new java.awt.event.ActionListener() {
@@ -122,7 +123,7 @@ private PokerController controller;
             }
         });
         getContentPane().add(checkListener);
-        checkListener.setBounds(420, 620, 210, 20);
+        checkListener.setBounds(650, 610, 210, 20);
 
         jScrollPane1.setViewportView(listFiguras);
 
@@ -167,6 +168,8 @@ private PokerController controller;
         });
         getContentPane().add(txtPasar);
         txtPasar.setBounds(210, 580, 72, 23);
+        getContentPane().add(lblApuestaRealizada);
+        lblApuestaRealizada.setBounds(340, 560, 150, 60);
 
         setBounds(0, 0, 1064, 705);
     }// </editor-fold>//GEN-END:initComponents
@@ -187,6 +190,7 @@ private PokerController controller;
         
         Double apuesta = Double.parseDouble(txtApuesta.getText());
         controller.apostar(apuesta);
+        lblApuestaRealizada.setText(String.valueOf(apuesta)+"|"+controller.getMano().getEstadoActual());
         
     }//GEN-LAST:event_btnApostarActionPerformed
 
@@ -237,6 +241,7 @@ private PokerController controller;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblApuestaRealizada;
     private javax.swing.JList<String> listFiguras;
     private javax.swing.JList<String> listJugadores;
     private panelCartasPoker.PanelCartasPoker panelCartasPoker1;
