@@ -31,6 +31,22 @@ public class Figura {
         this.nombre = nombre;
     }
     
+     public tipoFigura determinarFigura(ArrayList<Carta> cartas ) {
+        ArrayList<tipoFigura> tiposFigura = new ArrayList<>();
+    
+    // Agrega los diferentes tipos de figuras posibles
+    tiposFigura.add(new Par());  
+    tiposFigura.add(new Pierna());      
+    tiposFigura.add(new Escalera()); 
+    tiposFigura.add(new Poker());    
+        for (tipoFigura tipo : tiposFigura) {
+            if (tipo.esFigura(cartas)) {
+                return tipo;
+            }
+        }
+        return null; // Si no se encuentra figura, retorna null
+    }
+
     
     public boolean determinarFiguraGanadora(){
     return tipoFigura.esFigura(cartas);

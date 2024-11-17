@@ -10,6 +10,7 @@ import Dominio.EventoFachada;
 import Dominio.Fachada;
 import Dominio.Figura;
 import Dominio.Usuario.Usuario;
+import Dominio.tipoFigura;
 import java.util.ArrayList;
 import panelCartasPoker.CartaPoker;
 
@@ -23,6 +24,7 @@ public class Jugador extends Usuario{
     private Double SaldoInicial;
     private EstadoJugador estadoActual;
     private ArrayList<Carta> cartasMano; 
+    private Figura figuraActual;
 
     public Jugador(String nombreCompleto, String cedula, String password,Double saldoInicial) {
         super(nombreCompleto, cedula, password);
@@ -44,6 +46,14 @@ public class Jugador extends Usuario{
     }
     public void setCartasMano(ArrayList<Carta> cartasMano) {
         this.cartasMano = cartasMano;
+    }
+
+    public Figura getFiguraActual() {
+        return figuraActual;
+    }
+
+    public void setFiguraActual(Figura figuraActual) {
+        this.figuraActual = figuraActual;
     }
  
    
@@ -75,16 +85,12 @@ public class Jugador extends Usuario{
         }
            Fachada.getInstancia().avisar(EventoFachada.NUEVA_INFO);
         
+}public void ActualizarFigura(){
+    this.setFiguraActual(figuraActual);
+    
 }
     
-    public String obtenerFiguraActual(){
-    Figura figura=new Figura(this.getCartasMano());
-    if( figura.getTipoFigura().esFigura(cartasMano)){
-    return figura.getTipoFigura().getNombre();
     
-    
-    }
-    }
     
     public void RegistrarApuesta(){
         

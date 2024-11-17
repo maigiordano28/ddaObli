@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public abstract class tipoFigura {
     private String nombre;
-    private Figura figura;
+    
 
     public tipoFigura(String Nombre) {
         this.nombre = Nombre;
@@ -22,9 +22,7 @@ public abstract class tipoFigura {
         return nombre;
     }
 
-    public Figura getFigura() {
-        return figura;
-    }
+  
     
     public abstract boolean esFigura(ArrayList<Carta> cartas);
     // Devuelve el valor principal de la figura (para desempate)

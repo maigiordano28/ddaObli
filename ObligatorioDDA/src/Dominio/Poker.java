@@ -10,11 +10,15 @@ import java.util.ArrayList;
  *
  * @author HOLA
  */
-public class Pocker extends tipoFigura{
+public class Poker extends tipoFigura{
 
-    public Pocker(Figura figura) {
-        super("Pocker");
+    public Poker() {
+        super("Poker");
     }
+
+ 
+
+    
 
 @Override
     public boolean esFigura(ArrayList<Carta> cartas){

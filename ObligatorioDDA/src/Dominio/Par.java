@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class Par extends tipoFigura{
 
-    public Par(Figura figura) {
+    public Par() {
         super("Par");
     }
 

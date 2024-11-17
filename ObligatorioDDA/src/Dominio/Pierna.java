@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class Pierna extends tipoFigura{
 
-    public Pierna(Figura figura) {
+    public Pierna() {
         super("Pierna");
     }
 

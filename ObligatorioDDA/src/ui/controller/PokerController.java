@@ -112,8 +112,8 @@ public class PokerController implements observador{
       }
       }
      
-    public String FiguraActual(){
-    
+    public Figura FiguraActual(){
+    jugador.setFiguraActual(jugador.getFiguraActual().determinarFigura(jugador.getCartasMano()));
         return jugador.obtenerFiguraActual();
         
     
