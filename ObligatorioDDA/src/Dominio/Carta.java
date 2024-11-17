@@ -11,7 +11,7 @@ import panelCartasPoker.CartaPoker;
  *
  * @author bsout
  */
-public class Carta implements CartaPoker{
+public class Carta implements CartaPoker,Comparable<Carta>{
      
     private int numero;
     private String palo;
@@ -46,6 +46,12 @@ public class Carta implements CartaPoker{
     @Override
     public String toString() {
         return "Carta Ejemplo{" + "numero=" + numero + ", palo=" + palo + ", visible=" + visible + '}';
+    }
+
+  
+    @Override
+    public int compareTo(Carta o) {
+           return Integer.compare(this.getValorCarta(), o.getValorCarta());
     }
     
     

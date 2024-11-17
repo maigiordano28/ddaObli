@@ -16,39 +16,39 @@ public class Par extends tipoFigura{
         super("Par");
     }
 
-    @Override
-    public boolean esFigura(ArrayList<Carta> cartas){
-        for(int i=0;i<cartas.size();i++){
-            int contador=0;
-            
-            for(int j=i+1;j<cartas.size();j++){
-                if(cartas.get(i).getValorCarta()==(cartas.get(j).getValorCarta())){
-                    contador++;
-                
-                }
+   @Override
+public boolean esFigura(ArrayList<Carta> cartas) {
+    for (int i = 0; i < cartas.size(); i++) {
+        int contador = 0;
+        for (int j = 0; j < cartas.size(); j++) {
+            if (i != j && cartas.get(i).getValorCarta() == cartas.get(j).getValorCarta()) {
+                contador++;
             }
-            if(contador==1){
-            return true;
-            }
-        
         }
-    return false;
+        if (contador >= 1) { // Hay al menos un par
+            return true;
+        }
     }
+    return false; // No hay pares
+}
     
     @Override
 public int valorFigura(ArrayList<Carta> cartas) {
-    for (Carta carta : cartas) {
-        int count = 0;
-        for (Carta otraCarta : cartas) {
-            if (carta.getValorCarta()== otraCarta.getValorCarta()) {
-                count++;
+    int parMasGrande = -1; // Indica que no hay par
+
+    for (int i = 0; i < cartas.size(); i++) {
+        int contador = 0;
+        for (int j = 0; j < cartas.size(); j++) {
+            if (i != j && cartas.get(i).getValorCarta() == cartas.get(j).getValorCarta()) {
+                contador++;
             }
         }
-        if (count == 2) {
-            return carta.getValorCarta(); // Valor del par
+        if (contador >= 1) { // Hay un par
+            parMasGrande = Math.max(parMasGrande, cartas.get(i).getValorCarta());
         }
     }
-    return 0; // No hay Par
+
+    return parMasGrande; // Retorna el valor del par más grande o -1 si no hay par
 }
     
     

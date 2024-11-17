@@ -19,16 +19,7 @@ public class Escalera extends tipoFigura{
    @Override
     public boolean esFigura(ArrayList<Carta> cartas) {
        
-        for (int i = 0; i < cartas.size() - 1; i++) {
-            for (int j = 0; j < cartas.size() - i - 1; j++) {
-                if (cartas.get(j).getValorCarta()> cartas.get(j + 1).getValorCarta()) {
-                    
-                    Carta temp = cartas.get(j);
-                    cartas.set(j, cartas.get(j + 1));
-                    cartas.set(j + 1, temp);
-                }
-            }
-        }
+        cartas.sort(null);
 
         
         for (int i = 0; i < cartas.size() - 1; i++) {
@@ -41,13 +32,7 @@ public class Escalera extends tipoFigura{
     
     @Override
 public int valorFigura(ArrayList<Carta> cartas) {
-    int maxValor = cartas.get(0).getValorCarta(); // Iniciar con el primer valor
-    for (Carta carta : cartas) {
-        if (carta.getValorCarta()> maxValor) {
-            maxValor = carta.getValorCarta();
-        }
-    }
-    return maxValor; // Retorna el valor más alto
-}
+    return cartas.get(cartas.size() - 1).getValorCarta();
     
+}
 }
