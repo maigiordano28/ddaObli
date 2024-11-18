@@ -12,11 +12,20 @@ import java.util.ArrayList;
  */
 public class Par extends tipoFigura{
 
+     int jerarquia = 1;
     public Par() {
         super("Par");
+       
     }
 
-   @Override
+  
+    
+    public int getJerarquia(){
+        return this.jerarquia;
+    }
+    
+    
+    @Override
 public boolean esFigura(ArrayList<Carta> cartas) {
     for (int i = 0; i < cartas.size(); i++) {
         int contador = 0;

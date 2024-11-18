@@ -86,6 +86,8 @@ public class Figura {
         if(j.getFiguraActual().tipoFigura.getJerarquia()>jerarquia){
             
             jugadorGanador=j;
+        }else if(j.getFiguraActual().tipoFigura.getJerarquia() == jerarquia){
+            comparar(ArrayList<Carta> cartasJugador1, ArrayList<Carta> cartasJugador2)
         }
         }
         return jugadorGanador;

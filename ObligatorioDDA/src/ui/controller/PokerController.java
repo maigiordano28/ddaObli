@@ -164,12 +164,45 @@ public class PokerController implements observador{
       jugadorEnMano.ActualizarSaldo(true,pagoPozo());
       if(jugadorEnMano.equals(jugador)){
       vista.mostrarMensaje("GANASTE " +pagoPozo()+"!!!" );
-    
       }
       agregarMano(mesa);
+      }else if(TodosPasaron()){
+          agregarMano(mesa);
+      }else if(SePagaApuesta()){
+          Jugador jugadorGanador = GanadorDeMano(mesa.getManoActiva().getJugadoresEnMano());
       }
       }
       
+    
+    public Jugador GanadorDeMano(ArrayList<Jugador> jugadores){
+       Jugador ganador = 
+    }
+    
+    public boolean SePagaApuesta(){
+        boolean ret = false;
+        int contador = 0;
+         for(Jugador j :mesa.getJugadores()){
+            if(j.getEstadoActual().equals(EstadoJugador.Apuesta_pagada)){
+              contador++;
+            }else if(j.getEstadoActual().equals(EstadoJugador.No_pago_apuesta)){
+              mesa.getManoActiva().getJugadoresEnMano().remove(j);
+            }
+          }
+         if(contador>0){
+             ret=true;
+         }
+        return ret;
+    }
+    
+    public boolean TodosPasaron(){
+        boolean ret = false;
+        for(Jugador j :mesa.getJugadores()){
+            if(j.getEstadoActual().equals(EstadoJugador.No_pago_apuesta)){
+              ret = true;
+            }
+          }
+        return ret;
+    }
       public Double pagoPozo(){
           
           return mesa.pagarPozo();
@@ -182,7 +215,7 @@ public class PokerController implements observador{
       }
       
     public void agregarMano(Mesa mesa) {
-        mesa.setPozo(0.0);
+        //mesa.setPozo(0.0);
         jugador.setEstadoActual(EstadoJugador.Accion_pendiente);
         if(mesa.getManoActiva()==null){
         Mano m = fachada.agregarMano( mesa);

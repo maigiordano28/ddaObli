@@ -12,11 +12,14 @@ import java.util.ArrayList;
  */
 public class Poker extends tipoFigura{
 
+     int jerarquia = 4;
     public Poker() {
         super("Poker");
     }
 
- 
+ public int getJerarquia(){
+        return this.jerarquia;
+    }
 
     
 

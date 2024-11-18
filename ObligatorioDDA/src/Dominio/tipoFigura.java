@@ -4,6 +4,7 @@
  */
 package Dominio;
 
+import Dominio.Usuario.Jugador;
 import java.util.ArrayList;
 
 /**
@@ -21,13 +22,34 @@ public abstract class tipoFigura {
     public String getNombre() {
         return nombre;
     }
-
-  
     
+    
+  
+    public abstract int getJerarquia();
     public abstract boolean esFigura(ArrayList<Carta> cartas);
     // Devuelve el valor principal de la figura (para desempate)
     public abstract int valorFigura(ArrayList<Carta> cartas);
  
+    
+    public Jugador compararFiguras(ArrayList<Jugador> jugadores) {
+    Jugador ganador = jugadores.get(0); // Inicia con el primer jugador como ganador provisional
+
+    for (int i = 1; i < jugadores.size(); i++) {
+        Jugador actual = jugadores.get(i);
+
+        // Compara las cartas del jugador actual con el ganador provisional
+        if (comparar(ganador.getCartasMano(), actual.getCartasMano()) < 0) {
+            ganador = actual; // Actualiza el ganador si el jugador actual es mejor
+        }
+    }
+
+    return ganador;
+}
+    
+    
+    
+    
+    
 public int comparar(ArrayList<Carta> cartasJugador1, ArrayList<Carta> cartasJugador2) {
         int valorJugador1 = valorFigura(cartasJugador1);
         int valorJugador2 = valorFigura(cartasJugador2);

@@ -269,7 +269,12 @@ return cartasPoker;
     return ret;
     }
     
-    
+    public Jugador GanadorDeMesa(){
+        Figura mayorFigura = null;
+        for(Jugador j:jugadores){
+            if(j.getFiguraActual().getTipoFigura().g)
+        }
+    }
     
     
     public void PagarLuz(Jugador j){
