@@ -76,31 +76,12 @@ public class PokerController implements observador{
             }
           
             
-            if(sePagoApuesta()){
-                vista.HabilitarBoton();
-            }
+          
         }
+         mesa.ValidarEstadosJugador();
     }
     
-    public boolean sePagoApuesta(){
-        
-        for(Jugador j:mesa.getJugadores()){
-            if(j.getEstadoActual().equals(EstadoJugador.Apuesta_pagada) && noHayAccionPendiente()){
-                return true;
-            }
-        }
-        return false;
-    }
     
-    public boolean noHayAccionPendiente(){
-      
-         for(Jugador j:mesa.getJugadores()){
-            if(j.getEstadoActual().equals(EstadoJugador.Accion_pendiente)){
-                return false;
-            }
-        }
-        return true;
-    }
   public void descartarYRepartirCartas(){
     
       if(cartasACambiar.size()<1){
@@ -146,10 +127,13 @@ public class PokerController implements observador{
         if (evento.equals(EventoFachada.NUEVA_APUESTA)) {
             vista.cambiarVistaPagar(mesa.getApuestaActual());
         }
-       /*  if (evento.equals(EventoFachada.NUEVA_APUESTA)) {
-            vista.cambiarCartas();
-        }*/
-     
+         if (evento.equals(EventoFachada.HABILITAR_BOTON)) {
+            vista.HabilitarBoton();
+        }
+         
+          if (evento.equals(EventoFachada.NUEVAS_CARTAS)) {
+            vista.CargarFiguraActual();
+        }
     }
       
     public void pasar(){
@@ -199,6 +183,7 @@ public class PokerController implements observador{
       
     public void agregarMano(Mesa mesa) {
         mesa.setPozo(0.0);
+        jugador.setEstadoActual(EstadoJugador.Accion_pendiente);
         if(mesa.getManoActiva()==null){
         Mano m = fachada.agregarMano( mesa);
         m.setJugadoresEnMano(mesa.getJugadores());

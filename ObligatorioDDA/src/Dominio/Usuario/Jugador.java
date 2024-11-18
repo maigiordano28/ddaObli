@@ -93,9 +93,14 @@ public class Jugador extends Usuario{
         
         this.cartasMano.add(carta);
     
+      Fachada.getInstancia().avisar(EventoFachada.NUEVAS_CARTAS);
     
-    
+        
+        
     }
+    
+    
+ 
     
     public void RegistrarApuesta(){
         

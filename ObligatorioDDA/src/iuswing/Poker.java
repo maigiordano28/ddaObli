@@ -59,6 +59,7 @@ private PokerController controller;
         controller.agregarMano(mesa);
         controller.repartirCartas(mesa, mesa.obtenerCartasMazo());
     } 
+    @Override
    public void CargarFiguraActual(){
         String figura=controller.FiguraActual();
         txtFiguraActual.setText(figura);
@@ -338,7 +339,7 @@ private PokerController controller;
 
     @Override
     public void HabilitarBoton() {
-      btnCambiarCartas.enable();
+      btnCambiarCartas.setEnabled(true);
     }
 
 }

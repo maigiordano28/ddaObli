@@ -313,4 +313,31 @@ return cartasPoker;
          
          return this;
     }
+    
+    
+    
+    
+    public boolean ValidarEstadosJugador(){
+       
+    
+    for(Jugador j:this.jugadores){
+            if(j.getEstadoActual().equals(EstadoJugador.Apuesta_pagada) && noHayAccionPendiente()){
+              
+                Fachada.getInstancia().avisar(EventoFachada.HABILITAR_BOTON);
+                  return true;
+            }  
+            }
+        
+  return true;
+}
+    
+public boolean noHayAccionPendiente(){
+      
+         for(Jugador j:jugadores){
+            if(j.getEstadoActual().equals(EstadoJugador.Accion_pendiente)){
+                return false;
+            }
+        }
+        return true;
+    }
    }

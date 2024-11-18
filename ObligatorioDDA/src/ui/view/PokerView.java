@@ -25,6 +25,7 @@ public interface PokerView {
     public void cambiarVistaPagar(Double apuesta);
  public void mostrarFiguras(List<Figura> figuras);
  public void HabilitarBoton();
+ public void CargarFiguraActual();
  //public void cambiarCartas();
 
     
