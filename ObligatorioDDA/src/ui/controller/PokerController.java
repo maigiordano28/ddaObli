@@ -68,17 +68,17 @@ public class PokerController implements observador{
             
             }else if(mesa.ConseguirEstadoMano(EstadoMano.Apuesta_iniciada)){
          
-           PagarApuesta();
+               PagarApuesta();
             
             }
-            
-            
-          
-            
-          
+   
         }
-         mesa.ValidarEstadosJugador();
-         mesa.ActualizarEstadoMano(3);
+        
+         if(mesa.ValidarEstadosJugador()){
+             mesa.ActualizarEstadoMano(3);
+             mesa.verificarYAvisarEstadosJugador();
+         }
+         
     }
     
     
@@ -91,7 +91,7 @@ public class PokerController implements observador{
     }
     
   public void descartarYRepartirCartas(){
-    
+    jugador.setPidiendoCartas(true);
       if(cartasACambiar.size()<1){
           vista.mostrarMensaje("No ha seleccionado ninguna carta");
       
@@ -109,13 +109,24 @@ public class PokerController implements observador{
         jugador.AgregarCartasAlMazo(nueva);
     }
        cartasACambiar.clear();
-    vista.cargarCartas(jugador.getCartasMano());
-    vista.mostrarMensaje("Se han cambiado las cartas seleccionadas.");
+       if(TodosPidiendoCartas()){
+           vista.cargarCartas(jugador.getCartasMano());
+       }  
+      vista.mostrarMensaje("Pediste "+cartasACambiar.size()+" cartas nuevas.");
   
   }}
   
   
-
+  public boolean TodosPidiendoCartas(){
+      
+      for(Jugador j : mesa.getManoActiva().getJugadoresEnMano()){
+          if(!j.isPidiendoCartas()){
+              return false;
+          }
+      }
+      return true;
+          
+  }
   
   public void conseguirCartas(CartaPoker carta){
   cartasACambiar.add(carta);
@@ -145,11 +156,13 @@ public class PokerController implements observador{
     }
       
     public void pasar(){
-
+        
       if(mesa.getApuestaActual()!=null){
       mesa.EliminarJugadorMano( jugador);
-     
+      vista.mostrarMensaje("No se pago la apuesta");
       }
+         jugador.setEstadoActual(EstadoJugador.No_pago_apuesta); 
+         vista.mostrarMensaje("Se ha pasado");
     }
     
     
@@ -168,7 +181,7 @@ public class PokerController implements observador{
       mesa.SetearJugadorGanadorMano(jugadorEnMano);
       jugadorEnMano.ActualizarSaldo(true,pagoPozo());
       if(jugadorEnMano.equals(jugador)){
-      vista.mostrarMensaje("GANASTE " +pagoPozo()+"!!!" );
+      vista.mostrarMensaje("GANASTE $" +pagoPozo()+"!!!" );
       }
       agregarMano(mesa);
       }else if(TodosPasaron()){
@@ -178,7 +191,7 @@ public class PokerController implements observador{
       }
       }
       
-    
+ 
     public void GanadorMano() {
     // Verifica que haya jugadores activos en la mano
     if (mesa.CantidadJugadoresEnMano() < 2) {

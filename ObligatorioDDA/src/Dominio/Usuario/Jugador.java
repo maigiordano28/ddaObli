@@ -26,17 +26,28 @@ public class Jugador extends Usuario{
     private EstadoJugador estadoActual;
     private ArrayList<Carta> cartasMano; 
     private Figura figuraActual;
+    private boolean pidiendoCartas;
 
     public Jugador(String nombreCompleto, String cedula, String password,Double saldoInicial) {
         super(nombreCompleto, cedula, password);
         this.SaldoInicial=saldoInicial;
         this.cartasMano = new ArrayList<Carta>();
         this.figuraActual=new Figura("Sin figura");
+        this.pidiendoCartas = false;
     }
      public Jugador(String nombreCompleto, String password) {
         super(nombreCompleto, password);
     }
 
+    public boolean isPidiendoCartas() {
+        return pidiendoCartas;
+    }
+
+    public void setPidiendoCartas(boolean pidiendoCartas) {
+        this.pidiendoCartas = pidiendoCartas;
+    }
+
+     
   public ArrayList<Carta> getCartasMano() {
     
     return cartasMano;

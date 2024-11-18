@@ -36,6 +36,7 @@ private PokerController controller;
         initComponents();
         controller = new PokerController(this,jugador,mesa);
         EmpezarJuego(jugador,mesa);
+        
       
     }
     
@@ -191,7 +192,7 @@ private PokerController controller;
             }
         });
         getContentPane().add(btnCambiarCartas);
-        btnCambiarCartas.setBounds(480, 580, 150, 23);
+        btnCambiarCartas.setBounds(610, 580, 150, 23);
 
         setBounds(0, 0, 1064, 705);
     }// </editor-fold>//GEN-END:initComponents
@@ -222,6 +223,8 @@ private PokerController controller;
 
     private void btnCambiarCartasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarCartasActionPerformed
         controller.descartarYRepartirCartas();
+        btnCambiarCartas.disable();
+        
     }//GEN-LAST:event_btnCambiarCartasActionPerformed
 
  

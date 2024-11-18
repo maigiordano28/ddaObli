@@ -324,17 +324,30 @@ return cartasPoker;
     
     
     public boolean ValidarEstadosJugador(){
-       
+       int contador = 0;
     
     for(Jugador j:this.jugadores){
-            if(j.getEstadoActual().equals(EstadoJugador.Apuesta_pagada) && noHayAccionPendiente()){
-              
-                Fachada.getInstancia().avisar(EventoFachada.HABILITAR_BOTON);
-                  return true;
+            if(j.getEstadoActual().equals(EstadoJugador.Apuesta_pagada)){
+              contador++;
+                //Fachada.getInstancia().avisar(EventoFachada.HABILITAR_BOTON);
+                 // return true;
             }  
             }
+    if(contador>0&&noHayAccionPendiente())
+    {
+      return true;
+    }
         
-  return true;
+    return false;
+}
+    
+
+
+public void verificarYAvisarEstadosJugador() {
+    // Valida estados y avisa si corresponde
+    if (ValidarEstadosJugador()) {
+        Fachada.getInstancia().avisar(EventoFachada.HABILITAR_BOTON);
+    }
 }
     
 public boolean noHayAccionPendiente(){
