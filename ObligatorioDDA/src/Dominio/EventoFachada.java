@@ -17,6 +17,7 @@ public enum EventoFachada {
     ACTIVAR_POKER,
     NUEVA_APUESTA,
     NUEVAS_CARTAS,
-    HABILITAR_BOTON
+    HABILITAR_BOTON,
+    ACCION_MANO
    
 }

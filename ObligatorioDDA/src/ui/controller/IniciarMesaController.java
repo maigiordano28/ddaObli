@@ -5,6 +5,7 @@
 package ui.controller;
 
 import Dominio.EventoFachada;
+import Dominio.Exceptions.UsuarioException;
 import Dominio.Fachada;
 import Dominio.Mesa;
 import ui.view.InciarMesaView;
@@ -62,6 +63,16 @@ public class IniciarMesaController implements observador{
         }
         
      
+    }
+      
+        public void logout(){
+    try{
+        fachada.CerrarSesion(admin);
+        vista.cerrarVentana();
+    }   catch (UsuarioException ex) {
+            vista.mostrarMensaje(ex.getMessage());
+        }
+    
     }
       
       

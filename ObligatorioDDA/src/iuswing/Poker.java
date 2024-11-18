@@ -58,6 +58,7 @@ private PokerController controller;
         DescontarLuz();
         cargarInfo(jugador,mesa); 
         controller.agregarMano(mesa);
+    
         controller.repartirCartas(mesa, mesa.obtenerCartasMazo());
     } 
     @Override
@@ -77,8 +78,16 @@ private PokerController controller;
            txtNombreJugador.setText("Jugador: " + jugador.getNombreCompleto()); // Ajusta para mostrar en la interfaz
            txtSaldo.setText("Saldo: "+ Double.toString(jugador.getSaldoInicial()));
            txtNombreMesa.setText("Mesa: "+String.valueOf(mesa.getNumero())); // Ajusta para mostrar en la interfaz;
+           
+           
+           
     }
+    
+@Override
+public void CargarMano(Mesa mesa){
 
+    txtNumeroDeMano.setText("Mano: "+mesa.getManoActiva().getNumero()+" Estado: "+mesa.getManoActiva().getEstadoActual());
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -151,7 +160,7 @@ private PokerController controller;
         getContentPane().add(txtSaldo);
         txtSaldo.setBounds(920, 10, 120, 20);
         getContentPane().add(txtNumeroDeMano);
-        txtNumeroDeMano.setBounds(240, 10, 37, 16);
+        txtNumeroDeMano.setBounds(240, 10, 290, 16);
 
         jScrollPane2.setViewportView(listJugadores);
 
@@ -236,10 +245,17 @@ private PokerController controller;
         btnApostar.setText("Pagar");
         txtApuesta.setText(String.valueOf(apuesta));
         txtApuesta.disable();
-        
-        
-        
         }
+        
+         public void cambiarVistaApostar(){
+         
+         btnApostar.setText("Apostar");
+          txtApuesta.setText("");
+          txtApuesta.setEnabled(true);
+          lblApuestaRealizada.setText("");
+         }
+        
+        
      @Override
     public void mostrarJugadoresEnMesa( List<Jugador> nombresJugadores) {
         List<String> nombreJugadoresFormateados = cargarNombresJugadores(nombresJugadores);

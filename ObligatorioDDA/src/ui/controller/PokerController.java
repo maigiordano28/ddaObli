@@ -5,6 +5,7 @@
 package ui.controller;
 
 import Dominio.Carta;
+import Dominio.Escalera;
 import Dominio.EstadoJugador;
 import Dominio.EstadoMano;
 import Dominio.EventoFachada;
@@ -12,6 +13,10 @@ import Dominio.Fachada;
 import Dominio.Figura;
 import Dominio.Mano;
 import Dominio.Mesa;
+import Dominio.Par;
+import Dominio.Pierna;
+import Dominio.Poker;
+import Dominio.UnaCarta;
 import Dominio.Usuario.Jugador;
 import Observador.observable;
 import Observador.observador;
@@ -29,7 +34,7 @@ public class PokerController implements observador{
     PokerView vista;
     private Jugador jugador;
     private Mesa mesa;
-    //private Mano mano;
+    private Mano mano;
     
   private ArrayList<CartaPoker> cartasACambiar=new ArrayList<>();
     
@@ -39,6 +44,7 @@ public class PokerController implements observador{
         this.vista = vista;
         this.jugador=jugador;
         this.mesa=mesa;
+        this.mano = mesa.getManoActiva();
         Fachada.getInstancia().agregar(this);
       
     }
@@ -59,11 +65,12 @@ public class PokerController implements observador{
             
             if(mesa.ConseguirEstadoMano(EstadoMano.Esperando_apuesta)){
             mesa.setApuestaActual(apuesta);
-            mesa.apostar(apuesta);
+           
             jugador.ActualizarSaldo(false, apuesta);
             jugador.setEstadoActual(EstadoJugador.Apuesta_iniciada);
             vista.mostrarMensaje("Apuesta realizada");
             mesa.ActualizarEstadoMano(2);
+            mesa.apostar(apuesta);
         
             
             }else if(mesa.ConseguirEstadoMano(EstadoMano.Apuesta_iniciada)){
@@ -91,7 +98,7 @@ public class PokerController implements observador{
     }
     
   public void descartarYRepartirCartas(){
-    jugador.setPidiendoCartas(true);
+
       if(cartasACambiar.size()<1){
           vista.mostrarMensaje("No ha seleccionado ninguna carta");
       
@@ -108,15 +115,37 @@ public class PokerController implements observador{
     for (Carta nueva : nuevasCartas) {
         jugador.AgregarCartasAlMazo(nueva);
     }
+    int cartasCambiadas =cartasACambiar.size();
        cartasACambiar.clear();
-       if(TodosPidiendoCartas()){
+    
            vista.cargarCartas(jugador.getCartasMano());
-       }  
-      vista.mostrarMensaje("Pediste "+cartasACambiar.size()+" cartas nuevas.");
+       
+      vista.mostrarMensaje("Pediste "+cartasCambiadas+" cartas nuevas.");
+      
+      jugador.setEstadoActual(EstadoJugador.Ya_Pidio_Cartas);
+  
+      
+      String figuraJugador = jugador.DeterminarFigura();
+      if(figuraJugador.equals("Poker")){
+          jugador.setFiguraActual(new Figura(figuraJugador, jugador.getCartasMano(),new Poker()));
+      }
+      if(figuraJugador.equals("Escalera")){
+         jugador.setFiguraActual(new Figura(figuraJugador, jugador.getCartasMano(),new Escalera()));
+      }
+      if(figuraJugador.equals("Par")){
+   jugador.setFiguraActual(new Figura(figuraJugador, jugador.getCartasMano(),new Par()));
+      }
+      if(figuraJugador.equals("Pierna")){
+        jugador.setFiguraActual(new Figura(figuraJugador, jugador.getCartasMano(),new Pierna()));
+      }if(figuraJugador.equals("UnaCarta")){
+        jugador.setFiguraActual(new Figura(figuraJugador, jugador.getCartasMano(),new UnaCarta()));
+      }
+   
+      fachada.avisar(EventoFachada.NUEVAS_CARTAS);
   
   }}
   
-  
+  /*
   public boolean TodosPidiendoCartas(){
       
       for(Jugador j : mesa.getManoActiva().getJugadoresEnMano()){
@@ -126,7 +155,7 @@ public class PokerController implements observador{
       }
       return true;
           
-  }
+  }*/
   
   public void conseguirCartas(CartaPoker carta){
   cartasACambiar.add(carta);
@@ -141,10 +170,14 @@ public class PokerController implements observador{
         
         if (evento.equals(EventoFachada.NUEVA_INFO)) {
             vista.cargarInfo(jugador, mesa);
+            vista.CargarFiguraActual();
         }
         
         if (evento.equals(EventoFachada.NUEVA_APUESTA)) {
             vista.cambiarVistaPagar(mesa.getApuestaActual());
+            vista.cargarInfo(jugador, mesa);
+            vista.CargarFiguraActual();
+            this.VerSiTodosPasaron();
         }
          if (evento.equals(EventoFachada.HABILITAR_BOTON)) {
             vista.HabilitarBoton();
@@ -152,20 +185,94 @@ public class PokerController implements observador{
          
           if (evento.equals(EventoFachada.NUEVAS_CARTAS)) {
             vista.CargarFiguraActual();
+            VerSiTodosPasaron();
+            
+        }
+            if (evento.equals(EventoFachada.ACCION_MANO)) {
+            this.VerSiTodosPasaron();
         }
     }
       
     public void pasar(){
         
-      if(mesa.getApuestaActual()!=null){
+     vista.mostrarMensaje("Se ha pasado");
       mesa.EliminarJugadorMano( jugador);
-      vista.mostrarMensaje("No se pago la apuesta");
-      }
-         jugador.setEstadoActual(EstadoJugador.No_pago_apuesta); 
-         vista.mostrarMensaje("Se ha pasado");
+      
     }
     
     
+    public void VerSiTodosPasaron(){
+     
+     if((TodosPasaron() || mano.getEstadoActual() == EstadoMano.Terminada) && mano.getJugadorGanador() == null){
+            
+            mesa.PagarLuz(jugador);
+            mano.setEstadoActual(EstadoMano.Terminada);
+          agregarMano(mesa); 
+          repartirCartas(mesa,mesa.getMazo().getCartasMazo());
+      }
+     else if(UnoSoloAposto() || mano.getEstadoActual() == EstadoMano.Terminada || TodosPidieronCartas()){
+         if(jugador.equals(mano.getJugadorGanador())){
+         mano.getJugadorGanador().ActualizarSaldo(true,pagoPozo());
+          mesa.setPozo(mesa.getApuestaBase());
+          mesa.PagarLuz(jugador);
+         }
+         mano.setEstadoActual(EstadoMano.Terminada);
+         vista.mostrarMensaje("Gano el jugador: "+mano.getJugadorGanador().getNombreCompleto());
+         vista.cambiarVistaApostar();
+         agregarMano(mesa);    
+         repartirCartas(mesa,mesa.getMazo().getCartasMazo());
+         vista.cargarInfo(jugador, mesa);
+     }
+   
+    }
+    
+    public boolean TodosPidieronCartas(){
+        ArrayList<Jugador> jugadoresEnMano = new ArrayList<Jugador>();
+        int contadorPidieronCartas = 0;
+        int contadorNoAposto = 0;
+        
+        for(Jugador j:mesa.getJugadores()){
+            if(j.getEstadoActual() == EstadoJugador.Ya_Pidio_Cartas){
+            contadorPidieronCartas++;
+            jugadoresEnMano.add(j);
+            }else if(j.getEstadoActual() == EstadoJugador.No_pago_apuesta){
+                        contadorNoAposto++;
+            }
+        }
+        
+        if(contadorPidieronCartas+contadorNoAposto == mesa.getCantidadJugadores()){
+            Jugador jugadorGanador = fachada.DeterminarFiguraGanadora(jugadoresEnMano);
+            mano.setJugadorGanador(jugadorGanador);
+            return true;
+        
+        }
+        return false;
+    
+   
+    }
+    
+    
+    public boolean UnoSoloAposto(){
+          
+        int contadorPagados = 0;
+        int contadorNoPagados = 0;
+        Jugador jAux = null;
+         for(Jugador j :mesa.getJugadores()){
+            if(j.ConseguirEstado(EstadoJugador.Apuesta_iniciada)){
+              contadorPagados++;
+              jAux = j;
+            }else if(j.ConseguirEstado(EstadoJugador.No_pago_apuesta)){
+             contadorNoPagados++;
+            }
+          }
+        
+        if(contadorPagados == 1 && (contadorPagados+contadorNoPagados) == mesa.getCantidadJugadores()){
+            mano.setJugadorGanador(jAux);
+            return true;
+        }else{
+            return false;
+        }
+    }
     
     
      
@@ -184,27 +291,20 @@ public class PokerController implements observador{
       vista.mostrarMensaje("GANASTE $" +pagoPozo()+"!!!" );
       }
       agregarMano(mesa);
-      }else if(TodosPasaron()){
-          agregarMano(mesa);
-      }else if(SePagaApuesta()){
+      
+      
+      }/*else if(SePagaApuesta()){
         GanadorMano();
-      }
+      }*/
       }
       
  
     public void GanadorMano() {
-    // Verifica que haya jugadores activos en la mano
-    if (mesa.CantidadJugadoresEnMano() < 2) {
-        vista.mostrarMensaje("No hay suficientes jugadores para determinar un ganador.");
-        
-    }
-
+ 
     // Obtén la lista de jugadores activos en la mano
     ArrayList<Jugador> jugadores = mesa.getManoActiva().getJugadoresEnMano();
 
-    // Usa el método DeterminarFiguraGanadora para encontrar al ganador
-    Figura figura = new Figura(""); // Figura auxiliar para invocar el método
-    Jugador jugadorGanador = figura.DeterminarFiguraGanadora(jugadores);
+    Jugador jugadorGanador = fachada.DeterminarFiguraGanadora(jugadores);
 
     // Mostrar el ganador en la vista
     if (jugadorGanador != null) {
@@ -216,31 +316,18 @@ public class PokerController implements observador{
     }
 }
     
-    public boolean SePagaApuesta(){
-        boolean ret = false;
-        int contador = 0;
-         for(Jugador j :mesa.getJugadores()){
-            if(j.ConseguirEstado(EstadoJugador.Apuesta_pagada)){
-              contador++;
-            }else if(j.ConseguirEstado(EstadoJugador.No_pago_apuesta)){
-              mesa.EliminarJugadorMano(jugador);
-            }
-          }
-         if(contador>0){
-             ret=true;
-         }
-        return ret;
-    }
+   
     
     public boolean TodosPasaron(){
-        boolean ret = false;
+       boolean ret=true;
         for(Jugador j :mesa.getJugadores()){
-            if(j.ConseguirEstado(EstadoJugador.No_pago_apuesta)){
-              ret = true;
-            }
+              ret = ret && j.ConseguirEstado(EstadoJugador.No_pago_apuesta);
           }
         return ret;
     }
+   
+    
+    
       public Double pagoPozo(){
           
           return mesa.pagarPozo();
@@ -254,29 +341,58 @@ public class PokerController implements observador{
       
     public void agregarMano(Mesa mesa) {
         //mesa.setPozo(0.0);
-        jugador.setEstadoActual(EstadoJugador.Accion_pendiente);
+       
+        
         if(mesa.getManoActiva()==null){
         Mano m = fachada.agregarMano( mesa);
         m.setJugadoresEnMano(mesa.getJugadores());
         InicializarEstadoJugador(mesa.getJugadores());
         mesa.getManoActiva().setEstadoActual(EstadoMano.Esperando_apuesta);
+        this.mano =  mesa.getManoActiva();
         vista.mostrarMensaje("Mano numero"+m.getNumero());
       }else{
       
-      if(mesa.ConseguirEstadoMano(EstadoMano.Terminada)){
-        Mano m = fachada.agregarMano( mesa);
-         m.setJugadoresEnMano(mesa.getJugadores());
+      if(mano.getEstadoActual() == EstadoMano.Terminada){
+           Mano m;
+          if(mesa.getManoActiva().getEstadoActual() == EstadoMano.Terminada){
+          m = fachada.agregarMano(mesa);
+          m.setJugadoresEnMano(mesa.getJugadores());
+          }else{
+           m = mesa.getManoActiva();
+          }
+       
+         
         
-        mesa.getManoActiva().setEstadoActual(EstadoMano.Esperando_apuesta);
+        m.setEstadoActual(EstadoMano.Esperando_apuesta);
+         this.mano = m;
         vista.mostrarMensaje("Mano numero"+m.getNumero());
-      
+       
       }
-}
+}jugador.setEstadoActual(EstadoJugador.Accion_pendiente);
+        vista.CargarMano(mesa);
+          String figuraJugador = jugador.DeterminarFigura();
+      if(figuraJugador.equals("Poker")){
+          jugador.setFiguraActual(new Figura(figuraJugador, jugador.getCartasMano(),new Poker()));
+      }
+      if(figuraJugador.equals("Escalera")){
+         jugador.setFiguraActual(new Figura(figuraJugador, jugador.getCartasMano(),new Escalera()));
+      }
+      if(figuraJugador.equals("Par")){
+   jugador.setFiguraActual(new Figura(figuraJugador, jugador.getCartasMano(),new Par()));
+      }
+      if(figuraJugador.equals("Pierna")){
+        jugador.setFiguraActual(new Figura(figuraJugador, jugador.getCartasMano(),new Pierna()));
+      }if(figuraJugador.equals("UnaCarta")){
+        jugador.setFiguraActual(new Figura(figuraJugador, jugador.getCartasMano(),new UnaCarta()));
+      }
         
     }
     
     
+    public int getNumMano(){
+    return mesa.getManoActiva().getNumero();
     
+    }
     
     
     
@@ -298,7 +414,24 @@ public class PokerController implements observador{
               mesa.EliminarCartasMazoAux(c);
             }
         
-           jugador.setCartasMano(cartas);      
+           jugador.setCartasMano(cartas);     
+           
+           
+           String figuraJugador = jugador.DeterminarFigura();
+      if(figuraJugador.equals("Poker")){
+          jugador.setFiguraActual(new Figura(figuraJugador, jugador.getCartasMano(),new Poker()));
+      }
+      if(figuraJugador.equals("Escalera")){
+         jugador.setFiguraActual(new Figura(figuraJugador, jugador.getCartasMano(),new Escalera()));
+      }
+      if(figuraJugador.equals("Par")){
+   jugador.setFiguraActual(new Figura(figuraJugador, jugador.getCartasMano(),new Par()));
+      }
+      if(figuraJugador.equals("Pierna")){
+        jugador.setFiguraActual(new Figura(figuraJugador, jugador.getCartasMano(),new Pierna()));
+      }if(figuraJugador.equals("UnaCarta")){
+        jugador.setFiguraActual(new Figura(figuraJugador, jugador.getCartasMano(),new UnaCarta()));
+      }
            
           vista.cargarCartas(cartas);
           

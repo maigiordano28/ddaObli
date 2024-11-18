@@ -8,6 +8,7 @@ import Dominio.Mesa;
 import Dominio.Usuario.Admin;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import ui.controller.IniciarMesaController;
 import ui.view.InciarMesaView;
 /**
@@ -44,9 +45,14 @@ public class InicioAdmin extends javax.swing.JDialog implements InciarMesaView{
         btnCrarMesa = new javax.swing.JButton();
         labelMontoTotalH = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        ListMesas = new javax.swing.JList();
+        ListMesas = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         labelMontoTotal.setText("Monto Total Recaudado:");
 
@@ -110,6 +116,10 @@ public class InicioAdmin extends javax.swing.JDialog implements InciarMesaView{
       
     }//GEN-LAST:event_ListMesasMouseClicked
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        controller.logout();
+    }//GEN-LAST:event_formWindowClosing
+
 
 public void ObtenerMesas(){
 controller.ObtenerMesas();
@@ -120,7 +130,7 @@ public void CargarMesas(List<Mesa> mesas){
 
 }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JList ListMesas;
+    private javax.swing.JList<Object> ListMesas;
     private javax.swing.JButton btnCrarMesa;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelMontoTotal;
@@ -135,7 +145,10 @@ public void CargarMesas(List<Mesa> mesas){
          labelMontoTotalH.setText(Double.toString(totalApostado));
 
     }
-
+ @Override
+    public void mostrarMensaje(String msg) {
+            JOptionPane.showMessageDialog(null, msg);
+    }
     @Override
     public void cargarSiguientePantalla(Mesa mesaSeleccionada) {
         ManosAdmin a= new ManosAdmin(padre,false,mesaSeleccionada);
@@ -144,29 +157,19 @@ public void CargarMesas(List<Mesa> mesas){
 
     @Override
     public void mostrarMesasCreadas(List<Mesa> mesasCreadas) {
-        List<String> mesasFormateadas = formatearMesasCreadas(mesasCreadas);
-        String[] listaMesasCreadasArray = new String[mesasFormateadas.size()];
-        ListMesas.setListData(mesasFormateadas.toArray(listaMesasCreadasArray));
+        //List<String> mesasFormateadas = formatearMesasCreadas(mesasCreadas);
+      //  String[] listaMesasCreadasArray = new String[mesasFormateadas.size()];
+        ListMesas.setListData(mesasCreadas.toArray());
     }
 
- 
-   private List<String> formatearMesasCreadas(List<Mesa> mesasCreadas) {
-        List<String> mesasFormateadas = new ArrayList<>();
-        for (Mesa mesa: mesasCreadas) {
-            mesasFormateadas.add(formatearMesasCreadas(mesa));
-        }
-        return mesasFormateadas;
+ @Override
+    public void cerrarVentana() {
+        
+        this.setVisible(false);    
+    
     }
     
-
-    private String formatearMesasCreadas(Mesa mesa) {
-        return mesa.getNumero()+ "|" +
-                mesa.getCantidadJugadores() + "|" +
-                mesa.getApuestaBase() + "|"+
-                mesa.getJugadores().size() + "|"+
-                mesa.getManos().size() + "|" + mesa.TotalApostado()+"|"+
-                mesa.getPorcentajeComision()+"|"+ mesa.getEstadoMesa();
-    }
+    
 
   
 

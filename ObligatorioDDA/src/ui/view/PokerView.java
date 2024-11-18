@@ -26,7 +26,8 @@ public interface PokerView {
  public void mostrarFiguras(List<Figura> figuras);
  public void HabilitarBoton();
  public void CargarFiguraActual();
- //public void cambiarCartas();
+ public void CargarMano(Mesa mesa);
+  public void cambiarVistaApostar();
 
     
 }

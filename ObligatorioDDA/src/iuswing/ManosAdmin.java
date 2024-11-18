@@ -67,26 +67,14 @@ public class ManosAdmin extends javax.swing.JDialog implements AgregarManoView {
 
     @Override
     public void mostrarManosCreadas(List<Mano> manosCreadas) {
-        List<String> manosFormateadas = formatearManosCreadas(manosCreadas);
-        String[] listaManosCreadasArray = new String[manosFormateadas.size()];
-        ListManos.setListData(manosFormateadas.toArray(listaManosCreadasArray));
+        ListManos.setListData(manosCreadas.toArray());
         }
     
-      private List<String> formatearManosCreadas(List<Mano> manosCreadas) {
-        List<String> manosFormateadas = new ArrayList<>();
-        for (Mano mano: manosCreadas) {
-            manosFormateadas.add(formatearManosCreadas(mano));
-        }
-        return manosFormateadas;
-        }
-
-    private String formatearManosCreadas(Mano mano) {
-        return mano.getNumero()+"|";//+ "|" +mano.getTotalApostado()+"|"+,mano.getEstadoActual()+"|"+mano.getJugadorGanador();
-    }
+   
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JList<String> ListManos;
+    private javax.swing.JList<Object> ListManos;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 

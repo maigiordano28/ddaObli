@@ -31,7 +31,10 @@ public class Fachada extends observable {
         return instancia;
     }
     
-   
+    
+     public Jugador DeterminarFiguraGanadora(ArrayList<Jugador> jugadores){
+         return sFigura.DeterminarFiguraGanadora(jugadores);
+     }  
     public Jugador LoginJugador(String nombreCompleto,String password) throws UsuarioException{
         return sUsuario.LoginJugador(nombreCompleto,password);
     }

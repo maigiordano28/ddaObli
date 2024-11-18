@@ -13,5 +13,6 @@ public enum EstadoJugador {
     Accion_pendiente,
     Apuesta_iniciada,
     Apuesta_pagada,
+    Ya_Pidio_Cartas,
     No_pago_apuesta
 }

@@ -45,6 +45,10 @@ public class Mesa {
         return apuestaActual;
     }
 
+    public double getMontoRecaudado() {
+        return montoRecaudado;
+    }
+
     public void setApuestaActual(Double apuestaActual) {
         this.apuestaActual = apuestaActual;
     }
@@ -247,6 +251,11 @@ return cartasPoker;
         ActualizarComision(ret);
       return pozo-ret;
       
+    }
+    
+    public void Avisar(){
+    
+    Fachada.getInstancia().avisar(EventoFachada.NUEVAS_CARTAS);
     }
     
     public void ActualizarComision(Double ret){

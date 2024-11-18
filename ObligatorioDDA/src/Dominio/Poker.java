@@ -17,6 +17,8 @@ public class Poker extends tipoFigura{
         super("Poker");
     }
 
+   
+
  public int getJerarquia(){
         return this.jerarquia;
     }

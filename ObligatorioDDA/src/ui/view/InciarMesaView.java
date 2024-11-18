@@ -19,4 +19,6 @@ public interface InciarMesaView {
 public void CargarTotalApostado(Double totalApostado);
     public void cargarSiguientePantalla(Mesa mesaSeleccionada);
     public void CargarMesas(List<Mesa> mesas);
+    public void cerrarVentana();
+    public void mostrarMensaje(String msg);
 }

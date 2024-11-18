@@ -78,10 +78,8 @@ public class Mano {
     }
      
      public void EliminarJugador(Jugador jugador){
-        
-        this.jugadoresEnMano.remove(jugador);
-            
-        
+        jugador.setEstadoActual(EstadoJugador.No_pago_apuesta);
+        Fachada.getInstancia().avisar(EventoFachada.ACCION_MANO);
     }
      
      public int cantidadJugadores(){
@@ -91,7 +89,7 @@ public class Mano {
      
      @Override
     public String toString() {
-        return "Mano: " +numero + " Jugadores Actuales: "+ /*jugadores.size()+*/" - Total Apostado: "+totalApostado+ " - Estado: "+ estadoActual+" - Jugador Ganador: "+jugadorGanador +" - Figura Ganadaora: "+ figuraGanadora ;
+        return "Mano: " +numero + "- Jugadores Actuales: "+ jugadoresEnMano.size()+"- Total Apostado: "+totalApostado+ " - Estado: "+ estadoActual+" - Jugador Ganador: "+jugadorGanador +" - Figura Ganadaora: "+ figuraGanadora ;
     }
     
     

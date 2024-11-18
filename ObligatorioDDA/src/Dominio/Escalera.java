@@ -23,15 +23,15 @@ public class Escalera extends tipoFigura{
    @Override
     public boolean esFigura(ArrayList<Carta> cartas) {
        
-        cartas.sort(null);
+        /*cartas.sort(null);
 
         
-        for (int i = 0; i < cartas.size(); i++) {
+        for (int i = 0; i < cartas.size()-1; i++) {
             if (cartas.get(i).getValorCarta()+ 1 != cartas.get(i + 1).getValorCarta()) {
                 return false; 
             }
-        }
-        return true; 
+        }*/
+        return false; 
     }
     
     @Override

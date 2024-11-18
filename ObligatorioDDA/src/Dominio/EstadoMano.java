@@ -12,5 +12,6 @@ public enum EstadoMano {
     Esperando_apuesta,
     Apuesta_iniciada,
     Pidiendo_cartas,
+    Pedidos_realizados,
     Terminada
 }
