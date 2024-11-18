@@ -11,11 +11,15 @@ import java.util.ArrayList;
  * @author HOLA
  */
 public class Escalera extends tipoFigura{
-
+  int jerarquia = 3;
     public Escalera() {
         super("Escalera");
     }
 
+    
+    public int getJerarquia(){
+        return this.jerarquia;
+    }
    @Override
     public boolean esFigura(ArrayList<Carta> cartas) {
        

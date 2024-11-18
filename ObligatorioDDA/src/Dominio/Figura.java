@@ -79,8 +79,16 @@ public class Figura {
         this.tipoFigura = tipoFigura;
     }
     
-    public void DeterminarFiguraGanadora(){
-        
+    public Jugador DeterminarFiguraGanadora(ArrayList<Jugador> jugadores){
+        int jerarquia = 0;
+        Jugador jugadorGanador = null;
+        for(Jugador j:jugadores){
+        if(j.getFiguraActual().tipoFigura.getJerarquia()>jerarquia){
+            
+            jugadorGanador=j;
+        }
+        }
+        return jugadorGanador;
     }
     
     @Override
