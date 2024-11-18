@@ -272,8 +272,9 @@ return cartasPoker;
     public Jugador GanadorDeMesa(){
         Figura mayorFigura = null;
         for(Jugador j:jugadores){
-            if(j.getFiguraActual().getTipoFigura().g)
+          //  if(j.getFiguraActual().getTipoFigura().g)
         }
+        return null;
     }
     
     
@@ -345,4 +346,46 @@ public boolean noHayAccionPendiente(){
         }
         return true;
     }
-   }
+
+
+
+public boolean ConseguirEstadoMano(EstadoMano estado){
+
+return this.getManoActiva().getEstadoActual().equals(estado);
+        
+        }
+
+public void ActualizarEstadoMano(int i){
+this.getManoActiva().ActualizarEstado(i);
+
+}
+  
+
+public void EliminarJugadorMano(Jugador jugador){
+
+ getManoActiva().EliminarJugador(jugador);
+}
+
+public int CantidadJugadoresEnMano(){
+
+   return getManoActiva().cantidadJugadores();
+
+}
+
+
+public Jugador UnicoJugadorEnMesa(){
+
+return getManoActiva().getJugadoresEnMano().getFirst();
+}
+
+public void SetearJugadorGanadorMano(Jugador jugadorEnMano ){
+getManoActiva().setJugadorGanador(jugadorEnMano);
+}
+
+public void EliminarCartasMazoAux(Carta carta){
+
+  getMazoAux().getCartasMazo().remove(carta);
+}
+
+}
+

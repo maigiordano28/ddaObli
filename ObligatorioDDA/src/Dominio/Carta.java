@@ -1,16 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Dominio;
 
-import java.util.ArrayList;
 import panelCartasPoker.CartaPoker;
 
-/**
- *
- * @author bsout
- */
 public class Carta implements CartaPoker,Comparable<Carta>{
      
     private int numero;

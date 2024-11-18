@@ -57,16 +57,16 @@ public class PokerController implements observador{
         vista.mostrarMensaje("Saldo Insuficiente");
         }else{
             
-            if(mesa.getManoActiva().getEstadoActual().equals(EstadoMano.Esperando_apuesta)){
+            if(mesa.ConseguirEstadoMano(EstadoMano.Esperando_apuesta)){
             mesa.setApuestaActual(apuesta);
             mesa.apostar(apuesta);
         jugador.ActualizarSaldo(false, apuesta);
         jugador.setEstadoActual(EstadoJugador.Apuesta_iniciada);
         vista.mostrarMensaje("Apuesta realizada");
-        mesa.getManoActiva().setEstadoActual(EstadoMano.Apuesta_iniciada);
+        mesa.ActualizarEstadoMano(2);
         
             
-            }else if(mesa.getManoActiva().getEstadoActual().equals(EstadoMano.Apuesta_iniciada)){
+            }else if(mesa.ConseguirEstadoMano(EstadoMano.Apuesta_iniciada)){
          
             mesa.ActualizarPozo(true, mesa.getApuestaActual());
             jugador.ActualizarSaldo(false, mesa.getApuestaActual());
@@ -139,7 +139,7 @@ public class PokerController implements observador{
     public void pasar(){
 
       if(mesa.getApuestaActual()!=null){
-      mesa.getManoActiva().EliminarJugador(jugador);
+      mesa.EliminarJugadorMano( jugador);
      
       }
     }
@@ -149,18 +149,15 @@ public class PokerController implements observador{
     
      
     public String FiguraActual(){
-            return jugador.getFiguraActual().determinarFigura(jugador.getCartasMano(),jugador);
-
-
-    
+            return jugador.DeterminarFigura();
     }
     
     public void procesarMano(){
 
-      if(mesa.getManoActiva().getJugadoresEnMano().size()<2){
-      mesa.getManoActiva().ActualizarEstado(1);
-      Jugador jugadorEnMano = mesa.getManoActiva().getJugadoresEnMano().getFirst();
-      mesa.getManoActiva().setJugadorGanador(jugadorEnMano);
+      if(mesa.CantidadJugadoresEnMano()<2){
+      mesa.ActualizarEstadoMano(1);
+      Jugador jugadorEnMano = mesa.UnicoJugadorEnMesa();
+      mesa.SetearJugadorGanadorMano(jugadorEnMano);
       jugadorEnMano.ActualizarSaldo(true,pagoPozo());
       if(jugadorEnMano.equals(jugador)){
       vista.mostrarMensaje("GANASTE " +pagoPozo()+"!!!" );
@@ -175,17 +172,18 @@ public class PokerController implements observador{
       
     
     public Jugador GanadorDeMano(ArrayList<Jugador> jugadores){
-       Jugador ganador = 
+  //     Jugador ganador = 
+  return null;
     }
     
     public boolean SePagaApuesta(){
         boolean ret = false;
         int contador = 0;
          for(Jugador j :mesa.getJugadores()){
-            if(j.getEstadoActual().equals(EstadoJugador.Apuesta_pagada)){
+            if(j.ConseguirEstado(EstadoJugador.Apuesta_pagada)){
               contador++;
-            }else if(j.getEstadoActual().equals(EstadoJugador.No_pago_apuesta)){
-              mesa.getManoActiva().getJugadoresEnMano().remove(j);
+            }else if(j.ConseguirEstado(EstadoJugador.No_pago_apuesta)){
+              mesa.EliminarJugadorMano(jugador);
             }
           }
          if(contador>0){
@@ -197,7 +195,7 @@ public class PokerController implements observador{
     public boolean TodosPasaron(){
         boolean ret = false;
         for(Jugador j :mesa.getJugadores()){
-            if(j.getEstadoActual().equals(EstadoJugador.No_pago_apuesta)){
+            if(j.ConseguirEstado(EstadoJugador.No_pago_apuesta)){
               ret = true;
             }
           }
@@ -225,7 +223,7 @@ public class PokerController implements observador{
         vista.mostrarMensaje("Mano numero"+m.getNumero());
       }else{
       
-      if(mesa.getManoActiva().getEstadoActual().equals(EstadoMano.Terminada)){
+      if(mesa.ConseguirEstadoMano(EstadoMano.Terminada)){
         Mano m = fachada.agregarMano( mesa);
          m.setJugadoresEnMano(mesa.getJugadores());
         
@@ -257,7 +255,7 @@ public class PokerController implements observador{
             mesa.getMazoAux().setCartasMazo(cartasBarajadas);
             for (Carta c : cartas) {
         
-              mesa.getMazoAux().getCartasMazo().remove(c);// Usando el constructor de CartaPoker
+              mesa.EliminarCartasMazoAux(c);
             }
         
            jugador.setCartasMano(cartas);      

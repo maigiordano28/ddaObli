@@ -33,6 +33,7 @@ public class InicioMesaController  {
     public void EntrarAMesa(){
        
         vista.cargarSiguientePantalla(mesaSeleccionada,jugador);
+        
           if(!mesaSeleccionada.getJugadores().contains(jugador)){
             mesaSeleccionada.AgregarJugador(jugador);
           }

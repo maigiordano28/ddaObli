@@ -44,23 +44,20 @@ public class Fachada extends observable {
        
     }
     
-    
-    
     public void agregarFigura(String palo){
-    
-    sFigura.agregarFigura(palo);
-    
+        sFigura.agregarFigura(palo);
     }
-        public void agregarAdmin(String cedula, String password, String nombre) {
+    
+    
+    public void agregarAdmin(String cedula, String password, String nombre) {
         sUsuario.agregarAdmin(nombre,cedula,password);
        
     }
         
         public Mesa AgregarMesa(int cantJugadores, double apuestaBase, double porcentajeComision) throws MesaException{
             Mesa ret=sMesa.AgregarMesa(cantJugadores, apuestaBase, porcentajeComision);
-            this.avisar(EventoMesa.NUEVA_MESA);
-           
-          return ret;
+            this.avisar(EventoFachada.NUEVA_MESA);
+            return ret;
          
           
         }
@@ -68,13 +65,13 @@ public class Fachada extends observable {
         
 
         public Mesa ActualizarMesa(Mesa m){
-            Mesa ret= sMesa.ActualizarMesa(m);
-             return ret;
+             return sMesa.ActualizarMesa(m);
+            
         }
              
             public void actualizarCantidadJugadores(Mesa m, Jugador j){
                      this.avisar(EventoFachada.NUEVO_JUGADOR_MESA);
-            sMesa.actualizarCantidadJugadores(m,j);
+                     sMesa.actualizarCantidadJugadores(m,j);
    
             
             }

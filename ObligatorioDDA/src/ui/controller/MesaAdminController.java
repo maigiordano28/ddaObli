@@ -5,7 +5,6 @@
 package ui.controller;
 
 import Dominio.EventoFachada;
-import Dominio.EventoMesa;
 import Dominio.Exceptions.MesaException;
 import Dominio.Fachada;
 import Dominio.Mesa;
@@ -58,16 +57,4 @@ public class MesaAdminController  {
      
     
     }
-
-    
-     public void actualizar(observable o, Object evento) {
-      
-        
-          if (evento.equals(EventoFachada.NUEVA_MANO)) {
-           // vista.mostraManosCreadas();
-        }
-     }
- 
-
- 
 }

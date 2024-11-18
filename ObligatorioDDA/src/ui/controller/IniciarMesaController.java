@@ -4,7 +4,7 @@
  */
 package ui.controller;
 
-import Dominio.EventoMesa;
+import Dominio.EventoFachada;
 import Dominio.Fachada;
 import Dominio.Mesa;
 import ui.view.InciarMesaView;
@@ -57,7 +57,7 @@ public class IniciarMesaController implements observador{
     
       public void actualizar(observable o, Object evento) {
         
-        if (evento.equals(EventoMesa.NUEVA_MESA)) {
+        if (evento.equals(EventoFachada.NUEVA_MESA)) {
             vista.mostrarMesasCreadas(fachada.getMesas());
         }
         

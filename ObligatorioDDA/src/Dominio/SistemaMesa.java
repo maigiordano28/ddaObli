@@ -55,7 +55,9 @@ public class SistemaMesa {
       return  m.AgregarMano();
    }
   public void actualizarCantidadJugadores(Mesa m, Jugador j) {
+      
        m.getJugadores().add(j);
+       
     }
   
   

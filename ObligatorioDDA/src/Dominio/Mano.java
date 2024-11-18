@@ -69,6 +69,8 @@ public class Mano {
      public void ActualizarEstado(int i){
         if(i==1){
         this.estadoActual=EstadoMano.Terminada;
+        }else if(i==2){
+        this.estadoActual=EstadoMano.Apuesta_iniciada;
         }
         
     }
@@ -79,6 +81,12 @@ public class Mano {
             
         
     }
+     
+     public int cantidadJugadores(){
+     
+     return this.jugadoresEnMano.size();
+     }
+     
      @Override
     public String toString() {
         return "Mano: " +numero + " Jugadores Actuales: "+ /*jugadores.size()+*/" - Total Apostado: "+totalApostado+ " - Estado: "+ estadoActual+" - Jugador Ganador: "+jugadorGanador +" - Figura Ganadaora: "+ figuraGanadora ;

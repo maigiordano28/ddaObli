@@ -5,7 +5,6 @@
 package ui.controller;
 
 import Dominio.EventoFachada;
-import Dominio.EventoMesa;
 import Dominio.Fachada;
 import Dominio.Mesa;
 import Observador.observable;

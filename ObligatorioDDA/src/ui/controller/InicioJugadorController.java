@@ -5,7 +5,6 @@
 package ui.controller;
 
 import Dominio.EventoFachada;
-import Dominio.EventoMesa;
 import Dominio.Exceptions.UsuarioException;
 import Dominio.Fachada;
 import Dominio.Mesa;
@@ -48,7 +47,7 @@ public class InicioJugadorController implements observador{
  @Override
       public void actualizar(observable o, Object evento) {
         
-        if (evento.equals(EventoMesa.NUEVA_MESA)) {
+        if (evento.equals(EventoFachada.NUEVA_MESA)) {
             vista.mostrarMesasCreadas(fachada.getMesas());
         }
         
@@ -77,9 +76,6 @@ public class InicioJugadorController implements observador{
       
       public void EntrarAMesa(Mesa mesaSeleccionada){
       
-      //List<Mesa> mesas=fachada.getMesas();
-      //Mesa mesaSeleccionada = mesas.get(index);
-      
       if(jugador.getSaldoInicial()>mesaSeleccionada.getApuestaBase()*10){
             if(mesaSeleccionada.getCantidadJugadores()==mesaSeleccionada.obtenerLargoListaJugadores()){
                 vista.mostrarMensaje("Mesa Completa");
@@ -93,8 +89,6 @@ public class InicioJugadorController implements observador{
         vista.mostrarMensaje("Saldo Insuficiente");
       
       }
-      
-      
       
       }
       

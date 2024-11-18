@@ -7,7 +7,7 @@ package Dominio;
 
 import Dominio.Usuario.Jugador;
 import java.util.ArrayList;
-import panelCartasPoker.CartaPoker;
+
 
 /**
  *
@@ -33,27 +33,6 @@ public class Figura {
         this.nombre = nombre;
     }
     
-     public String determinarFigura(ArrayList<Carta> cartas ,Jugador jugador) {
-        ArrayList<tipoFigura> tiposFigura = new ArrayList<>();
-    
-    // Agrega los diferentes tipos de figuras posibles
-    tiposFigura.add(new Par());  
-    tiposFigura.add(new Pierna());      
-    tiposFigura.add(new Escalera()); 
-    tiposFigura.add(new Poker());    
-        for (tipoFigura tipo : tiposFigura) {
-            if (tipo.esFigura(cartas)) {
-                return tipo.getNombre();
-            }
-        }
-       
-        return jugador.getFiguraActual().getNombre(); // Si no se encuentra figura, retorna null
-    }
-
-    
-    public boolean determinarFiguraGanadora(){
-    return tipoFigura.esFigura(cartas);
-    }
 
     public String getNombre() {
         return nombre;
@@ -79,15 +58,43 @@ public class Figura {
         this.tipoFigura = tipoFigura;
     }
     
+    
+      public String determinarFigura(ArrayList<Carta> cartas ,Jugador jugador) {
+        ArrayList<tipoFigura> tiposFigura = new ArrayList<>();
+    
+    // Agrega los diferentes tipos de figuras posibles
+    tiposFigura.add(new Par());  
+    tiposFigura.add(new Pierna());      
+    tiposFigura.add(new Escalera()); 
+    tiposFigura.add(new Poker()); 
+    
+        for (tipoFigura tipo : tiposFigura) {
+            if (tipo.esFigura(cartas)) {
+                return tipo.getNombre();
+            }
+        }
+       
+        return jugador.getNombreFigura();
+    }
+
+    
+    public boolean determinarFiguraGanadora(){
+    return tipoFigura.esFigura(cartas);
+    }
+    
     public Jugador DeterminarFiguraGanadora(ArrayList<Jugador> jugadores){
         int jerarquia = 0;
         Jugador jugadorGanador = null;
         for(Jugador j:jugadores){
-        if(j.getFiguraActual().tipoFigura.getJerarquia()>jerarquia){
-            
-            jugadorGanador=j;
-        }else if(j.getFiguraActual().tipoFigura.getJerarquia() == jerarquia){
-            comparar(ArrayList<Carta> cartasJugador1, ArrayList<Carta> cartasJugador2)
+         int jerarquiaJugador = j.GetJerarquiaFigura();
+
+        if (jerarquiaJugador > jerarquia) {
+            jerarquia = jerarquiaJugador;
+            jugadorGanador = j;
+        }else if(j.GetJerarquiaFigura() == jerarquia){
+         /*if (compararFiguras(jugadorGanador.getCartasMano(), j.getCartasMano()) < 0) {
+                jugadorGanador = j;
+            }*/
         }
         }
         return jugadorGanador;

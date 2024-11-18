@@ -6,6 +6,7 @@ package Dominio.Usuario;
 
 import Dominio.Carta;
 import Dominio.EstadoJugador;
+import Dominio.EstadoMano;
 import Dominio.EventoFachada;
 import Dominio.Fachada;
 import Dominio.Figura;
@@ -101,19 +102,26 @@ public class Jugador extends Usuario{
     
     
  
+    public String getNombreFigura(){
+    return this.figuraActual.getNombre();
     
-    public void RegistrarApuesta(){
-        
     }
+    
+    public int GetJerarquiaFigura(){
+    return figuraActual.getTipoFigura().getJerarquia();
+    
+    }
+    
+    public String DeterminarFigura(){
+    
+    return  getFiguraActual().determinarFigura(this.getCartasMano(),this);
+    }
+    
+    
+public boolean ConseguirEstado(EstadoJugador estado){
 
-   
-    public void IngresarMesa(){
+return this.estadoActual.equals(estado);
         
-    }
-    public void PedirCartas(){
-             
-    }
-    public void RetirarseDelJuego(){
-    }  
+        }
     
 }
