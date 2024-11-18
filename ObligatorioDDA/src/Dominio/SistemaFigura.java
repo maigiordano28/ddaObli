@@ -22,4 +22,7 @@ public class SistemaFigura {
     public void agregarFigura(String palo){
     this.figuras.add(new Figura(palo));
     }
+    
+    
+    
 }

@@ -82,7 +82,7 @@ public class Figura {
     return tipoFigura.esFigura(cartas);
     }
     
-    public Jugador DeterminarFiguraGanadora(ArrayList<Jugador> jugadores){
+    /*public Jugador DeterminarFiguraGanadora(ArrayList<Jugador> jugadores){
         int jerarquia = 0;
         Jugador jugadorGanador = null;
         for(Jugador j:jugadores){
@@ -94,11 +94,41 @@ public class Figura {
         }else if(j.GetJerarquiaFigura() == jerarquia){
          /*if (compararFiguras(jugadorGanador.getCartasMano(), j.getCartasMano()) < 0) {
                 jugadorGanador = j;
-            }*/
+            }
         }
         }
         return jugadorGanador;
+    }*/
+    
+    public Jugador DeterminarFiguraGanadora(ArrayList<Jugador> jugadores) {
+    int jerarquiaMaxima = -1;
+    Jugador jugadorGanador = null;
+
+    for (Jugador jugadorActual : jugadores) {
+        Figura figuraActual = jugadorActual.getFiguraActual();
+        if (figuraActual == null) {
+            // Si un jugador no tiene figura, lo omitimos de la comparación
+            continue;
+        }
+
+        int jerarquiaJugador = figuraActual.getTipoFigura().getJerarquia();
+
+        // Determinar si este jugador es el nuevo ganador provisional
+        if (jerarquiaJugador > jerarquiaMaxima) {
+            jerarquiaMaxima = jerarquiaJugador;
+            jugadorGanador = jugadorActual;
+        } else if (jerarquiaJugador == jerarquiaMaxima && jugadorGanador != null) {
+            // Si hay empate en jerarquía, desempatar con el método comparar
+            tipoFigura tipoFiguraGanador = jugadorGanador.getFiguraActual().getTipoFigura();
+            if (tipoFiguraGanador.comparar(jugadorGanador.getCartasMano(), jugadorActual.getCartasMano()) < 0) {
+                jugadorGanador = jugadorActual;
+            }
+        }
     }
+
+    return jugadorGanador;
+
+}
     
     @Override
     public String toString() {

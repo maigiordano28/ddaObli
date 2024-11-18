@@ -60,10 +60,10 @@ public class PokerController implements observador{
             if(mesa.ConseguirEstadoMano(EstadoMano.Esperando_apuesta)){
             mesa.setApuestaActual(apuesta);
             mesa.apostar(apuesta);
-        jugador.ActualizarSaldo(false, apuesta);
-        jugador.setEstadoActual(EstadoJugador.Apuesta_iniciada);
-        vista.mostrarMensaje("Apuesta realizada");
-        mesa.ActualizarEstadoMano(2);
+            jugador.ActualizarSaldo(false, apuesta);
+            jugador.setEstadoActual(EstadoJugador.Apuesta_iniciada);
+            vista.mostrarMensaje("Apuesta realizada");
+            mesa.ActualizarEstadoMano(2);
         
             
             }else if(mesa.ConseguirEstadoMano(EstadoMano.Apuesta_iniciada)){
@@ -166,15 +166,34 @@ public class PokerController implements observador{
       }else if(TodosPasaron()){
           agregarMano(mesa);
       }else if(SePagaApuesta()){
-          Jugador jugadorGanador = GanadorDeMano(mesa.getManoActiva().getJugadoresEnMano());
+        GanadorMano();
       }
       }
       
     
-    public Jugador GanadorDeMano(ArrayList<Jugador> jugadores){
-  //     Jugador ganador = 
-  return null;
+    public void GanadorMano() {
+    // Verifica que haya jugadores activos en la mano
+    if (mesa.CantidadJugadoresEnMano() < 2) {
+        vista.mostrarMensaje("No hay suficientes jugadores para determinar un ganador.");
+        
     }
+
+    // Obtén la lista de jugadores activos en la mano
+    ArrayList<Jugador> jugadores = mesa.getManoActiva().getJugadoresEnMano();
+
+    // Usa el método DeterminarFiguraGanadora para encontrar al ganador
+    Figura figura = new Figura(""); // Figura auxiliar para invocar el método
+    Jugador jugadorGanador = figura.DeterminarFiguraGanadora(jugadores);
+
+    // Mostrar el ganador en la vista
+    if (jugadorGanador != null) {
+        vista.mostrarMensaje("El ganador de la mano es: " + jugadorGanador.getNombreCompleto() +
+                " con la figura " + jugadorGanador.getFiguraActual().getNombre());
+        mesa.SetearJugadorGanadorMano(jugadorGanador);
+    } else {
+        vista.mostrarMensaje("No se pudo determinar un ganador.");
+    }
+}
     
     public boolean SePagaApuesta(){
         boolean ret = false;
