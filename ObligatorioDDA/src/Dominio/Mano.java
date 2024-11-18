@@ -71,6 +71,8 @@ public class Mano {
         this.estadoActual=EstadoMano.Terminada;
         }else if(i==2){
         this.estadoActual=EstadoMano.Apuesta_iniciada;
+        }else if(i==3){
+        this.estadoActual=EstadoMano.Pidiendo_cartas;
         }
         
     }

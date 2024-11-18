@@ -68,19 +68,27 @@ public class PokerController implements observador{
             
             }else if(mesa.ConseguirEstadoMano(EstadoMano.Apuesta_iniciada)){
          
-            mesa.ActualizarPozo(true, mesa.getApuestaActual());
-            jugador.ActualizarSaldo(false, mesa.getApuestaActual());
-             jugador.setEstadoActual(EstadoJugador.Apuesta_pagada);
-            vista.mostrarMensaje("Pago realizada");
+           PagarApuesta();
             
             }
+            
+            
           
             
           
         }
          mesa.ValidarEstadosJugador();
+         mesa.ActualizarEstadoMano(3);
     }
     
+    
+    public void PagarApuesta(){
+     mesa.ActualizarPozo(true, mesa.getApuestaActual());
+            jugador.ActualizarSaldo(false, mesa.getApuestaActual());
+             jugador.setEstadoActual(EstadoJugador.Apuesta_pagada);
+            vista.mostrarMensaje("Pago realizada");
+    
+    }
     
   public void descartarYRepartirCartas(){
     
